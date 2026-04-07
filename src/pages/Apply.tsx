@@ -12,27 +12,18 @@ export default function Apply() {
   return (
     <div className="page-apply">
       <style>{`
-        :root {
-          --cream: #F0EBE1; --cream-deep: #E8E0D4; --parchment: #F7F4EF;
-          --ink: #1A1714; --ink-soft: #2A2218;
-          --gold: #B8860B; --gold-light: #D4A84B; --gold-pale: #E8C97A;
-          --gold-dim: rgba(184,134,11,0.18); --gold-thin: rgba(184,134,11,0.10);
-          --warm-grey: #8B7355; --warm-grey2: #5A4A35;
-          --fd: 'Cormorant Garamond', Georgia, serif;
-          --fb: 'DM Sans', system-ui, sans-serif;
-          --fm: 'DM Mono', monospace;
-        }
+        
         .page-apply { min-height: 100vh; background: var(--cream); color: var(--ink); font-family: var(--fb); }
         .apply-container { max-width: 800px; margin: 0 auto; padding: 100px 40px; }
         .apply-header { margin-bottom: 48px; }
         .apply-header h1 { font-family: var(--fd); font-size: 48px; font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 16px; }
         .apply-header p { font-size: 16px; color: var(--warm-grey); font-weight: 300; line-height: 1.6; }
         .apply-form { display: flex; flex-direction: column; gap: 40px; }
-        .form-section { border-top: 1px solid rgba(90,74,53,0.1); padding-top: 32px; }
+        .form-section { border-top: 1px solid rgba(var(--rgb-warm-grey2),0.1); padding-top: 32px; }
         .form-section-title { font-family: var(--fd); font-size: 24px; color: var(--gold); margin-bottom: 24px; font-weight: 300; }
         .form-group { margin-bottom: 24px; }
         .form-label { display: block; font-family: var(--fm); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 8px; }
-        .form-input, .form-select, .form-textarea { width: 100%; padding: 14px 16px; background: transparent; border: 1px solid rgba(90,74,53,0.2); color: var(--ink); font-family: var(--fb); font-size: 15px; outline: none; transition: border-color .2s; }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 14px 16px; background: transparent; border: 1px solid rgba(var(--rgb-warm-grey2),0.2); color: var(--ink); font-family: var(--fb); font-size: 15px; outline: none; transition: border-color .2s; }
         .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
         .form-textarea { min-height: 120px; resize: vertical; }
         .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
@@ -42,7 +33,7 @@ export default function Apply() {
         .submit-btn:hover { background: var(--gold-light); }
         
         /* Nav styles */
-        nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: rgba(240,235,225,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(90,74,53,0.10); }
+        nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: rgba(var(--rgb-cream),0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.10); }
         .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .nav-mark { width: 28px; height: 28px; }
         .nav-wordmark { font-family: var(--fd); font-size: 18px; font-weight: 300; color: var(--ink); letter-spacing: .04em; }
@@ -65,30 +56,7 @@ export default function Apply() {
         }
       `}</style>
       
-<nav>
-  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <Link to="/" style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', border: '1px solid rgba(139,115,85,0.25)', padding: '4px 8px', color: 'var(--warm-grey)', textDecoration: 'none', marginRight: '16px', letterSpacing: '0.05em' }}>[ ← Back ]</Link>
-      <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
-        <span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
-      </Link>
-    </div>
-    <button 
-      className="mobile-menu-btn" 
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      aria-label="Toggle menu"
-      style={{ background: 'none', border: 'none', color: 'var(--ink)', cursor: 'pointer', display: 'none' }}
-    >
-      {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
-  </div>
-  <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '28px', listStyle: 'none', margin: 0, padding: 0 }}>
-    <li><Link to="/" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Home</Link></li>
-    <li><Link to="/rooms" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Rooms</Link></li>
-    <li><Link to="/dojo" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Dojo</Link></li>
-    <li><Link to="/contact" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Contact</Link></li>
-  </ul>
-</nav>
+
 
       <div className="apply-container">
         <div className="apply-header">

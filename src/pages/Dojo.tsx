@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
 
 export default function Dojo() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -12,101 +9,58 @@ export default function Dojo() {
   return (
     <div className="page-dojo">
       <style>{`
-        :root {
-          --cream: #F0EBE1; --cream-deep: #E8E0D4; --parchment: #F7F4EF;
-          --ink: #1A1714; --ink-soft: #2A2218;
-          --gold: #B8860B; --gold-light: #D4A84B; --gold-pale: #E8C97A;
-          --gold-dim: rgba(184,134,11,0.18); --gold-thin: rgba(184,134,11,0.10);
-          --warm-grey: #8B7355; --warm-grey2: #5A4A35;
-          --fd: 'Cormorant Garamond', Georgia, serif;
-          --fb: 'DM Sans', system-ui, sans-serif;
-          --fm: 'DM Mono', monospace;
-        }
         .page-dojo { min-height: 100vh; background: var(--cream); color: var(--ink); font-family: var(--fb); }
-        /* NAV */
-        nav {
-          position: sticky; top: 0; z-index: 100;
-          display: flex; align-items: center; justify-content: space-between;
-          padding: 16px 48px;
-          background: rgba(240,235,225,0.94); backdrop-filter: blur(14px);
-          border-bottom: 1px solid rgba(90,74,53,0.10);
-        }
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-wordmark { font-family: var(--fd); font-size: 16px; font-weight: 300; color: var(--ink); letter-spacing: .06em; }
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-        .nav-links a:hover { color: var(--ink); }
-
+        
         /* HERO */
-        .hero { position: relative; min-height: 50vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; overflow: hidden; background: var(--ink); color: var(--cream); text-align: center; }
-        .hero h1 { font-family: var(--fd); font-size: clamp(48px,8vw,80px); font-weight: 300; line-height: .93; letter-spacing: -.02em; color: var(--cream); margin-bottom: 24px; }
-        .hero-sub { font-size: 18px; font-weight: 300; line-height: 1.65; color: rgba(242,237,230,0.7); max-width: 640px; margin: 0 auto 40px; }
+        .hero { position: relative; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; overflow: hidden; background: var(--cream); color: var(--ink); text-align: center; }
+        .hero h1 { font-family: var(--fd); font-size: clamp(48px,8vw,80px); font-weight: 300; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 24px; }
+        .hero-sub { font-size: 18px; font-weight: 300; line-height: 1.65; color: var(--warm-grey); max-width: 720px; margin: 0 auto 24px; }
+        .hero-meta { font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 40px; font-weight: 500; }
         .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        
         .btn-primary { padding: 16px 40px; background: var(--gold); border: 1px solid var(--gold); color: var(--cream); font-family: var(--fb); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: all .2s; display: inline-block; }
         .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
-        .btn-secondary { padding: 16px 40px; background: transparent; border: 1px solid rgba(240,235,225,0.3); color: var(--cream); font-family: var(--fb); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: all .2s; display: inline-block; }
-        .btn-secondary:hover { border-color: var(--cream); }
+        .btn-secondary { padding: 16px 40px; background: transparent; border: 1px solid rgba(var(--rgb-ink),0.3); color: var(--ink); font-family: var(--fb); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: all .2s; display: inline-block; }
+        .btn-secondary:hover { border-color: var(--ink); }
 
         /* CONTENT */
-        .dojo-section { padding: 80px 48px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .dojo-section h2 { font-family: var(--fd); font-size: 40px; font-weight: 300; color: var(--ink); margin-bottom: 16px; line-height: 1.1; }
-        .dojo-section > p { font-size: 16px; font-weight: 300; color: var(--warm-grey2); line-height: 1.7; max-width: 720px; margin: 0 auto 48px; }
+        .dojo-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
         
-        .stages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 64px; }
-        .stage-card { padding: 40px 24px; background: var(--parchment); border: 1px solid rgba(90,74,53,0.1); text-align: center; }
-        .stage-card h3 { font-family: var(--fd); font-size: 24px; font-weight: 300; color: var(--ink); }
+        .stage-row { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; padding: 64px 0; border-top: 1px solid rgba(var(--rgb-ink), 0.1); }
+        .stage-meta h3 { font-family: var(--fd); font-size: 32px; font-weight: 300; color: var(--ink); margin-bottom: 4px; }
+        .stage-subtitle { font-family: var(--fm); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 24px; }
+        .stage-tagline { font-size: 14px; color: var(--ink); font-style: italic; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(var(--rgb-ink), 0.05); }
+        
+        .stage-content p { font-size: 16px; font-weight: 300; color: var(--warm-grey2); line-height: 1.7; margin-bottom: 24px; }
+        .stage-content p:last-child { margin-bottom: 0; }
+        
+        .stage-list { list-style: none; padding: 0; margin: 32px 0 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .stage-list li { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 12px; }
+        .stage-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-        .cta-section { text-align: center; padding: 0 48px 120px; }
+        .cta-section { text-align: center; padding: 80px 48px 120px; }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto; }
+        .cta-card { padding: 48px 32px; background: var(--parchment); border: 1px solid rgba(var(--rgb-ink), 0.05); text-align: center; }
+        .cta-card p { font-size: 14px; color: var(--warm-grey); line-height: 1.6; margin-bottom: 24px; }
 
         @media(max-width:1024px){
-          nav{padding:14px 20px; flex-direction: column; align-items: flex-start;}
-          .mobile-menu-btn { display: block !important; }
-          .nav-links { display: none; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-          .nav-links.open { display: flex; }
           .hero{padding:100px 20px 64px;}
           .dojo-section { padding: 60px 20px; }
-          .stages-grid { grid-template-columns: 1fr; }
-        }
-        @media(max-width:900px){
-          /* Removed .nav-links{display:none;} */
+          .stage-row { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
+          .cta-grid { grid-template-columns: 1fr; }
         }
       `}</style>
-
-      {/* NAV */}
-      <nav>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Link to="/" style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', border: '1px solid rgba(139,115,85,0.25)', padding: '4px 8px', color: 'var(--warm-grey)', textDecoration: 'none', marginRight: '16px', letterSpacing: '0.05em' }}>[ ← Back ]</Link>
-            <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
-              <span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
-            </Link>
-          </div>
-          <button 
-            className="mobile-menu-btn" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-            style={{ background: 'none', border: 'none', color: 'var(--ink)', cursor: 'pointer', display: 'none' }}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-        <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/rooms">Rooms</Link></li>
-          <li><Link to="/dojo">Dojo</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-      </nav>
 
       {/* HERO */}
       <header className="hero">
         <div className="hero-content">
           <h1>The Dojo</h1>
-          <p className="hero-sub">12-week immersive programme for founders ready to build. Work directly with our team to execute your venture in real time.</p>
-          <p className="hero-sub" style={{fontSize: '14px', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--gold-light)'}}>Hybrid format · Online + Nairobi Studio · Maximum 8 founders per cohort</p>
+          <p className="hero-sub">The Dojo is a 12 week programme where founders work directly with a strategist and team to build their business step by step. This is not a course and it is not theory. Every part of the process is applied to your actual venture in real time.</p>
+          <p className="hero-sub">You are not watching or learning passively. You are making decisions, building assets, and putting structure into place with guidance. By the end of the programme, your business is defined, visible, and operational.</p>
+          <p className="hero-meta">Hybrid format. Online and Nairobi studio. Maximum 8 founders per cohort.</p>
           <div className="hero-ctas">
-            <Link to="/apply" className="btn-primary">Apply to the Dojo →</Link>
-            <a href="https://paystack.com/buy/the-dojo-lqrmjw" target="_blank" className="btn-secondary">Start now .</a>
+            <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
+            <a href="https://paystack.com/buy/the-dojo-lqrmjw" target="_blank" rel="noreferrer" className="btn-secondary">Start now</a>
           </div>
         </div>
       </header>
@@ -114,61 +68,98 @@ export default function Dojo() {
       {/* STAGES */}
       <section id="stages" className="dojo-section">
         
-        <div className="stages-grid" style={{textAlign: "left", gap: "32px"}}>
-          <div className="stage-card" style={{textAlign: "left", padding: "40px 32px"}}>
-            <div style={{fontFamily: "var(--fm)", fontSize: "12px", color: "var(--gold)", marginBottom: "16px"}}>01</div>
-            <h3 style={{marginBottom: "4px"}}>Foundation</h3>
-            <div style={{fontFamily: "var(--fm)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--warm-grey)", marginBottom: "24px"}}>Clarity</div>
-            <ul style={{listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "14px", color: "var(--warm-grey2)", lineHeight: "1.6"}}>
-              <li style={{marginBottom: "8px"}}>Early-stage clarity</li>
-              <li style={{marginBottom: "8px"}}>Narrative foundations</li>
-              <li style={{marginBottom: "8px"}}>Brand structure</li>
-            </ul>
-            <p style={{fontSize: "13px", color: "var(--ink)", margin: 0, fontStyle: "italic"}}>Define idea, audience, cultural position</p>
+        <div className="stage-row">
+          <div className="stage-meta">
+            <h3>Foundation</h3>
+            <div className="stage-subtitle">Clarity</div>
+            <div className="stage-tagline">Define idea, audience, cultural position</div>
           </div>
-          
-          <div className="stage-card" style={{textAlign: "left", padding: "40px 32px"}}>
-            <div style={{fontFamily: "var(--fm)", fontSize: "12px", color: "var(--gold)", marginBottom: "16px"}}>02</div>
-            <h3 style={{marginBottom: "4px"}}>Build</h3>
-            <div style={{fontFamily: "var(--fm)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--warm-grey)", marginBottom: "24px"}}>Presence</div>
-            <ul style={{listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "14px", color: "var(--warm-grey2)", lineHeight: "1.6"}}>
-              <li style={{marginBottom: "8px"}}>Content creation</li>
-              <li style={{marginBottom: "8px"}}>Campaign execution</li>
-              <li style={{marginBottom: "8px"}}>Storytelling systems</li>
+          <div className="stage-content">
+            <p>The first stage is about defining what you are building and making sure it is clear and grounded.</p>
+            <p>You will work on your core idea and shape it into something that can be understood and positioned. This includes identifying your audience, understanding the problem you are solving, and building the narrative that explains why your business matters.</p>
+            <p>You will also establish the structure of your brand. This includes how you communicate, how you position yourself in the market, and how everything connects.</p>
+            <p>By the end of this stage, you have a clear idea, a defined audience, and a strong foundation that supports everything that comes next.</p>
+            <ul className="stage-list">
+              <li>Early-stage clarity</li>
+              <li>Narrative foundations</li>
+              <li>Brand structure</li>
             </ul>
-            <p style={{fontSize: "13px", color: "var(--ink)", margin: 0, fontStyle: "italic"}}>Turn vision into public presence</p>
-          </div>
-          
-          <div className="stage-card" style={{textAlign: "left", padding: "40px 32px"}}>
-            <div style={{fontFamily: "var(--fm)", fontSize: "12px", color: "var(--gold)", marginBottom: "16px"}}>03</div>
-            <h3 style={{marginBottom: "4px"}}>Develop</h3>
-            <div style={{fontFamily: "var(--fm)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--warm-grey)", marginBottom: "24px"}}>Structure</div>
-            <ul style={{listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "14px", color: "var(--warm-grey2)", lineHeight: "1.6"}}>
-              <li style={{marginBottom: "8px"}}>Scale operations</li>
-              <li style={{marginBottom: "8px"}}>Align teams</li>
-              <li style={{marginBottom: "8px"}}>Refine internal systems</li>
-            </ul>
-            <p style={{fontSize: "13px", color: "var(--ink)", margin: 0, fontStyle: "italic"}}>Workflows for growth</p>
-          </div>
-          
-          <div className="stage-card" style={{textAlign: "left", padding: "40px 32px"}}>
-            <div style={{fontFamily: "var(--fm)", fontSize: "12px", color: "var(--gold)", marginBottom: "16px"}}>04</div>
-            <h3 style={{marginBottom: "4px"}}>Capital</h3>
-            <div style={{fontFamily: "var(--fm)", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--warm-grey)", marginBottom: "24px"}}>Expansion</div>
-            <ul style={{listStyle: "none", padding: 0, margin: "0 0 24px 0", fontSize: "14px", color: "var(--warm-grey2)", lineHeight: "1.6"}}>
-              <li style={{marginBottom: "8px"}}>Venture-ready strategies</li>
-              <li style={{marginBottom: "8px"}}>Funding preparation</li>
-              <li style={{marginBottom: "8px"}}>Growth acceleration</li>
-            </ul>
-            <p style={{fontSize: "13px", color: "var(--ink)", margin: 0, fontStyle: "italic"}}>Investor positioning</p>
           </div>
         </div>
 
-        <div className="cta-section" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/apply" className="btn-primary" style={{ padding: '20px 60px', fontSize: '13px' }}>Apply to the Dojo →</Link>
-          <a href="https://paystack.com/buy/the-dojo-lqrmjw" target="_blank" className="btn-secondary" style={{ padding: '20px 60px', fontSize: '13px' }}>Start now .</a>
+        <div className="stage-row">
+          <div className="stage-meta">
+            <h3>Build</h3>
+            <div className="stage-subtitle">Presence</div>
+            <div className="stage-tagline">Turn vision into public presence</div>
+          </div>
+          <div className="stage-content">
+            <p>The second stage focuses on making your business visible.</p>
+            <p>You will create content, campaigns, and storytelling systems that allow your business to reach people consistently. This is where your idea moves from something internal to something public.</p>
+            <p>You will work on how your message shows up, how your content is structured, and how you attract and engage your audience.</p>
+            <p>By the end of this stage, your business has an active presence. Content is being created, campaigns are running, and people can see and understand what you are building.</p>
+            <ul className="stage-list">
+              <li>Content creation</li>
+              <li>Campaign execution</li>
+              <li>Storytelling systems</li>
+            </ul>
+          </div>
         </div>
+
+        <div className="stage-row">
+          <div className="stage-meta">
+            <h3>Develop</h3>
+            <div className="stage-subtitle">Structure</div>
+            <div className="stage-tagline">Workflows for growth</div>
+          </div>
+          <div className="stage-content">
+            <p>The third stage is about building the internal systems that allow your business to function.</p>
+            <p>You will define workflows, organise operations, and put systems in place that support consistency and growth. This includes how work gets done, how decisions are made, and how your business runs on a daily basis.</p>
+            <p>This is where you move from activity to structure. Instead of reacting, your business starts to operate with clarity and direction.</p>
+            <p>By the end of this stage, your business is organised, your processes are clear, and your operations can support growth.</p>
+            <ul className="stage-list">
+              <li>Scale operations</li>
+              <li>Align teams</li>
+              <li>Refine internal systems</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="stage-row">
+          <div className="stage-meta">
+            <h3>Capital</h3>
+            <div className="stage-subtitle">Expansion</div>
+            <div className="stage-tagline">Investor positioning</div>
+          </div>
+          <div className="stage-content">
+            <p>The final stage prepares your business for growth beyond the early phase.</p>
+            <p>You will work on how your business is positioned for partnerships, funding, and expansion. This includes refining your strategy, strengthening your numbers, and making sure your business can be understood by external stakeholders.</p>
+            <p>You will also define how the business grows from where it is to where it needs to go.</p>
+            <p>By the end of this stage, your business is ready to present, grow, and attract opportunities.</p>
+            <ul className="stage-list">
+              <li>Venture-ready strategies</li>
+              <li>Funding preparation</li>
+              <li>Growth acceleration</li>
+            </ul>
+          </div>
+        </div>
+
       </section>
+
+      <div className="cta-section">
+        <div className="cta-grid">
+          <div className="cta-card">
+            <h3 style={{fontFamily: 'var(--fd)', fontSize: '24px', fontWeight: 300, color: 'var(--ink)', marginBottom: '12px'}}>Apply to the Dojo</h3>
+            <p>Join the cohort and build your business with direct support over 12 weeks.</p>
+            <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
+          </div>
+          <div className="cta-card">
+            <h3 style={{fontFamily: 'var(--fd)', fontSize: '24px', fontWeight: 300, color: 'var(--ink)', marginBottom: '12px'}}>Start now</h3>
+            <p>Enter the system and begin building immediately with structured guidance.</p>
+            <a href="https://paystack.com/buy/the-dojo-lqrmjw" target="_blank" rel="noreferrer" className="btn-secondary">Start now</a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

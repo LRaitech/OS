@@ -17,23 +17,11 @@ export default function Campfyer() {
           min-height: 100vh;
         }
         ${ `
-    :root {
-      --teal:    #2C5F5A;
-      --teal-d:  #1A3D3A;
-      --amber:   #C8701A;
-      --ochre:   #D4983A;
-      --ochre-p: #E8C07A;
-      --cream:   #F2EDE6;
-      --ink:     #0D1412;
-      --fd: 'Cormorant Garamond', Georgia, serif;
-      --fb: 'DM Sans', system-ui, sans-serif;
-      --fm: 'DM Mono', monospace;
-    }
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: var(--ink);
-      color: var(--cream);
+      background: var(--cream); color: var(--ink);
       font-family: var(--fb);
       min-height: 100vh;
     }
@@ -51,51 +39,51 @@ export default function Campfyer() {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 40px;
-      background: rgba(13,20,18,0.90);
+      background: rgba(var(--rgb-ink),0.90);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(242,237,230,0.07);
+      border-bottom: 1px solid rgba(var(--rgb-ink),0.07);
     }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
     }
     .nav-badge {
       width: 28px; height: 28px;
-      background: linear-gradient(135deg, var(--teal), var(--teal-d));
-      border: 1px solid rgba(200,112,26,0.30);
+      background: linear-gradient(135deg, var(--warm-grey2), var(--ink));
+      border: 1px solid rgba(var(--rgb-gold),0.30);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--fd); font-size: 10px; font-weight: 600;
-      color: var(--cream);
+      color: var(--ink);
     }
     .nav-name {
       font-family: var(--fd);
       font-size: 15px; font-weight: 300;
-      color: rgba(242,237,230,0.60);
+      color: rgba(var(--rgb-ink),0.60);
       letter-spacing: .04em;
     }
     .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
     .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-    .nav-links a:hover { color: var(--cream); }
+    .nav-links a:hover { color: var(--ink); }
     .nav-cta {
       display: flex; align-items: center; gap: 16px;
     }
     .nav-price {
       font-family: var(--fd);
       font-size: 16px; font-weight: 300;
-      color: rgba(242,237,230,0.35);
+      color: rgba(var(--rgb-ink),0.35);
     }
-    .nav-price strong { color: var(--ochre-p); font-weight: 300; }
+    .nav-price strong { color: var(--gold-light); font-weight: 300; }
     .nav-btn {
       padding: 8px 20px;
-      background: rgba(212,152,58,0.10);
-      border: 1px solid rgba(212,152,58,0.40);
-      color: var(--ochre-p);
+      background: rgba(var(--rgb-gold-dark),0.10);
+      border: 1px solid rgba(var(--rgb-gold-dark),0.40);
+      color: var(--gold-light);
       font-family: var(--fb);
       font-size: 10px; font-weight: 500;
       letter-spacing: .12em; text-transform: uppercase;
       cursor: pointer; text-decoration: none;
       transition: background .15s;
     }
-    .nav-btn:hover { background: rgba(212,152,58,0.18); }
+    .nav-btn:hover { background: rgba(var(--rgb-gold-dark),0.18); }
 
     /* ── HERO ── */
     .hero {
@@ -115,9 +103,9 @@ export default function Campfyer() {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
         to top,
-        rgba(13,20,18,0.98) 0%,
-        rgba(13,20,18,0.70) 40%,
-        rgba(13,20,18,0.20) 80%,
+        rgba(var(--rgb-cream),0.98) 0%,
+        rgba(var(--rgb-cream),0.70) 40%,
+        rgba(var(--rgb-cream),0.20) 80%,
         transparent 100%
       );
     }
@@ -133,16 +121,16 @@ export default function Campfyer() {
       font-family: var(--fm);
       font-size: 9px; letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--ochre-p);
-      background: rgba(212,152,58,0.10);
-      border: 1px solid rgba(212,152,58,0.28);
+      color: var(--gold-light);
+      background: rgba(var(--rgb-gold-dark),0.10);
+      border: 1px solid rgba(var(--rgb-gold-dark),0.28);
       padding: 5px 12px;
     }
-    .room-sep { width: 24px; height: 1px; background: rgba(242,237,230,0.20); }
+    .room-sep { width: 24px; height: 1px; background: rgba(var(--rgb-ink),0.20); }
     .room-num {
       font-family: var(--fm);
       font-size: 9px; letter-spacing: .18em;
-      color: rgba(242,237,230,0.28);
+      color: rgba(var(--rgb-ink),0.28);
       text-transform: uppercase;
     }
     .hero-title {
@@ -150,13 +138,13 @@ export default function Campfyer() {
       font-size: clamp(52px, 8vw, 88px);
       font-weight: 300;
       line-height: .92; letter-spacing: -.03em;
-      color: var(--cream);
+      color: var(--ink);
       margin-bottom: 24px;
     }
-    .hero-title em { font-style: italic; color: var(--ochre-p); }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
     .hero-desc {
       font-size: 17px; font-weight: 300;
-      line-height: 1.65; color: rgba(242,237,230,0.60);
+      line-height: 1.65; color: rgba(var(--rgb-ink),0.60);
       max-width: 560px; margin-bottom: 36px;
     }
     .hero-actions {
@@ -164,9 +152,9 @@ export default function Campfyer() {
     }
     .btn-primary {
       padding: 16px 40px;
-      background: rgba(212,152,58,0.12);
-      border: 1px solid rgba(212,152,58,0.50);
-      color: var(--ochre-p);
+      background: rgba(var(--rgb-gold-dark),0.12);
+      border: 1px solid rgba(var(--rgb-gold-dark),0.50);
+      color: var(--gold-light);
       font-family: var(--fb);
       font-size: 11px; font-weight: 500;
       letter-spacing: .14em; text-transform: uppercase;
@@ -174,20 +162,20 @@ export default function Campfyer() {
       transition: background .15s;
       display: inline-block;
     }
-    .btn-primary:hover { background: rgba(212,152,58,0.22); }
+    .btn-primary:hover { background: rgba(var(--rgb-gold-dark),0.22); }
     .hero-price-label {
       font-family: var(--fd);
       font-size: 22px; font-weight: 300;
-      color: rgba(242,237,230,0.40);
+      color: rgba(var(--rgb-ink),0.40);
     }
-    .hero-price-label strong { color: var(--ochre-p); font-weight: 300; }
+    .hero-price-label strong { color: var(--gold-light); font-weight: 300; }
     .hero-scroll {
       position: absolute;
       bottom: 28px; right: 40px; z-index: 2;
       font-family: var(--fm);
       font-size: 9px; letter-spacing: .14em;
       text-transform: uppercase;
-      color: rgba(242,237,230,0.22);
+      color: rgba(var(--rgb-ink),0.22);
       display: flex; align-items: center; gap: 8px;
     }
 
@@ -195,24 +183,24 @@ export default function Campfyer() {
     .proof-bar {
       position: relative; z-index: 1;
       display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid rgba(242,237,230,0.07);
-      border-bottom: 1px solid rgba(242,237,230,0.07);
+      border-top: 1px solid rgba(var(--rgb-cream),0.07);
+      border-bottom: 1px solid rgba(var(--rgb-ink),0.07);
     }
     .proof-item {
       padding: 28px 32px;
-      border-right: 1px solid rgba(242,237,230,0.07);
+      border-right: 1px solid rgba(var(--rgb-cream),0.07);
     }
     .proof-item:last-child { border-right: none; }
     .proof-num {
       font-family: var(--fd);
       font-size: 40px; font-weight: 300;
-      color: var(--ochre-p);
+      color: var(--gold-light);
       line-height: 1; letter-spacing: -.03em;
       margin-bottom: 4px;
     }
     .proof-label {
       font-size: 12px; font-weight: 300;
-      color: rgba(242,237,230,0.40);
+      color: rgba(var(--rgb-ink),0.40);
       line-height: 1.4;
     }
 
@@ -220,27 +208,27 @@ export default function Campfyer() {
     .section {
       position: relative; z-index: 1;
       padding: 80px 40px;
-      border-bottom: 1px solid rgba(242,237,230,0.06);
+      border-bottom: 1px solid rgba(var(--rgb-ink),0.06);
     }
     .section-inner { max-width: 920px; margin: 0 auto; }
     .s-label {
       font-family: var(--fm);
       font-size: 9px; letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(242,237,230,0.28);
+      color: rgba(var(--rgb-ink),0.28);
       margin-bottom: 16px;
     }
     .s-title {
       font-family: var(--fd);
       font-size: 48px; font-weight: 300;
       line-height: 1.0; letter-spacing: -.02em;
-      color: var(--cream);
+      color: var(--ink);
       margin-bottom: 14px;
     }
-    .s-title em { font-style: italic; color: var(--ochre-p); }
+    .s-title em { font-style: italic; color: var(--gold-light); }
     .s-sub {
       font-size: 15px; font-weight: 300;
-      color: rgba(242,237,230,0.52);
+      color: rgba(var(--rgb-ink),0.52);
       line-height: 1.65;
       max-width: 540px; margin-bottom: 48px;
     }
@@ -253,8 +241,8 @@ export default function Campfyer() {
     }
     .d-card {
       padding: 28px 28px;
-      background: rgba(242,237,230,0.02);
-      border: 1px solid rgba(242,237,230,0.08);
+      background: rgba(var(--rgb-ink),0.02);
+      border: 1px solid rgba(var(--rgb-ink),0.08);
       position: relative;
       overflow: hidden;
     }
@@ -262,13 +250,13 @@ export default function Campfyer() {
       content: '';
       position: absolute; top: 0; left: 0;
       width: 100%; height: 2px;
-      background: linear-gradient(90deg, var(--teal), transparent);
+      background: linear-gradient(90deg, var(--warm-grey2), transparent);
     }
-    .d-card.amber::before { background: linear-gradient(90deg, var(--amber), transparent); }
+    .d-card.amber::before { background: linear-gradient(90deg, var(--gold-pale), transparent); }
     .d-num {
       font-family: var(--fd);
       font-size: 48px; font-weight: 300;
-      color: rgba(242,237,230,0.06);
+      color: rgba(var(--rgb-ink),0.06);
       line-height: 1;
       position: absolute; top: 16px; right: 20px;
     }
@@ -278,12 +266,12 @@ export default function Campfyer() {
     .d-name {
       font-family: var(--fd);
       font-size: 22px; font-weight: 400;
-      color: var(--cream);
+      color: var(--ink);
       margin-bottom: 6px;
     }
     .d-desc {
       font-size: 13px; font-weight: 300;
-      color: rgba(242,237,230,0.45);
+      color: rgba(var(--rgb-ink),0.45);
       line-height: 1.6;
       margin-bottom: 14px;
     }
@@ -293,9 +281,9 @@ export default function Campfyer() {
     .d-detail {
       font-family: var(--fm);
       font-size: 10px; font-weight: 300;
-      color: rgba(242,237,230,0.38);
-      background: rgba(242,237,230,0.04);
-      border: 1px solid rgba(242,237,230,0.08);
+      color: rgba(var(--rgb-ink),0.38);
+      background: rgba(var(--rgb-ink),0.04);
+      border: 1px solid rgba(var(--rgb-ink),0.08);
       padding: 3px 9px;
       letter-spacing: .04em;
     }
@@ -308,30 +296,30 @@ export default function Campfyer() {
     .inside-row {
       display: flex; align-items: center; gap: 20px;
       padding: 18px 0;
-      border-bottom: 1px solid rgba(242,237,230,0.05);
+      border-bottom: 1px solid rgba(var(--rgb-ink),0.05);
     }
     .inside-row:last-child { border-bottom: none; }
     .inside-check {
       width: 20px; height: 20px;
-      border: 1px solid rgba(44,95,90,0.50);
-      background: rgba(44,95,90,0.10);
+      border: 1px solid rgba(var(--rgb-warm-grey2),0.50);
+      background: rgba(var(--rgb-warm-grey2),0.10);
       display: flex; align-items: center; justify-content: center;
-      font-size: 10px; color: var(--teal);
+      font-size: 10px; color: var(--warm-grey2);
       flex-shrink: 0;
     }
     .inside-text {
       font-size: 14px; font-weight: 300;
-      color: rgba(242,237,230,0.72);
+      color: rgba(var(--rgb-ink),0.72);
       line-height: 1.4;
     }
-    .inside-text strong { font-weight: 500; color: var(--cream); }
+    .inside-text strong { font-weight: 500; color: var(--ink); }
 
     /* ── PRICING ── */
     .pricing-section {
       position: relative; z-index: 1;
       padding: 80px 40px;
-      background: linear-gradient(150deg, rgba(26,61,58,0.25) 0%, rgba(42,20,5,0.25) 100%);
-      border-bottom: 1px solid rgba(242,237,230,0.06);
+      background: linear-gradient(150deg, rgba(var(--rgb-warm-grey2),0.25) 0%, rgba(var(--rgb-warm-grey),0.25) 100%);
+      border-bottom: 1px solid rgba(var(--rgb-ink),0.06);
     }
     .pricing-inner { max-width: 920px; margin: 0 auto; }
     .pricing-grid {
@@ -342,33 +330,33 @@ export default function Campfyer() {
     }
     .price-card {
       padding: 36px 32px;
-      border: 1px solid rgba(242,237,230,0.10);
-      background: rgba(242,237,230,0.02);
+      border: 1px solid rgba(var(--rgb-ink),0.10);
+      background: rgba(var(--rgb-ink),0.02);
       display: flex; flex-direction: column;
     }
     .price-card.featured {
-      border-color: rgba(212,152,58,0.35);
-      background: rgba(212,152,58,0.04);
+      border-color: rgba(var(--rgb-gold-dark),0.35);
+      background: rgba(var(--rgb-gold-dark),0.04);
     }
     .price-tier {
       font-family: var(--fm);
       font-size: 9px; letter-spacing: .16em;
       text-transform: uppercase;
-      color: rgba(242,237,230,0.35);
+      color: rgba(var(--rgb-ink),0.35);
       margin-bottom: 20px;
     }
-    .price-card.featured .price-tier { color: var(--ochre); }
+    .price-card.featured .price-tier { color: var(--gold); }
     .price-amount {
       font-family: var(--fd);
       font-size: 64px; font-weight: 300;
-      color: var(--cream);
+      color: var(--ink);
       line-height: 1; letter-spacing: -.04em;
       margin-bottom: 6px;
     }
-    .price-card.featured .price-amount { color: var(--ochre-p); }
+    .price-card.featured .price-amount { color: var(--gold-light); }
     .price-note {
       font-size: 12px; font-weight: 300;
-      color: rgba(242,237,230,0.35);
+      color: rgba(var(--rgb-ink),0.35);
       margin-bottom: 28px;
       font-family: var(--fm);
     }
@@ -379,22 +367,22 @@ export default function Campfyer() {
     .pi-row {
       display: flex; align-items: flex-start; gap: 10px;
       font-size: 13px; font-weight: 300;
-      color: rgba(242,237,230,0.60);
+      color: rgba(var(--rgb-ink),0.60);
       line-height: 1.4;
     }
     .pi-row::before {
       content: '·';
-      color: rgba(242,237,230,0.20);
+      color: rgba(var(--rgb-ink),0.20);
       flex-shrink: 0;
       font-family: var(--fm);
       font-size: 11px;
     }
-    .price-card.featured .pi-row { color: rgba(242,237,230,0.75); }
+    .price-card.featured .pi-row { color: rgba(var(--rgb-ink),0.75); }
     .price-btn {
       display: block;
       padding: 14px 24px;
-      border: 1px solid rgba(242,237,230,0.18);
-      color: rgba(242,237,230,0.55);
+      border: 1px solid rgba(var(--rgb-ink),0.18);
+      color: rgba(var(--rgb-ink),0.55);
       font-family: var(--fb);
       font-size: 10px; font-weight: 500;
       letter-spacing: .12em; text-transform: uppercase;
@@ -403,30 +391,30 @@ export default function Campfyer() {
       transition: all .15s;
       background: transparent;
     }
-    .price-btn:hover { border-color: rgba(242,237,230,0.35); color: var(--cream); }
+    .price-btn:hover { border-color: rgba(var(--rgb-ink),0.35); color: var(--ink); }
     .price-btn.featured-btn {
-      background: rgba(212,152,58,0.10);
-      border-color: rgba(212,152,58,0.50);
-      color: var(--ochre-p);
+      background: rgba(var(--rgb-gold-dark),0.10);
+      border-color: rgba(var(--rgb-gold-dark),0.50);
+      color: var(--gold-light);
     }
-    .price-btn.featured-btn:hover { background: rgba(212,152,58,0.20); }
+    .price-btn.featured-btn:hover { background: rgba(var(--rgb-gold-dark),0.20); }
 
     /* ── FOOTER ── */
     footer {
       position: relative; z-index: 1;
       padding: 40px 40px;
       display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid rgba(242,237,230,0.06);
+      border-top: 1px solid rgba(var(--rgb-cream),0.06);
     }
     .footer-left {
       font-family: var(--fd);
       font-size: 14px; font-weight: 300;
-      color: rgba(242,237,230,0.25);
+      color: rgba(var(--rgb-ink),0.25);
     }
     .footer-right {
       font-family: var(--fm);
       font-size: 10px; letter-spacing: .10em;
-      color: rgba(242,237,230,0.20);
+      color: rgba(var(--rgb-ink),0.20);
     }
 
     @media (max-width: 1024px) {
@@ -453,62 +441,34 @@ export default function Campfyer() {
 
 
 
-<nav>
-  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <Link to="/" style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', border: '1px solid rgba(139,115,85,0.25)', padding: '4px 8px', color: 'var(--warm-grey)', textDecoration: 'none', marginRight: '16px', letterSpacing: '0.05em' }}>[ ← Back ]</Link>
-      <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
-        <div className="nav-badge">02</div>
-        <span className="nav-name">LOTUS ROOM</span>
-      </Link>
-    </div>
-    <button 
-      className="mobile-menu-btn" 
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      aria-label="Toggle menu"
-      style={{ background: 'none', border: 'none', color: 'var(--cream)', cursor: 'pointer', display: 'none' }}
-    >
-      {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
-  </div>
-  <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '28px', listStyle: 'none', margin: 0, padding: 0 }}>
-    <li><Link to="/" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Home</Link></li>
-    <li><Link to="/rooms" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Rooms</Link></li>
-    <li><Link to="/dojo" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Dojo</Link></li>
-    <li><Link to="/contact" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Contact</Link></li>
-  </ul>
-  <div className="nav-cta">
-    <div className="nav-price">From <strong>$15</strong></div>
-    <a href="#frameworks" className="nav-btn">Get instant access</a>
-  </div>
-</nav>
+
 
 
 <section className="hero">
   <svg className="hero-art" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="h1" cx="75%" cy="25%" r="65%">
-        <stop offset="0%" stopColor="#C8701A" stopOpacity="0.75"/>
+        <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.75"/>
         <stop offset="100%" stopColor="transparent"/>
       </radialGradient>
       <radialGradient id="h2" cx="15%" cy="75%" r="60%">
-        <stop offset="0%" stopColor="#2C5F5A" stopOpacity="0.70"/>
+        <stop offset="0%" stopColor="var(--warm-grey2)" stopOpacity="0.70"/>
         <stop offset="100%" stopColor="transparent"/>
       </radialGradient>
     </defs>
-    <rect width="1440" height="860" fill="#090f0d"/>
+    <rect width="1440" height="860" fill="var(--cream)"/>
     <rect width="1440" height="860" fill="url(#h1)"/>
     <rect width="1440" height="860" fill="url(#h2)"/>
     <g opacity="0.40" fill="none">
-      <path d="M0,200 C200,130 400,260 600,190 C800,120 1000,240 1200,170 C1350,115 1420,180 1440,165" stroke="#E8C07A" strokeWidth="1.5"/>
-      <path d="M0,250 C200,178 400,308 600,238 C800,168 1000,288 1200,218 C1350,162 1420,228 1440,212" stroke="#E8C07A" strokeWidth="1" opacity=".6"/>
-      <path d="M0,310 C200,238 400,365 600,295 C800,225 1000,348 1200,278 C1350,220 1420,288 1440,272" stroke="#D4983A" strokeWidth="1" opacity=".5"/>
-      <path d="M0,420 C200,348 400,472 600,402 C800,332 1000,455 1200,385 C1350,328 1420,395 1440,378" stroke="#2C5F5A" strokeWidth="2" opacity=".55"/>
-      <path d="M0,500 C200,428 400,552 600,482 C800,412 1000,535 1200,465 C1350,408 1420,475 1440,458" stroke="#2C5F5A" strokeWidth="1.5" opacity=".45"/>
-      <path d="M0,600 C200,528 400,650 600,580 C800,510 1000,632 1200,562 C1350,506 1420,572 1440,555" stroke="#1A3D3A" strokeWidth="1" opacity=".40"/>
+      <path d="M0,200 C200,130 400,260 600,190 C800,120 1000,240 1200,170 C1350,115 1420,180 1440,165" stroke="var(--gold-pale)" strokeWidth="1.5"/>
+      <path d="M0,250 C200,178 400,308 600,238 C800,168 1000,288 1200,218 C1350,162 1420,228 1440,212" stroke="var(--gold-pale)" strokeWidth="1" opacity=".6"/>
+      <path d="M0,310 C200,238 400,365 600,295 C800,225 1000,348 1200,278 C1350,220 1420,288 1440,272" stroke="var(--gold-light)" strokeWidth="1" opacity=".5"/>
+      <path d="M0,420 C200,348 400,472 600,402 C800,332 1000,455 1200,385 C1350,328 1420,395 1440,378" stroke="var(--warm-grey2)" strokeWidth="2" opacity=".55"/>
+      <path d="M0,500 C200,428 400,552 600,482 C800,412 1000,535 1200,465 C1350,408 1420,475 1440,458" stroke="var(--warm-grey2)" strokeWidth="1.5" opacity=".45"/>
+      <path d="M0,600 C200,528 400,650 600,580 C800,510 1000,632 1200,562 C1350,506 1420,572 1440,555" stroke="var(--warm-grey2)" strokeWidth="1" opacity=".40"/>
     </g>
-    <path d="M1100,0 C1280,80 1440,50 1440,0Z" fill="#C8701A" opacity="0.15"/>
-    <path d="M0,680 C200,640 420,700 600,670 C780,640 1000,700 1200,668 C1350,644 1430,670 1440,665 L1440,860 L0,860Z" fill="#1A3D3A" opacity="0.35"/>
+    <path d="M1100,0 C1280,80 1440,50 1440,0Z" fill="var(--gold)" opacity="0.15"/>
+    <path d="M0,680 C200,640 420,700 600,670 C780,640 1000,700 1200,668 C1350,644 1430,670 1440,665 L1440,860 L0,860Z" fill="var(--warm-grey2)" opacity="0.35"/>
   </svg>
   <div className="hero-scrim"></div>
   <div className="hero-content">
@@ -568,7 +528,7 @@ export default function Campfyer() {
           <span className="d-detail">Hashtag sets</span>
         </div>
         <div style={{marginTop: "24px"}}>
-          <div style={{fontFamily: "var(--fd)", fontSize: "20px", color: "var(--ochre-p)", marginBottom: "12px"}}>$15</div>
+          <div style={{fontFamily: "var(--fd)", fontSize: "20px", color: "var(--gold-light)", marginBottom: "12px"}}>$15</div>
           <a href="https://paystack.com/buy/campfyer-campaign-system" target="_blank" className="btn-primary" style={{padding: "10px 20px", fontSize: "10px"}}>Buy Campaign System →</a>
         </div>
       </div>
@@ -585,7 +545,7 @@ export default function Campfyer() {
           <span className="d-detail">Priority access to Room 03</span>
         </div>
         <div style={{marginTop: "24px"}}>
-          <div style={{fontFamily: "var(--fd)", fontSize: "20px", color: "var(--ochre-p)", marginBottom: "12px"}}>$50</div>
+          <div style={{fontFamily: "var(--fd)", fontSize: "20px", color: "var(--gold-light)", marginBottom: "12px"}}>$50</div>
           <a href="https://paystack.com/buy/campfyer-content-os" target="_blank" className="btn-primary" style={{padding: "10px 20px", fontSize: "10px"}}>Buy Full Room →</a>
         </div>
       </div>
@@ -594,7 +554,7 @@ export default function Campfyer() {
 </section>
 
 
-<section className="section" style={{background: "rgba(242,237,230,0.01)"}}>
+<section className="section" style={{background: "rgba(var(--rgb-cream),0.01)"}}>
   <div className="section-inner">
     <div className="s-label">// The Outcome</div>
     <h2 className="s-title">Four core deliverables.<br /><em>One brief.</em></h2>
@@ -652,7 +612,7 @@ export default function Campfyer() {
   </div>
 </section>
 
-<section className="section" style={{background: "rgba(242,237,230,0.01)"}}>
+<section className="section" style={{background: "rgba(var(--rgb-cream),0.01)"}}>
   <div className="section-inner">
     <div className="s-label">// Inside the System</div>
     <h2 className="s-title">Everything you<br /><em>need to run it.</em></h2>
@@ -678,27 +638,27 @@ export default function Campfyer() {
   </div>
 </section>
 
-<div className="strategy-cta" style={{background: "var(--ink)", padding: "80px 48px", borderTop: "1px solid rgba(242,237,230,0.07)", textAlign: "center"}}>
+<div className="strategy-cta" style={{background: "var(--ink)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
   <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
     <h2 className="sc-title" style={{color: "var(--cream)", fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", marginBottom: "32px"}}>Get<br /><em>Campfyer.</em></h2>
     <div style={{display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center"}}>
-      <a href="https://paystack.com/buy/campfyer-campaign-system" target="_blank" className="btn-primary" style={{borderColor: "var(--ochre-p)", color: "var(--ochre-p)"}}>The Campaign System →</a>
-      <a href="https://paystack.com/buy/campfyer-content-os" target="_blank" className="btn-primary" style={{borderColor: "var(--ochre-p)", color: "var(--ochre-p)"}}>The Full Room →</a>
+      <a href="https://paystack.com/buy/campfyer-campaign-system" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)"}}>The Campaign System →</a>
+      <a href="https://paystack.com/buy/campfyer-content-os" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)"}}>The Full Room →</a>
     </div>
   </div>
 </div>
 
-<div className="strategy-cta" style={{background: "var(--ink)", padding: "80px 48px", borderTop: "1px solid rgba(242,237,230,0.07)", textAlign: "center"}}>
+<div className="strategy-cta" style={{background: "var(--ink)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
   <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
-    <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--ochre-p)", marginBottom: "24px"}}>// Seen before scale.</div>
+    <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "24px"}}>// Seen before scale.</div>
     <h2 className="sc-title" style={{fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", color: "var(--cream)", marginBottom: "32px"}}>Start with<br /><em>Build.</em></h2>
-    <p className="sc-body" style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "rgba(242,237,230,0.7)", marginBottom: "40px"}}>
+    <p className="sc-body" style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "rgba(var(--rgb-cream),0.7)", marginBottom: "40px"}}>
       <strong style={{color: "var(--cream)", fontWeight: 400}}>Build - $1,200</strong><br/><br/>
       Turn your vision into public presence.<br/>
       We create creator-led brands as systems that move with precision - where strategy, design, and AI work in sync to make your brand visible, felt, and followed.<br/><br/>
-      <em style={{color: "var(--ochre-p)", fontStyle: "italic"}}>INCLUDES:</em> Content creation, Campaign execution, Storytelling systems
+      <em style={{color: "var(--gold-light)", fontStyle: "italic"}}>INCLUDES:</em> Content creation, Campaign execution, Storytelling systems
     </p>
-    <a href="https://paystack.com/buy/02--build-1200-fpccve" target="_blank" className="btn-primary" style={{borderColor: "var(--ochre-p)", color: "var(--ochre-p)"}}>Turn vision into visibility →</a>
+    <a href="https://paystack.com/buy/02--build-1200-fpccve" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)"}}>Turn vision into visibility →</a>
   </div>
 </div>
 

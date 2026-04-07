@@ -17,23 +17,7 @@ export default function ArtOfBrand() {
           min-height: 100vh;
         }
         ${ `
-    :root {
-      --cream:      #1A1714;
-      --cream-deep: #2A2218;
-      --parchment:  #14120F;
-      --ink:        #F0EBE1;
-      --ink-soft:   #E8E0D4;
-      --gold:       #D4A84B;
-      --gold-light: #E8C97A;
-      --gold-pale:  #F2E2B8;
-      --gold-dim:   rgba(212,168,75,0.18);
-      --gold-thin:  rgba(212,168,75,0.10);
-      --warm-grey:  #A89B8C;
-      --warm-grey2: #C4B8A8;
-      --fd: 'Cormorant Garamond', Georgia, serif;
-      --fb: 'DM Sans', system-ui, sans-serif;
-      --fm: 'DM Mono', monospace;
-    }
+    
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -61,9 +45,9 @@ export default function ArtOfBrand() {
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 40px;
-      background: rgba(26,23,20,0.94);
+      background: rgba(var(--rgb-ink),0.94);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(240,235,225,0.07);
+      border-bottom: 1px solid rgba(var(--rgb-cream),0.07);
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-badge {
@@ -113,9 +97,9 @@ export default function ArtOfBrand() {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
         to top,
-        rgba(26,23,20,0.98) 0%,
-        rgba(26,23,20,0.72) 42%,
-        rgba(26,23,20,0.20) 78%,
+        rgba(var(--rgb-cream),0.98) 0%,
+        rgba(var(--rgb-cream),0.72) 42%,
+        rgba(var(--rgb-cream),0.20) 78%,
         transparent 100%
       );
     }
@@ -126,10 +110,10 @@ export default function ArtOfBrand() {
     .room-tag {
       font-family: var(--fm); font-size: 9px; letter-spacing: .18em;
       text-transform: uppercase; color: var(--gold);
-      background: var(--gold-thin); border: 1px solid rgba(212,168,75,0.28);
+      background: var(--gold-thin); border: 1px solid rgba(var(--rgb-gold-dark),0.28);
       padding: 5px 12px;
     }
-    .room-sep { width: 24px; height: 1px; background: rgba(212,168,75,0.30); }
+    .room-sep { width: 24px; height: 1px; background: rgba(var(--rgb-gold-dark),0.30); }
     .room-num {
       font-family: var(--fm); font-size: 9px; letter-spacing: .18em;
       color: var(--warm-grey); text-transform: uppercase;
@@ -165,19 +149,19 @@ export default function ArtOfBrand() {
     .hero-scroll {
       position: absolute; bottom: 28px; right: 40px; z-index: 2;
       font-family: var(--fm); font-size: 9px; letter-spacing: .14em;
-      text-transform: uppercase; color: rgba(240,235,225,0.40);
+      text-transform: uppercase; color: rgba(var(--rgb-cream),0.40);
     }
 
     /* ── PROOF BAR ── */
     .proof-bar {
       position: relative; z-index: 1;
       display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid rgba(240,235,225,0.08);
-      border-bottom: 1px solid rgba(240,235,225,0.08);
+      border-top: 1px solid rgba(var(--rgb-cream),0.08);
+      border-bottom: 1px solid rgba(var(--rgb-cream),0.08);
     }
     .proof-item {
       padding: 28px 32px;
-      border-right: 1px solid rgba(240,235,225,0.08);
+      border-right: 1px solid rgba(var(--rgb-cream),0.08);
     }
     .proof-item:last-child { border-right: none; }
     .proof-num {
@@ -190,7 +174,7 @@ export default function ArtOfBrand() {
     .section {
       position: relative; z-index: 1;
       padding: 80px 40px;
-      border-bottom: 1px solid rgba(240,235,225,0.07);
+      border-bottom: 1px solid rgba(var(--rgb-cream),0.07);
     }
     .section-inner { max-width: 920px; margin: 0 auto; }
     .s-label {
@@ -215,8 +199,8 @@ export default function ArtOfBrand() {
     /* ── 3 TOOLS ── */
     .tools-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: rgba(240,235,225,0.10);
-      border: 1px solid rgba(240,235,225,0.10);
+      gap: 1px; background: rgba(var(--rgb-cream),0.10);
+      border: 1px solid rgba(var(--rgb-cream),0.10);
     }
     .tool-card {
       padding: 32px 28px; background: var(--cream);
@@ -233,7 +217,7 @@ export default function ArtOfBrand() {
     .tool-card:hover::before { opacity: 1; }
     .tool-num {
       font-family: var(--fd); font-size: 52px; font-weight: 300;
-      color: rgba(212,168,75,0.08); line-height: 1;
+      color: rgba(var(--rgb-gold-dark),0.08); line-height: 1;
       position: absolute; top: 16px; right: 20px;
       pointer-events: none;
     }
@@ -251,13 +235,13 @@ export default function ArtOfBrand() {
     }
     .tool-tag {
       font-family: var(--fm); font-size: 9.5px; font-weight: 300;
-      color: var(--warm-grey); background: rgba(240,235,225,0.06);
-      border: 1px solid rgba(240,235,225,0.10); padding: 3px 9px;
+      color: var(--warm-grey); background: rgba(var(--rgb-cream),0.06);
+      border: 1px solid rgba(var(--rgb-cream),0.10); padding: 3px 9px;
       letter-spacing: .04em;
     }
     .tool-price-row {
       display: flex; align-items: center; justify-content: space-between;
-      padding-top: 16px; border-top: 1px solid rgba(240,235,225,0.08);
+      padding-top: 16px; border-top: 1px solid rgba(var(--rgb-cream),0.08);
     }
     .tool-price {
       font-family: var(--fd); font-size: 32px; font-weight: 300;
@@ -265,7 +249,7 @@ export default function ArtOfBrand() {
     }
     .tool-buy {
       padding: 9px 18px; background: transparent;
-      border: 1px solid rgba(212,168,75,0.40); color: var(--gold);
+      border: 1px solid rgba(var(--rgb-gold-dark),0.40); color: var(--gold);
       font-family: var(--fb); font-size: 10px; font-weight: 500;
       letter-spacing: .10em; text-transform: uppercase;
       text-decoration: none; transition: all .15s;
@@ -279,7 +263,7 @@ export default function ArtOfBrand() {
     }
     .d-card {
       padding: 28px; background: var(--parchment);
-      border: 1px solid rgba(240,235,225,0.10);
+      border: 1px solid rgba(var(--rgb-cream),0.10);
       position: relative; overflow: hidden;
     }
     .d-card::before {
@@ -287,11 +271,11 @@ export default function ArtOfBrand() {
       width: 100%; height: 2px;
       background: linear-gradient(90deg, var(--warm-grey), transparent);
     }
-    .d-card.gold-tint { background: rgba(212,168,75,0.03); border-color: rgba(212,168,75,0.18); }
+    .d-card.gold-tint { background: rgba(var(--rgb-gold-dark),0.03); border-color: rgba(var(--rgb-gold-dark),0.18); }
     .d-card.gold-tint::before { background: linear-gradient(90deg, var(--gold), transparent); }
     .d-n {
       font-family: var(--fd); font-size: 48px; font-weight: 300;
-      color: rgba(240,235,225,0.06); line-height: 1;
+      color: rgba(var(--rgb-cream),0.06); line-height: 1;
       position: absolute; top: 12px; right: 16px;
     }
     .d-icon { font-size: 20px; margin-bottom: 14px; }
@@ -306,20 +290,20 @@ export default function ArtOfBrand() {
     .d-details { display: flex; flex-wrap: wrap; gap: 5px; }
     .d-detail {
       font-family: var(--fm); font-size: 10px; font-weight: 300;
-      color: var(--warm-grey); background: rgba(240,235,225,0.04);
-      border: 1px solid rgba(240,235,225,0.09); padding: 3px 9px;
+      color: var(--warm-grey); background: rgba(var(--rgb-cream),0.04);
+      border: 1px solid rgba(var(--rgb-cream),0.09); padding: 3px 9px;
     }
 
     /* ── HOW IT WORKS ── */
     .how-steps { display: flex; flex-direction: column; gap: 0; margin-top: 16px; }
     .how-step {
       display: flex; gap: 20px; padding: 20px 0;
-      border-bottom: 1px solid rgba(240,235,225,0.06);
+      border-bottom: 1px solid rgba(var(--rgb-cream),0.06);
     }
     .how-step:last-child { border-bottom: none; }
     .how-n {
       font-family: var(--fd); font-size: 40px; font-weight: 300;
-      color: rgba(212,168,75,0.30); flex-shrink: 0; width: 42px; line-height: 1;
+      color: rgba(var(--rgb-gold-dark),0.30); flex-shrink: 0; width: 42px; line-height: 1;
     }
     .how-body {}
     .how-title {
@@ -334,8 +318,8 @@ export default function ArtOfBrand() {
     /* ── AI Framework PREVIEW ── */
     .prompt-preview {
       margin-top: 14px; padding: 18px 20px;
-      background: rgba(240,235,225,0.04);
-      border: 1px solid rgba(240,235,225,0.15);
+      background: rgba(var(--rgb-cream),0.04);
+      border: 1px solid rgba(var(--rgb-cream),0.15);
       border-left: 2px solid var(--gold);
     }
     .pp-label {
@@ -347,7 +331,7 @@ export default function ArtOfBrand() {
       color: var(--warm-grey2); line-height: 1.8;
     }
     .pp-line span { color: var(--gold); }
-    .pp-line.dim { color: rgba(240,235,225,0.45); }
+    .pp-line.dim { color: rgba(var(--rgb-cream),0.45); }
     .cursor {
       display: inline-block; width: 7px; height: 13px;
       background: var(--gold); vertical-align: middle; opacity: 0.6;
@@ -362,14 +346,14 @@ export default function ArtOfBrand() {
     }
     .proof-cell {
       padding: 16px; background: var(--cream);
-      border: 1px solid rgba(240,235,225,0.10);
+      border: 1px solid rgba(var(--rgb-cream),0.10);
       display: flex; flex-direction: column; gap: 5px;
     }
     .proof-cell.span2 { grid-column: 1/-1; }
-    .proof-cell.gold-tint { background: rgba(212,168,75,0.04); border-color: rgba(212,168,75,0.18); }
+    .proof-cell.gold-tint { background: rgba(var(--rgb-gold-dark),0.04); border-color: rgba(var(--rgb-gold-dark),0.18); }
     .proof-lbl {
       font-size: 9px; font-weight: 500; letter-spacing: .12em;
-      text-transform: uppercase; color: rgba(240,235,225,0.55);
+      text-transform: uppercase; color: rgba(var(--rgb-cream),0.55);
     }
     .proof-val {
       font-family: var(--fd); font-size: 16px; font-weight: 400;
@@ -387,17 +371,17 @@ export default function ArtOfBrand() {
     .pricing-section {
       position: relative; z-index: 1; padding: 80px 40px;
       background: var(--parchment);
-      border-bottom: 1px solid rgba(240,235,225,0.07);
+      border-bottom: 1px solid rgba(var(--rgb-cream),0.07);
     }
     .pricing-inner { max-width: 920px; margin: 0 auto; }
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
     .price-card {
-      padding: 36px 32px; border: 1px solid rgba(240,235,225,0.12);
+      padding: 36px 32px; border: 1px solid rgba(var(--rgb-cream),0.12);
       background: var(--cream); display: flex; flex-direction: column;
     }
     .price-card.featured {
-      border-color: rgba(212,168,75,0.38);
-      background: rgba(212,168,75,0.03);
+      border-color: rgba(var(--rgb-gold-dark),0.38);
+      background: rgba(var(--rgb-gold-dark),0.03);
     }
     .price-tier {
       font-family: var(--fm); font-size: 9px; letter-spacing: .16em;
@@ -418,11 +402,11 @@ export default function ArtOfBrand() {
       display: flex; align-items: flex-start; gap: 10px;
       font-size: 13px; font-weight: 300; color: var(--warm-grey2); line-height: 1.4;
     }
-    .pi-row::before { content: '·'; color: rgba(240,235,225,0.30); flex-shrink: 0; font-family: var(--fm); font-size: 11px; }
+    .pi-row::before { content: '·'; color: rgba(var(--rgb-cream),0.30); flex-shrink: 0; font-family: var(--fm); font-size: 11px; }
     .price-card.featured .pi-row { color: var(--warm-grey2); }
     .price-btn {
       display: block; padding: 14px 24px;
-      border: 1px solid rgba(240,235,225,0.20); color: var(--warm-grey2);
+      border: 1px solid rgba(var(--rgb-cream),0.20); color: var(--warm-grey2);
       font-family: var(--fb); font-size: 10px; font-weight: 500;
       letter-spacing: .12em; text-transform: uppercase;
       text-align: center; cursor: pointer; text-decoration: none;
@@ -430,15 +414,15 @@ export default function ArtOfBrand() {
     }
     .price-btn:hover { border-color: var(--ink); color: var(--ink); }
     .price-btn.gold-btn {
-      background: var(--gold-thin); border-color: rgba(212,168,75,0.50); color: var(--gold);
+      background: var(--gold-thin); border-color: rgba(var(--rgb-gold-dark),0.50); color: var(--gold);
     }
     .price-btn.gold-btn:hover { background: var(--gold); color: var(--cream); }
 
     /* ── WHO IT'S FOR ── */
     .audience-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: rgba(240,235,225,0.10);
-      border: 1px solid rgba(240,235,225,0.10); margin-top: 0;
+      gap: 1px; background: rgba(var(--rgb-cream),0.10);
+      border: 1px solid rgba(var(--rgb-cream),0.10); margin-top: 0;
     }
     .aud-card { padding: 28px 24px; background: var(--cream); }
     .aud-head {
@@ -450,7 +434,7 @@ export default function ArtOfBrand() {
     /* ── STRATEGY CTA ── */
     .strategy-cta {
       padding: 72px 40px; background: var(--cream);
-      border-top: 1px solid rgba(240,235,225,0.07);
+      border-top: 1px solid rgba(var(--rgb-cream),0.07);
       text-align: center;
     }
     .sc-inner { max-width: 600px; margin: 0 auto; }
@@ -472,7 +456,7 @@ export default function ArtOfBrand() {
     footer {
       position: relative; z-index: 1; padding: 48px 40px;
       display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid rgba(240,235,225,0.08);
+      border-top: 1px solid rgba(var(--rgb-cream),0.08);
       background: var(--parchment);
     }
     .footer-left {
@@ -481,14 +465,14 @@ export default function ArtOfBrand() {
     }
     .footer-right {
       font-family: var(--fm); font-size: 10px; letter-spacing: .10em;
-      color: rgba(240,235,225,0.45);
+      color: rgba(var(--rgb-cream),0.45);
     }
 
     .how-grid {
       display: grid; grid-template-columns: 1fr 420px; gap: 72px; align-items: start;
     }
     .room-setup-grid {
-      margin-top: 16px; padding: 28px 32px; border: 1px solid rgba(240,235,225,0.12); background: var(--cream); display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+      margin-top: 16px; padding: 28px 32px; border: 1px solid rgba(var(--rgb-cream),0.12); background: var(--cream); display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
     }
 
     @media (max-width: 1024px) {
@@ -521,74 +505,44 @@ export default function ArtOfBrand() {
       
 
 
-<nav>
-  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <Link to="/" style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', border: '1px solid rgba(139,115,85,0.25)', padding: '4px 8px', color: 'var(--warm-grey)', textDecoration: 'none', marginRight: '16px', letterSpacing: '0.05em' }}>[ ← Back ]</Link>
-      <Link to="/" className="nav-logo">
-        <div className="nav-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1" strokeLinecap="square"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
-        </div>
-        <span className="nav-name">LOTUS ROOM</span>
-      </Link>
-    </div>
-    <button 
-      className="mobile-menu-btn" 
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      aria-label="Toggle menu"
-      style={{ background: 'none', border: 'none', color: 'var(--ink)', cursor: 'pointer', display: 'none' }}
-    >
-      {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
-  </div>
-  <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '28px', listStyle: 'none', margin: 0, padding: 0 }}>
-    <li><Link to="/" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Home</Link></li>
-    <li><Link to="/rooms" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Rooms</Link></li>
-    <li><Link to="/dojo" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Dojo</Link></li>
-    <li><Link to="/contact" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Contact</Link></li>
-  </ul>
-  <div className="nav-cta">
-    <div className="nav-price">From <strong>$20</strong></div>
-    <a href="#frameworks" className="nav-btn">Get instant access</a>
-  </div>
-</nav>
+
 
 
 <section className="hero">
   <svg className="hero-art" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="hg1" cx="72%" cy="18%" r="58%">
-        <stop offset="0%" stopColor="#D4A84B" stopOpacity="0.15"/>
+        <stop offset="0%" stopColor="var(--gold-light)" stopOpacity="0.15"/>
         <stop offset="100%" stopColor="transparent"/>
       </radialGradient>
       <radialGradient id="hg2" cx="12%" cy="82%" r="52%">
-        <stop offset="0%" stopColor="#8B7355" stopOpacity="0.10"/>
+        <stop offset="0%" stopColor="var(--warm-grey)" stopOpacity="0.10"/>
         <stop offset="100%" stopColor="transparent"/>
       </radialGradient>
     </defs>
-    <rect width="1440" height="860" fill="#14120F"/>
+    <rect width="1440" height="860" fill="var(--cream)"/>
     <rect width="1440" height="860" fill="url(#hg1)"/>
     <rect width="1440" height="860" fill="url(#hg2)"/>
 
-    <g stroke="#D4A84B" fill="none" opacity="0.25">
+    <g stroke="var(--gold-light)" fill="none" opacity="0.25">
       <path d="M 200 400 L 400 200 L 600 400 L 400 600 Z" strokeWidth="1"/>
       <path d="M 400 200 L 800 200 L 1000 400 L 800 600 L 400 600" strokeWidth="1"/>
-      <circle cx="200" cy="400" r="4" fill="#D4A84B"/>
-      <circle cx="400" cy="200" r="4" fill="#D4A84B"/>
-      <circle cx="600" cy="400" r="4" fill="#D4A84B"/>
-      <circle cx="400" cy="600" r="4" fill="#D4A84B"/>
-      <circle cx="800" cy="200" r="4" fill="#D4A84B"/>
-      <circle cx="1000" cy="400" r="4" fill="#D4A84B"/>
-      <circle cx="800" cy="600" r="4" fill="#D4A84B"/>
+      <circle cx="200" cy="400" r="4" fill="var(--gold-light)"/>
+      <circle cx="400" cy="200" r="4" fill="var(--gold-light)"/>
+      <circle cx="600" cy="400" r="4" fill="var(--gold-light)"/>
+      <circle cx="400" cy="600" r="4" fill="var(--gold-light)"/>
+      <circle cx="800" cy="200" r="4" fill="var(--gold-light)"/>
+      <circle cx="1000" cy="400" r="4" fill="var(--gold-light)"/>
+      <circle cx="800" cy="600" r="4" fill="var(--gold-light)"/>
       
       <path d="M 600 400 L 800 200" strokeWidth="0.5" strokeDasharray="4 4"/>
       <path d="M 600 400 L 800 600" strokeWidth="0.5" strokeDasharray="4 4"/>
       <path d="M 400 400 L 800 400" strokeWidth="0.5" strokeDasharray="4 4"/>
-      <circle cx="400" cy="400" r="2" fill="#D4A84B"/>
-      <circle cx="800" cy="400" r="2" fill="#D4A84B"/>
+      <circle cx="400" cy="400" r="2" fill="var(--gold-light)"/>
+      <circle cx="800" cy="400" r="2" fill="var(--gold-light)"/>
     </g>
 
-    <g opacity="0.05" stroke="#F0EBE1" strokeWidth="0.4">
+    <g opacity="0.05" stroke="var(--cream)" strokeWidth="0.4">
       <line x1="0" y1="287" x2="1440" y2="287"/>
       <line x1="0" y1="574" x2="1440" y2="574"/>
       <line x1="480" y1="0" x2="480" y2="860"/>
@@ -602,8 +556,8 @@ export default function ArtOfBrand() {
       <div className="room-sep"></div>
       <div className="room-num">Room 01 · Lotus Room</div>
     </div>
-    <h1 className="hero-title" style={{color: "#FFFFFF"}}>Brand Identity<br /><em>Frameworks.</em></h1>
-    <p className="hero-desc" style={{color: "#E8E0D4"}}>AI-driven systems to build your complete brand identity. Minimal, structured, and ready to scale.</p>
+    <h1 className="hero-title" style={{color: "var(--ink)"}}>Brand Identity<br /><em>Frameworks.</em></h1>
+    <p className="hero-desc" style={{color: "var(--ink-soft)"}}>AI-driven systems to build your complete brand identity. Minimal, structured, and ready to scale.</p>
     <div className="hero-actions">
       <a href="#pricing" className="btn-primary">Get instant access →</a>
       <div className="hero-price-label">From <strong>$20</strong></div>
@@ -696,7 +650,7 @@ export default function ArtOfBrand() {
       </div>
     </div>
 
-    <div className="strategy-cta" style={{marginTop: "80px", border: "1px solid rgba(212,168,75,0.15)"}}>
+    <div className="strategy-cta" style={{marginTop: "80px", border: "1px solid rgba(var(--rgb-gold-dark),0.15)"}}>
       <div className="sc-inner">
         <div className="sc-pre">// The Full Bundle</div>
         <h2 className="sc-title">Brand <em>OS.</em></h2>
@@ -817,12 +771,12 @@ export default function ArtOfBrand() {
             <div className="proof-cell gold-tint span2">
               <div className="proof-lbl">Brand palette</div>
               <div className="swatch-row">
-                <div className="sw" style={{background: "#2C5F5A"}}></div>
-                <div className="sw" style={{background: "#B8860B"}}></div>
-                <div className="sw" style={{background: "#D4A84B"}}></div>
-                <div className="sw" style={{background: "#E8C97A"}}></div>
-                <div className="sw" style={{background: "#1A1714"}}></div>
-                <div className="sw" style={{background: "#F0EBE1"}}></div>
+                <div className="sw" style={{background: "var(--warm-grey2)"}}></div>
+                <div className="sw" style={{background: "var(--gold)"}}></div>
+                <div className="sw" style={{background: "var(--gold-light)"}}></div>
+                <div className="sw" style={{background: "var(--gold-pale)"}}></div>
+                <div className="sw" style={{background: "var(--ink)"}}></div>
+                <div className="sw" style={{background: "var(--cream)"}}></div>
               </div>
               <div className="proof-sub">6-colour system. Hex values. Named and explained.</div>
             </div>
@@ -886,7 +840,7 @@ export default function ArtOfBrand() {
 </div>
 
 
-<div className="strategy-cta" style={{background: "var(--parchment)", padding: "80px 48px", borderTop: "1px solid rgba(240,235,225,0.07)", textAlign: "center"}}>
+<div className="strategy-cta" style={{background: "var(--parchment)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
   <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
     <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "24px"}}>// The Full Bundle</div>
     <h2 className="sc-title" style={{fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", color: "var(--ink)", marginBottom: "32px"}}>Brand<br /><em>OS.</em></h2>

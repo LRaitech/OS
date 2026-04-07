@@ -17,12 +17,12 @@ export default function TheRooms() {
           min-height: 100vh;
         }
         ${ `
-    :root{--cream:#F0EBE1;--cream-deep:#E8E0D4;--parchment:#F7F4EF;--ink:#1A1714;--gold:#B8860B;--gold-light:#D4A84B;--gold-thin:rgba(184,134,11,0.10);--warm-grey:#8B7355;--warm-grey2:#5A4A35;--fd:'Cormorant Garamond',Georgia,serif;--fb:'DM Sans',system-ui,sans-serif;--fm:'DM Mono',monospace;}
+    
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--cream);color:var(--ink);font-family:var(--fb);font-weight:300;-webkit-font-smoothing:antialiased;}
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.3;mix-blend-mode:multiply;}
-    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(240,235,225,0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(90,74,53,0.10);}
+    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(var(--rgb-cream),0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(var(--rgb-warm-grey2),0.10);}
     .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
     .nav-mark{width:32px;height:32px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;}
     .nav-wordmark{font-family:var(--fd);font-size:16px;font-weight:300;color:var(--ink);letter-spacing:.06em;}
@@ -36,13 +36,13 @@ export default function TheRooms() {
     .page-hero{padding:80px 48px 64px;position:relative;overflow:hidden;}
     .page-hero-art{position:absolute;inset:0;pointer-events:none;}
     .ph-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
-    .eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,134,11,0.28);padding:5px 12px;display:inline-block;margin-bottom:24px;}
+    .eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(var(--rgb-gold),0.28);padding:5px 12px;display:inline-block;margin-bottom:24px;}
     h1{font-family:var(--fd);font-size:clamp(44px,6vw,72px);font-weight:300;line-height:.95;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px;}
     h1 em{font-style:italic;color:var(--gold);}
     .hero-sub{font-size:16px;font-weight:300;line-height:1.65;color:var(--warm-grey);max-width:520px;}
 
     /* Room sections */
-    .room-section{padding:72px 48px;border-bottom:1px solid rgba(90,74,53,0.08);position:relative;}
+    .room-section{padding:72px 48px;border-bottom:1px solid rgba(var(--rgb-warm-grey2),0.08);position:relative;}
     .room-section.alt{background:var(--parchment);}
     .room-section.coming-soon{opacity:0.75;}
     .rs-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:start;}
@@ -61,9 +61,9 @@ export default function TheRooms() {
     .rule{width:40px;height:1px;background:var(--gold);opacity:0.5;margin:18px 0;}
 
     /* Price card */
-    .price-card{padding:36px 32px;border:1px solid rgba(90,74,53,0.14);background:var(--cream);}
+    .price-card{padding:36px 32px;border:1px solid rgba(var(--rgb-warm-grey2),0.14);background:var(--cream);}
     .room-section.alt .price-card{background:var(--cream);}
-    .pc-featured{border-color:rgba(184,134,11,0.35);background:rgba(184,134,11,0.03);}
+    .pc-featured{border-color:rgba(var(--rgb-gold),0.35);background:rgba(var(--rgb-gold),0.03);}
     .pc-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--warm-grey);margin-bottom:16px;}
     .pc-featured .pc-label{color:var(--gold);}
     .pc-price{font-family:var(--fd);font-size:60px;font-weight:300;color:var(--ink);line-height:1;letter-spacing:-.04em;margin-bottom:6px;}
@@ -71,31 +71,31 @@ export default function TheRooms() {
     .pc-note{font-size:11px;font-weight:300;color:var(--warm-grey);margin-bottom:24px;font-family:var(--fm);}
     .pc-includes{display:flex;flex-direction:column;gap:9px;flex:1;margin-bottom:24px;}
     .pc-row{display:flex;align-items:flex-start;gap:9px;font-size:13px;font-weight:300;color:var(--warm-grey2);line-height:1.4;}
-    .pc-row::before{content:'·';color:rgba(139,115,85,0.40);flex-shrink:0;font-family:var(--fm);font-size:11px;}
+    .pc-row::before{content:'·';color:rgba(var(--rgb-warm-grey),0.40);flex-shrink:0;font-family:var(--fm);font-size:11px;}
     .pc-featured .pc-row{color:var(--warm-grey2);}
-    .pc-btn{display:block;padding:14px 24px;border:1px solid rgba(90,74,53,0.20);color:var(--warm-grey2);font-family:var(--fb);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none;transition:all .15s;background:transparent;margin-bottom:10px;}
+    .pc-btn{display:block;padding:14px 24px;border:1px solid rgba(var(--rgb-warm-grey2),0.20);color:var(--warm-grey2);font-family:var(--fb);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none;transition:all .15s;background:transparent;margin-bottom:10px;}
     .pc-btn:hover{border-color:var(--ink);color:var(--ink);}
-    .pc-btn.gold{background:rgba(184,134,11,0.08);border-color:rgba(184,134,11,0.50);color:var(--gold);}
+    .pc-btn.gold{background:rgba(var(--rgb-gold),0.08);border-color:rgba(var(--rgb-gold),0.50);color:var(--gold);}
     .pc-btn.gold:hover{background:var(--gold);color:var(--cream);}
     .tools-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
-    .tool-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(90,74,53,0.04);border:1px solid rgba(90,74,53,0.10);}
+    .tool-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(var(--rgb-warm-grey2),0.04);border:1px solid rgba(var(--rgb-warm-grey2),0.10);}
     .tool-name{font-size:13px;font-weight:400;color:var(--ink);}
     .tool-desc{font-size:11px;font-weight:300;color:var(--warm-grey);margin-top:2px;}
     .tool-price{font-family:var(--fd);font-size:20px;font-weight:300;color:var(--gold);flex-shrink:0;margin-left:16px;}
 
     /* Coming soon badge */
-    .cs-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-grey);border:1px solid rgba(139,115,85,0.25);padding:4px 12px;margin-bottom:20px;}
+    .cs-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-grey);border:1px solid rgba(var(--rgb-warm-grey),0.25);padding:4px 12px;margin-bottom:20px;}
 
-    footer{position:relative;z-index:1;padding:56px 48px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px;align-items:start;border-top:1px solid rgba(90,74,53,0.10);}
+    footer{position:relative;z-index:1;padding:56px 48px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px;align-items:start;border-top:1px solid rgba(var(--rgb-warm-grey2),0.10);}
     .footer-tagline{font-family:var(--fd);font-size:16px;font-weight:300;font-style:italic;color:var(--warm-grey);line-height:1.5;margin-top:10px;}
-    .footer-col-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(139,115,85,0.55);margin-bottom:14px;}
+    .footer-col-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--rgb-warm-grey),0.55);margin-bottom:14px;}
     .footer-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
     .footer-links a{font-size:13px;font-weight:300;color:var(--warm-grey);text-decoration:none;transition:color .15s;}
     .footer-links a:hover{color:var(--ink);}
     .footer-cta{text-align:right;}
     .footer-cta-text{font-family:var(--fd);font-size:22px;font-weight:300;color:var(--warm-grey);margin-bottom:14px;line-height:1.2;}
     .footer-cta-text em{color:var(--gold);font-style:italic;}
-    .footer-copy{grid-column:1/-1;padding-top:28px;border-top:1px solid rgba(90,74,53,0.07);display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{grid-column:1/-1;padding-top:28px;border-top:1px solid rgba(var(--rgb-warm-grey2),0.07);display:flex;justify-content:space-between;align-items:center;}
     .footer-copy-text{font-family:var(--fm);font-size:10px;color:var(--warm-grey);letter-spacing:.06em;}
     .full-dojo-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; gap: 80px; align-items: center; }
     @media(max-width:1024px){
@@ -118,41 +118,18 @@ export default function TheRooms() {
       `}</style>
       
 
-<nav>
-  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <Link to="/" style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', border: '1px solid rgba(139,115,85,0.25)', padding: '4px 8px', color: 'var(--warm-grey)', textDecoration: 'none', marginRight: '16px', letterSpacing: '0.05em' }}>[ ← Back ]</Link>
-      <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
-        <span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
-      </Link>
-    </div>
-    <button 
-      className="mobile-menu-btn" 
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
-      aria-label="Toggle menu"
-      style={{ background: 'none', border: 'none', color: 'var(--ink)', cursor: 'pointer', display: 'none' }}
-    >
-      {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-    </button>
-  </div>
-  <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-    <li><Link to="/">Home</Link></li>
-    <li><Link to="/rooms">Rooms</Link></li>
-    <li><Link to="/dojo">Dojo</Link></li>
-    <li><Link to="/contact">Contact</Link></li>
-  </ul>
-</nav>
+
 
 <div className="page-hero">
   <svg className="page-hero-art" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <defs><radialGradient id="ph1" cx="80%" cy="30%" r="60%"><stop offset="0%" stopColor="#D4A84B" stopOpacity="0.14"/><stop offset="100%" stopColor="transparent"/></radialGradient></defs>
+    <defs><radialGradient id="ph1" cx="80%" cy="30%" r="60%"><stop offset="0%" stopColor="var(--gold-light)" stopOpacity="0.14"/><stop offset="100%" stopColor="transparent"/></radialGradient></defs>
     <rect width="1440" height="400" fill="var(--cream)"/>
     <rect width="1440" height="400" fill="url(#ph1)"/>
-    <g opacity="0.05" stroke="#5A4A35" fill="none" transform="translate(1250,200)">
+    <g opacity="0.05" stroke="var(--warm-grey2)" fill="none" transform="translate(1250,200)">
       <circle cx="0" cy="0" r="100"/><circle cx="0" cy="0" r="150"/><circle cx="0" cy="0" r="190"/>
       <line x1="-190" y1="0" x2="190" y2="0"/><line x1="0" y1="-190" x2="0" y2="190"/>
     </g>
-    <g opacity="0.06" stroke="#2A1F14" fill="#2A1F14">
+    <g opacity="0.06" stroke="var(--ink)" fill="var(--ink)">
       <line x1="60" y1="120" x2="140" y2="80" strokeWidth="0.5"/><line x1="140" y1="80" x2="200" y2="130" strokeWidth="0.5"/>
       <circle cx="60" cy="120" r="2.5"/><circle cx="140" cy="80" r="2"/><circle cx="200" cy="130" r="3"/>
     </g>
@@ -192,7 +169,7 @@ export default function TheRooms() {
         </div>
       </div>
       <div style={{fontSize: "11px", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em", marginBottom: "16px"}}>3 Frameworks | 4 Deliverables | 60 Minutes | ∞ Yours forever</div>
-      <Link to="/art-of-brand" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.35)", paddingBottom: "2px"}}>Full product page →</Link>
+      <Link to="/art-of-brand" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Full product page →</Link>
     </div>
     <div>
       <div className="price-card pc-featured">
@@ -233,7 +210,7 @@ export default function TheRooms() {
         </div>
       </div>
       <div style={{fontSize: "11px", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em", marginBottom: "16px"}}>8 Frameworks | 25+ Assets | 60 Minutes | 1 Complete Month</div>
-      <Link to="/campfyer" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(184,134,11,0.35)", paddingBottom: "2px"}}>Full product page →</Link>
+      <Link to="/campfyer" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Full product page →</Link>
     </div>
     <div>
       <div className="price-card pc-featured">
@@ -331,7 +308,7 @@ export default function TheRooms() {
 </section>
 
 
-<section style={{background: "var(--parchment)", padding: "72px 48px", borderBottom: "1px solid rgba(90,74,53,0.08)"}}>
+<section style={{background: "var(--parchment)", padding: "72px 48px", borderBottom: "1px solid rgba(var(--rgb-warm-grey2),0.08)"}}>
   <div className="full-dojo-grid">
     <div>
       <div style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--warm-grey)", marginBottom: "16px"}}>// The complete system</div>
@@ -340,7 +317,7 @@ export default function TheRooms() {
       <p style={{fontSize: "15px", fontWeight: "300", lineHeight: "1.72", color: "var(--warm-grey2)", marginBottom: "24px"}}>All 5 rooms when complete. First access to every new room as it releases. The complete operating system for your venture once, yours forever.</p>
       <a href="https://paystack.com/pay/full-bundle-250" target="_blank" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Get the Full Dojo →</a>
     </div>
-    <div className="price-card" style={{borderColor: "rgba(184,134,11,0.35)", background: "rgba(184,134,11,0.03)"}}>
+    <div className="price-card" style={{borderColor: "rgba(var(--rgb-gold),0.35)", background: "rgba(var(--rgb-gold),0.03)"}}>
       <div style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".16em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "16px"}}>Full Dojo System</div>
       <div className="pc-price">$250</div>
       <div style={{fontSize: "11px", fontWeight: "300", color: "var(--warm-grey)", marginBottom: "24px", fontFamily: "var(--fm)"}}>one-time · all 5 rooms · first access to new rooms</div>

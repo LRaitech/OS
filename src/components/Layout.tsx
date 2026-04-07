@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import Navigation from './Navigation';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -7,6 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Navigation />
       {/* Main Content */}
       <main className="flex-grow">
         {children}
