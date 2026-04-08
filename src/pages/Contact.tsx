@@ -20,20 +20,6 @@ export default function Contact() {
         }
         
         
-        /* NAV */
-        nav {
-          position: sticky; top: 0; z-index: 100;
-          display: flex; align-items: center; justify-content: space-between;
-          padding: 16px 48px;
-          background: rgba(var(--rgb-cream),0.94); backdrop-filter: blur(14px);
-          border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.10);
-        }
-        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-wordmark { font-family: var(--fd); font-size: 20px; font-weight: 600; color: var(--gold); letter-spacing: .08em; text-transform: uppercase; }
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
-        .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-        .nav-links a:hover { color: var(--ink); }
-
         .contact-container { max-width: 1100px; margin: 0 auto; padding: 100px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
         
         .contact-header { margin-bottom: 48px; }
@@ -71,14 +57,8 @@ export default function Contact() {
         .footer-cta-text em { color: var(--gold); font-style: italic; }
         .footer-copy { grid-column: 1/-1; padding-top: 28px; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.07); display: flex; justify-content: space-between; align-items: center; }
         .footer-copy-text { font-family: var(--fm); font-size: 10px; color: var(--warm-grey); letter-spacing: .06em; }
-        .btn-nav { padding: 8px 22px; background: transparent; border: 1px solid var(--gold); color: var(--gold); font-family: var(--fb); font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: all .2s; }
-        .btn-nav:hover { background: var(--gold); color: var(--cream); }
 
         @media (max-width: 1024px) {
-          nav { padding: 12px 20px; flex-direction: column; align-items: flex-start; }
-          .mobile-menu-btn { display: block !important; }
-          .nav-links { display: none !important; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-          .nav-links.open { display: flex !important; }
           .contact-container { grid-template-columns: 1fr; padding: 56px 20px; gap: 48px; }
           .contact-form { padding: 32px 24px; }
           footer { padding: 40px 20px; grid-template-columns: 1fr 1fr; }
@@ -101,7 +81,7 @@ export default function Contact() {
             
             <div className="info-block">
               <div className="info-label">Email</div>
-              <div className="info-value">hello@lotusroom.studio</div>
+              <div className="info-value">lotusroom.os@gmail.com</div>
             </div>
             
             <div className="info-block">
@@ -135,69 +115,44 @@ export default function Contact() {
         </div>
         
         <div>
-          <form className="contact-form" action="mailto:hello@lotusroom.studio" method="POST" encType="text/plain">
+          <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="3a394c62-735c-4916-b733-211113cdbb57" />
+            <input type="hidden" name="subject" value="New Lotus Room Inquiry" />
             <div className="form-group">
               <label className="form-label">Name</label>
-              <input type="text" name="Name" className="form-input" placeholder="Your name" required />
+              <input type="text" name="name" className="form-input" placeholder="Your name" required />
             </div>
             <div className="form-group">
               <label className="form-label">Email</label>
-              <input type="email" name="Email" className="form-input" placeholder="your@email.com" required />
+              <input type="email" name="email" className="form-input" placeholder="your@email.com" required />
             </div>
             <div className="form-group">
               <label className="form-label">I want to</label>
-              <select name="Intent" className="form-select" defaultValue="" required>
+              <select name="selection" className="form-select" defaultValue="" required>
                 <option value="" disabled>Select</option>
-                <option value="Apply to the Dojo">Apply to the Dojo</option>
-                <option value="Explore a Room">Explore a Room</option>
-                <option value="Book a strategy engagement">Book a strategy engagement</option>
-                <option value="Other">Other</option>
+                <optgroup label="The Dojo (High-Touch)">
+                  <option value="Dojo: Foundation">Level 01: Foundation</option>
+                  <option value="Dojo: Build">Level 02: Build</option>
+                  <option value="Dojo: Develop">Level 03: Develop</option>
+                  <option value="Dojo: Capital">Level 04: Capital</option>
+                </optgroup>
+                <optgroup label="AI Rooms (Self-Serve)">
+                  <option value="Room 01: Art of Brand">Room 01: Art of Brand</option>
+                  <option value="Room 02: Campfyer">Room 02: Campfyer</option>
+                  <option value="Room 03: EVO">Room 03: EVO</option>
+                  <option value="Room 04: Beat Therapy">Room 04: Beat Therapy</option>
+                  <option value="Room 05: Deeper">Room 05: Deeper</option>
+                </optgroup>
               </select>
             </div>
             <div className="form-group">
               <label className="form-label">Message</label>
-              <textarea name="Message" className="form-textarea" placeholder="Tell us what you're building..." required></textarea>
+              <textarea name="message" className="form-textarea" placeholder="Tell us what you're building..." required></textarea>
             </div>
             <button type="submit" className="submit-btn">Send →</button>
           </form>
         </div>
       </div>
-
-      <footer>
-        <div>
-          <Link to="/" className="nav-logo" style={{marginBottom: "12px", textDecoration: 'none'}}>
-            <span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
-          </Link>
-          <p className="footer-tagline">Where ventures<br />take root.</p>
-        </div>
-        <div>
-          <div className="footer-col-label">AI Frameworks</div>
-          <ul className="footer-links">
-            <li><Link to="/art-of-brand">Art of Brand</Link></li>
-            <li><Link to="/campfyer">Campfyer</Link></li>
-            <li><a href="https://paystack.com/pay/full-bundle-250" target="_blank">Full Dojo System</a></li>
-            <li><Link to="/rooms">All rooms</Link></li>
-          </ul>
-        </div>
-        <div>
-          <div className="footer-col-label">Apply Now</div>
-          <ul className="footer-links">
-            <li><Link to="/apply">Foundation</Link></li>
-            <li><Link to="/apply">Venture Build</Link></li>
-            <li><Link to="/apply">Develop</Link></li>
-            <li><Link to="/apply">Studio Partnership</Link></li>
-            <li><Link to="/apply">hello@lotusroom.studio</Link></li>
-          </ul>
-        </div>
-        <div className="footer-cta">
-          <div className="footer-cta-text">Enter the<br /><em>Dojo.</em></div>
-          <Link to="/dojo" className="btn-nav">Enter Dojo →</Link>
-        </div>
-        <div className="footer-copy">
-          <span className="footer-copy-text">© 2026 Lotus Room Studio · Nairobi · @lotusroom.studio</span>
-          <span className="footer-copy-text">Culture by Design</span>
-        </div>
-      </footer>
     </div>
   );
 }

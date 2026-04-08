@@ -62,6 +62,7 @@ export default function Navigation() {
             <li><Link to="/" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Home</Link></li>
             <li><Link to="/rooms" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Rooms</Link></li>
             <li><Link to="/dojo" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Dojo</Link></li>
+            <li><Link to="/insights" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Insights</Link></li>
             <li><Link to="/contact" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Contact</Link></li>
           </ul>
 

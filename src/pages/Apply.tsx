@@ -31,21 +31,8 @@ export default function Apply() {
         .radio-label input, .checkbox-label input { accent-color: var(--gold); width: 16px; height: 16px; }
         .submit-btn { display: inline-block; padding: 16px 40px; background: var(--gold); border: none; color: var(--cream); font-family: var(--fb); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
         .submit-btn:hover { background: var(--gold-light); }
-        
-        /* Nav styles */
-        nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: rgba(var(--rgb-cream),0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.10); }
-        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .nav-mark { width: 28px; height: 28px; }
-        .nav-wordmark { font-family: var(--fd); font-size: 18px; font-weight: 300; color: var(--ink); letter-spacing: .04em; }
-        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
-        .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-        .nav-links a:hover { color: var(--ink); }
 
         @media (max-width: 1024px) {
-          nav { padding: 12px 20px; flex-direction: column; align-items: flex-start; }
-          .mobile-menu-btn { display: block !important; }
-          .nav-links { display: none !important; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-          .nav-links.open { display: flex !important; }
           .apply-container { padding: 56px 20px; }
         }
         @media (max-width: 900px) {
@@ -64,33 +51,36 @@ export default function Apply() {
           <p>Tell us about your venture. We'll review your details and get back to you to schedule a conversation.</p>
         </div>
 
-        <form className="apply-form" action="mailto:Lotusroom.os@gmail.com" method="POST" encType="text/plain">
+        <form className="apply-form" action="https://api.web3forms.com/submit" method="POST" encType="multipart/form-data">
+          <input type="hidden" name="access_key" value="3a394c62-735c-4916-b733-211113cdbb57" />
+          <input type="hidden" name="subject" value="New Application: Lotus Room / Dojo" />
+          <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
           
           <div className="form-section">
             <h2 className="form-section-title">Essential Info</h2>
             <div className="form-group">
               <label className="form-label">Full Name</label>
-              <input type="text" name="Full Name" className="form-input" placeholder="Your Name" required />
+              <input type="text" name="name" className="form-input" placeholder="Your Name" required />
             </div>
             <div className="form-group">
               <label className="form-label">Email Address</label>
-              <input type="email" name="Email Address" className="form-input" placeholder="your@email.com" required />
+              <input type="email" name="email" className="form-input" placeholder="your@email.com" required />
             </div>
             <div className="form-group">
               <label className="form-label">Room Selection</label>
-              <select name="Room Selection" className="form-select" required>
-                <option value="">Select a room...</option>
-                <option value="Art of Brand">Art of Brand</option>
-                <option value="Campfyer">Campfyer</option>
-                <option value="EVO">EVO</option>
-                <option value="Beat Therapy">Beat Therapy</option>
-                <option value="Deeper">Deeper</option>
+              <select name="room_selection" className="form-select" required>
+                <option value="" disabled selected>Select a room...</option>
+                <option value="Room 01: Art of Brand">Room 01: Art of Brand</option>
+                <option value="Room 02: Campfyer">Room 02: Campfyer</option>
+                <option value="Room 03: EVO">Room 03: EVO</option>
+                <option value="Room 04: Beat Therapy">Room 04: Beat Therapy</option>
+                <option value="Room 05: Deeper">Room 05: Deeper</option>
               </select>
             </div>
             <div className="form-group">
               <label className="form-label">Stage Selection</label>
-              <select name="Stage Selection" className="form-select" required>
-                <option value="">Select a stage...</option>
+              <select name="stage_selection" className="form-select" required>
+                <option value="" disabled selected>Select a stage...</option>
                 <option value="Foundation">Foundation</option>
                 <option value="Build">Build</option>
                 <option value="Develop">Develop</option>

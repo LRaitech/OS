@@ -14,6 +14,7 @@ import ArtOfBrand from './pages/ArtOfBrand';
 import Campfyer from './pages/Campfyer';
 import Apply from './pages/Apply';
 import WorkWithUs from './pages/WorkWithUs';
+import Insights from './pages/Insights';
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/work-with-us" element={<WorkWithUs />} />
+          <Route path="/insights" element={<Insights />} />
         </Routes>
       </Layout>
     </BrowserRouter>

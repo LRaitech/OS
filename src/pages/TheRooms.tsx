@@ -22,16 +22,7 @@ export default function TheRooms() {
     html{scroll-behavior:smooth;}
     body{background:var(--cream);color:var(--ink);font-family:var(--fb);font-weight:300;-webkit-font-smoothing:antialiased;}
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.3;mix-blend-mode:multiply;}
-    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(var(--rgb-cream),0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(var(--rgb-warm-grey2),0.10);}
-    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-    .nav-mark{width:32px;height:32px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;}
-    .nav-wordmark{font-family:var(--fd);font-size:16px;font-weight:300;color:var(--ink);letter-spacing:.06em;}
-    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
-    .nav-links a{font-size:11px;font-weight:400;color:var(--warm-grey);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .15s;}
-    .nav-links a:hover,.nav-links a.active{color:var(--ink);}
-    .btn-nav{padding:8px 22px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--fb);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
-    .btn-nav:hover{background:var(--gold);color:var(--cream);}
-
+    
     /* Page header */
     .page-hero{padding:80px 48px 64px;position:relative;overflow:hidden;}
     .page-hero-art{position:absolute;inset:0;pointer-events:none;}
@@ -99,10 +90,6 @@ export default function TheRooms() {
     .footer-copy-text{font-family:var(--fm);font-size:10px;color:var(--warm-grey);letter-spacing:.06em;}
     .full-dojo-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; gap: 80px; align-items: center; }
     @media(max-width:1024px){
-      nav{padding:14px 20px; flex-direction: column; align-items: flex-start;}
-      .mobile-menu-btn { display: block !important; }
-      .nav-links { display: none; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-      .nav-links.open { display: flex; }
       .page-hero,.room-section{padding:56px 20px;}
       footer{padding:40px 20px;}
       .rs-inner,.rs-inner.rev{grid-template-columns:1fr;gap:40px;}
@@ -315,7 +302,6 @@ export default function TheRooms() {
       <h2>The Full Dojo<br /><em>System</em></h2>
       <div style={{width: "40px", height: "1px", background: "var(--gold)", opacity: "0.5", margin: "18px 0"}}></div>
       <p style={{fontSize: "15px", fontWeight: "300", lineHeight: "1.72", color: "var(--warm-grey2)", marginBottom: "24px"}}>All 5 rooms when complete. First access to every new room as it releases. The complete operating system for your venture once, yours forever.</p>
-      <a href="https://paystack.com/pay/full-bundle-250" target="_blank" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Get the Full Dojo →</a>
     </div>
     <div className="price-card" style={{borderColor: "rgba(var(--rgb-gold),0.35)", background: "rgba(var(--rgb-gold),0.03)"}}>
       <div style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".16em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "16px"}}>Full Dojo System</div>
@@ -329,43 +315,9 @@ export default function TheRooms() {
         <div className="pc-row">Deeper: on release</div>
         <div className="pc-row">Community access</div>
       </div>
-      <Link to="/apply" className="pc-btn gold">Join the Waitlist →</Link>
     </div>
   </div>
 </section>
-
-<footer>
-  <div>
-    <Link to="/" className="nav-logo" style={{marginBottom: "12px", textDecoration: 'none'}}><span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span></Link>
-    <p className="footer-tagline">Where ventures<br />take root.</p>
-  </div>
-  <div>
-    <div className="footer-col-label">AI Frameworks</div>
-    <ul className="footer-links">
-      <li><Link to="/art-of-brand">Art of Brand</Link></li>
-      <li><Link to="/campfyer">Campfyer</Link></li>
-      <li><a href="https://paystack.com/pay/full-bundle-250" target="_blank">Full Dojo System</a></li>
-    </ul>
-  </div>
-  <div>
-    <div className="footer-col-label">Apply Now</div>
-    <ul className="footer-links">
-      <li><Link to="/apply">Foundation</Link></li>
-      <li><Link to="/apply">Venture Build</Link></li>
-      <li><Link to="/apply">Develop</Link></li>
-      <li><Link to="/apply">Studio Partnership</Link></li>
-      <li><Link to="/apply">hello@lotusroom.studio</Link></li>
-    </ul>
-  </div>
-  <div className="footer-cta">
-    <div className="footer-cta-text">Enter the<br /><em>Dojo.</em></div>
-    <a href="https://paystack.com/pay/brand-core-15" target="_blank" className="btn-nav">Get access →</a>
-  </div>
-  <div className="footer-copy">
-    <span className="footer-copy-text">© 2026 Lotus Room Studio · Nairobi · @lotusroom.studio</span>
-    <span className="footer-copy-text">Five Rooms · One Operating System</span>
-  </div>
-</footer>
 
     </div>
   );

@@ -19,16 +19,7 @@ export default function WorkWithUs() {
     html{scroll-behavior:smooth;}
     body{background:var(--cream);color:var(--ink);font-family:var(--fb);font-weight:300;-webkit-font-smoothing:antialiased;}
     body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.3;mix-blend-mode:multiply;}
-    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(var(--rgb-cream),0.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(var(--rgb-warm-grey2),0.10);}
-    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-    .nav-mark{width:32px;height:32px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;}
-    .nav-wordmark{font-family:var(--fd);font-size:16px;font-weight:300;color:var(--ink);letter-spacing:.06em;}
-    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
-    .nav-links a{font-size:11px;font-weight:400;color:var(--warm-grey);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .15s;}
-    .nav-links a:hover,.nav-links a.active{color:var(--ink);}
-    .btn-nav{padding:8px 22px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--fb);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
-    .btn-nav:hover{background:var(--gold);color:var(--cream);}
-
+    
     /* Hero */
     .contact-hero{padding:80px 48px;position:relative;overflow:hidden;border-bottom:1px solid rgba(var(--rgb-warm-grey2),0.08);}
     .ch-art{position:absolute;inset:0;pointer-events:none;}
@@ -91,14 +82,12 @@ export default function WorkWithUs() {
     .footer-copy{grid-column:1/-1;padding-top:28px;border-top:1px solid rgba(var(--rgb-warm-grey2),0.07);display:flex;justify-content:space-between;align-items:center;}
     .footer-copy-text{font-family:var(--fm);font-size:10px;color:var(--warm-grey);letter-spacing:.06em;}
     @media(max-width:1024px){
-      nav{padding:14px 20px;}
       .contact-hero,.engagements,.tools-reminder{padding:56px 20px;}
       footer{padding:40px 20px;}
       .ch-inner{grid-template-columns:1fr;gap:40px;}
       .eg-grid{grid-template-columns:1fr;}
     }
     @media(max-width:900px){
-      .nav-links{display:none;}
       footer{grid-template-columns:1fr 1fr;}
       .footer-cta{text-align:left;}
     }
@@ -151,7 +140,7 @@ export default function WorkWithUs() {
         </ul>
         <Link to="/apply" className="btn-primary">Apply for Foundation →</Link>
         <Link to="/apply" className="btn-primary" style={{borderColor: "rgba(var(--rgb-warm-grey2),0.25)", color: "var(--warm-grey2)"}}>Just say hello →</Link>
-        <div style={{marginTop: "12px", textAlign: "center", fontSize: "11px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>hello@lotusroom.studio</div>
+        <div style={{marginTop: "12px", textAlign: "center", fontSize: "11px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>lotusroom.os@gmail.com</div>
       </div>
     </div>
   </div>
@@ -228,39 +217,6 @@ export default function WorkWithUs() {
     <Link to="/rooms" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Explore the Rooms →</Link>
   </div>
 </div>
-
-<footer>
-  <div>
-    <Link to="/" className="nav-logo" style={{marginBottom: "12px", textDecoration: 'none'}}><span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span></Link>
-    <p className="footer-tagline">Where ventures<br />take root.</p>
-  </div>
-  <div>
-    <div className="footer-col-label">AI Frameworks</div>
-    <ul className="footer-links">
-      <li><Link to="/art-of-brand">Art of Brand</Link></li>
-      <li><Link to="/campfyer">Campfyer</Link></li>
-      <li><a href="https://paystack.com/pay/full-bundle-250" target="_blank">Full Dojo System</a></li>
-    </ul>
-  </div>
-  <div>
-    <div className="footer-col-label">Apply Now</div>
-    <ul className="footer-links">
-      <li><Link to="/apply">Foundation</Link></li>
-      <li><Link to="/apply">Venture Build</Link></li>
-      <li><Link to="/apply">Develop</Link></li>
-      <li><Link to="/apply">Studio Partnership</Link></li>
-      <li><Link to="/apply">hello@lotusroom.studio</Link></li>
-    </ul>
-  </div>
-  <div className="footer-cta">
-    <div className="footer-cta-text">Start a<br /><em>conversation.</em></div>
-    <Link to="/apply" className="btn-nav">Say hello →</Link>
-  </div>
-  <div className="footer-copy">
-    <span className="footer-copy-text">© 2026 Lotus Room Studio · Nairobi · @lotusroom.studio</span>
-    <span className="footer-copy-text">Brand Strategy · AI Venture AI Frameworks</span>
-  </div>
-</footer>
 
     </div>
   );

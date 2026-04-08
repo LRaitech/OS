@@ -40,46 +40,6 @@ export default function ArtOfBrand() {
       mix-blend-mode: multiply;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 40px;
-      background: rgba(var(--rgb-ink),0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(var(--rgb-cream),0.07);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-badge {
-      width: 30px; height: 30px;
-      border: 1px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .nav-badge svg { width: 16px; height: 16px; }
-    .nav-name {
-      font-family: var(--fd); font-size: 15px; font-weight: 300;
-      color: var(--ink); letter-spacing: .05em;
-    }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta { display: flex; align-items: center; gap: 16px; }
-    .nav-price {
-      font-family: var(--fd); font-size: 16px; font-weight: 300;
-      color: var(--warm-grey);
-    }
-    .nav-price strong { color: var(--gold); font-weight: 300; }
-    .nav-btn {
-      padding: 8px 22px;
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: var(--fb); font-size: 10px; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
-      cursor: pointer; text-decoration: none; transition: all .18s;
-    }
-    .nav-btn:hover { background: var(--gold); color: var(--cream); }
-
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -476,10 +436,6 @@ export default function ArtOfBrand() {
     }
 
     @media (max-width: 1024px) {
-      nav { padding: 12px 20px; flex-direction: column; align-items: flex-start; }
-      .mobile-menu-btn { display: block !important; }
-      .nav-links { display: none !important; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-      .nav-links.open { display: flex !important; }
       .hero { padding: 0 20px 60px; }
       .section, .pricing-section { padding: 56px 20px; }
       .tools-grid { grid-template-columns: 1fr; }
@@ -493,11 +449,7 @@ export default function ArtOfBrand() {
       .strategy-cta { padding: 56px 20px; }
       .proof-bar { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 900px) {
-      /* Removed .nav-links { display: none !important; } */
-    }
     @media (max-width: 680px) {
-      .nav-price { display: none; }
       footer { flex-direction: column; gap: 12px; padding: 28px 20px; text-align: center; }
     }
   `.replace(/body/g, `.page-artofbrand`) }
@@ -655,7 +607,7 @@ export default function ArtOfBrand() {
         <div className="sc-pre">// The Full Bundle</div>
         <h2 className="sc-title">Brand <em>OS.</em></h2>
         <p className="sc-body">One system. All three frameworks combined to build your complete brand identity.</p>
-        <a href="https://paystack.com/buy/01--foundation-500-eahvir" target="_blank" className="btn-primary" style={{borderColor: "var(--gold)", color: "var(--gold)"}}>Buy Brand OS →</a>
+        <a href="https://paystack.com/buy/art-of-brand-brand-os" target="_blank" className="btn-primary" style={{borderColor: "var(--gold)", color: "var(--gold)"}}>Buy Brand OS →</a>
       </div>
     </div>
   </div>
@@ -847,7 +799,7 @@ export default function ArtOfBrand() {
     <p className="sc-body" style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "var(--warm-grey)", marginBottom: "40px"}}>
       One system. All three frameworks combined to build your complete brand identity.
     </p>
-    <a href="https://paystack.com/buy/01--foundation-500-eahvir" target="_blank" className="btn-primary" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Buy Brand OS →</a>
+    <a href="https://paystack.com/buy/art-of-brand-brand-os" target="_blank" className="btn-primary" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Buy Brand OS →</a>
   </div>
 </div>
 

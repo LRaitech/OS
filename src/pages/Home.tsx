@@ -28,35 +28,12 @@ export default function Home() {
     }
 
     /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 48px;
-      background: rgba(var(--rgb-cream),0.94); backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.10);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-mark {
-      width: 32px; height: 32px; border: 1px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .nav-wordmark { font-family: var(--fd); font-size: 16px; font-weight: 300; color: var(--ink); letter-spacing: .06em; }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta { display: flex; align-items: center; gap: 14px; }
-    .btn-nav {
-      padding: 8px 22px; background: transparent; border: 1px solid var(--gold);
-      color: var(--gold); font-family: var(--fb); font-size: 10px; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: all .2s;
-    }
-    .btn-nav:hover { background: var(--gold); color: var(--cream); }
 
     /* HERO */
     .hero {
       position: relative; min-height: 95vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 80px; overflow: hidden;
+      display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+      padding: 0 48px; overflow: hidden; gap: 48px;
     }
     .hero-art {
       position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
@@ -65,7 +42,9 @@ export default function Home() {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(to top, rgba(var(--rgb-cream),0.98) 0%, rgba(var(--rgb-cream),0.72) 45%, rgba(var(--rgb-cream),0.18) 80%, transparent 100%);
     }
-    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+    .hero-content { position: relative; z-index: 2; max-width: 600px; flex: 1; }
+    .hero-image { position: relative; z-index: 2; flex: 1; display: flex; justify-content: flex-end; align-items: center; }
+    .hero-image img { max-width: 100%; max-height: 70vh; object-fit: contain; }
     .eyebrow {
       font-family: var(--fm); font-size: 9px; font-weight: 400;
       letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
@@ -87,6 +66,9 @@ export default function Home() {
       border-bottom: 1px solid rgba(var(--rgb-warm-grey),0.30); padding-bottom: 2px; transition: all .15s;
     }
     .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+    .hero-build-card {
+      background: var(--parchment); border: 1px solid rgba(var(--rgb-gold), 0.2); padding: 24px; max-width: 400px; text-align: left;
+    }
 
     /* PROOF */
     .proof-bar {
@@ -196,11 +178,9 @@ export default function Home() {
     .footer-copy-text { font-family: var(--fm); font-size: 10px; color: var(--warm-grey); letter-spacing: .06em; }
 
     @media(max-width:1024px){
-      nav{padding:14px 20px; flex-direction: column; align-items: flex-start;}
-      .mobile-menu-btn { display: block !important; }
-      .nav-links { display: none; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-      .nav-links.open { display: flex; }
-      .hero{padding:0 20px 64px;}
+      .hero{padding:100px 20px 64px; flex-direction: column; justify-content: center; text-align: center;}
+      .hero-image { justify-content: center; margin-top: 48px; }
+      .hero-build-card { margin: 0 auto; text-align: center; }
       section{padding:64px 20px;}
       footer{padding:40px 20px;}
       .tracks,.rooms-grid{grid-template-columns:1fr;}
@@ -276,13 +256,13 @@ export default function Home() {
   <div className="hero-content">
     <div className="eyebrow">Build. Grow. Scale.</div>
     <h1>Systems for brands<br /><em>that scale.</em></h1>
-    <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6' }}>
+    <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6', marginBottom: '32px' }}>
       We build systems for creator-led brands where design, AI, and strategy stay in sync.
     </p>
-    <div className="hero-actions">
-      <Link to="/rooms" className="btn-primary">Explore the Rooms</Link>
-      <Link to="/apply" className="btn-ghost">Book a discovery call</Link>
-    </div>
+    
+  </div>
+  <div className="hero-image">
+    <img src="https://drive.google.com/uc?export=view&id=1wDvSSAXix5LNVwTXepSq-nWlkn4aG6zw" alt="Lotus Room Hero" referrerPolicy="no-referrer" />
   </div>
 </header>
 
@@ -303,25 +283,25 @@ export default function Home() {
     <div className="tracks">
       <div className="track AI Frameworks">
         <div className="track-label">AI Frameworks track · self-serve</div>
-        <h3>Build your brand,<br />content and growth<br /><em>yourself.</em></h3>
-        <p className="track-body">AI Frameworks you run in a single session. Buy one workflow or the full room. Every output is yours. No subscription, no agency, no waiting.</p>
+        <h3>Build your brand,<br />content, and growth<br /><em>yourself.</em></h3>
+        <p className="track-body">Run structured AI frameworks in a single session. Buy one room or access the full system. Every output is yours. No subscription, no agency, no waiting.</p>
         <ul className="track-list">
-          <li>Art of Brand: full brand identity system</li>
-          <li>Campfyer: full campaign in one session</li>
+          <li>Art of Brand: complete brand identity system</li>
+          <li>Campfyer: full 30-day campaign in one session</li>
           <li>EVO, Beat Therapy, Deeper: coming soon</li>
-          <li>Full system included</li>
+          <li>Full system access available</li>
         </ul>
         <Link to="/rooms" className="track-cta">[ See all rooms → ]</Link>
       </div>
       <div className="track strategy">
         <div className="track-label">Strategy track · high-touch</div>
-        <h3>Build with a strategist<br />who knows your<br /><em>whole system.</em></h3>
-        <p className="track-body">We apply the Dojo System methodology with our judgment in the room. Foundation, Venture Build, and Studio Partnerships for founders ready to go deep.</p>
+        <h3>Build with a strategist<br />who understands your<br /><em>full system.</em></h3>
+        <p className="track-body">We apply the Dojo methodology directly to your venture. Every stage is executed with you, in real time.</p>
         <ul className="track-list">
-          <li>Foundation: Clarity before scale</li>
-          <li>Venture Build: 6 weeks, build</li>
-          <li>Develop: Weeks 7 to 9, refine & systematize</li>
-          <li>Studio Partnership: 3 months, scale & investment</li>
+          <li>Foundation: clarity before scale</li>
+          <li>Build: turn the idea into presence</li>
+          <li>Develop: refine and systematize operations</li>
+          <li>Capital: position for growth and investment</li>
         </ul>
         <Link to="/apply" className="track-cta">[ Book a discovery call → ]</Link>
       </div>
@@ -395,42 +375,6 @@ export default function Home() {
   </div>
 </section>
 
-
-<footer>
-  <div>
-    <Link to="/" className="nav-logo" style={{marginBottom: "12px", textDecoration: 'none'}}>
-      <span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
-    </Link>
-    <p className="footer-tagline">Where ventures<br />take root.</p>
-  </div>
-  <div>
-    <div className="footer-col-label">AI Frameworks</div>
-    <ul className="footer-links">
-      <li><Link to="/art-of-brand">Art of Brand</Link></li>
-      <li><Link to="/campfyer">Campfyer</Link></li>
-      <li><a href="https://paystack.com/pay/full-bundle-250" target="_blank">Full Dojo System</a></li>
-      <li><Link to="/rooms">All rooms</Link></li>
-    </ul>
-  </div>
-  <div>
-    <div className="footer-col-label">Apply Now</div>
-    <ul className="footer-links">
-      <li><Link to="/apply">Foundation</Link></li>
-      <li><Link to="/apply">Venture Build</Link></li>
-      <li><Link to="/apply">Develop</Link></li>
-      <li><Link to="/apply">Studio Partnership</Link></li>
-      <li><Link to="/apply">hello@lotusroom.studio</Link></li>
-    </ul>
-  </div>
-  <div className="footer-cta">
-    <div className="footer-cta-text">Enter the<br /><em>Dojo.</em></div>
-    <Link to="/dojo" className="btn-nav">Enter Dojo →</Link>
-  </div>
-  <div className="footer-copy">
-    <span className="footer-copy-text">© 2026 Lotus Room Studio · Nairobi · @lotusroom.studio</span>
-    <span className="footer-copy-text">Culture by Design</span>
-  </div>
-</footer>
 
     </div>
   );

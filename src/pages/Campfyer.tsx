@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 
 export default function Campfyer() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'campfyer' | 'build'>('campfyer');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,57 +34,6 @@ export default function Campfyer() {
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       opacity: 0.45;
     }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 40px;
-      background: rgba(var(--rgb-ink),0.90);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(var(--rgb-ink),0.07);
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .nav-badge {
-      width: 28px; height: 28px;
-      background: linear-gradient(135deg, var(--warm-grey2), var(--ink));
-      border: 1px solid rgba(var(--rgb-gold),0.30);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--fd); font-size: 10px; font-weight: 600;
-      color: var(--ink);
-    }
-    .nav-name {
-      font-family: var(--fd);
-      font-size: 15px; font-weight: 300;
-      color: rgba(var(--rgb-ink),0.60);
-      letter-spacing: .04em;
-    }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { font-size: 11px; font-weight: 400; color: var(--warm-grey); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; transition: color .15s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta {
-      display: flex; align-items: center; gap: 16px;
-    }
-    .nav-price {
-      font-family: var(--fd);
-      font-size: 16px; font-weight: 300;
-      color: rgba(var(--rgb-ink),0.35);
-    }
-    .nav-price strong { color: var(--gold-light); font-weight: 300; }
-    .nav-btn {
-      padding: 8px 20px;
-      background: rgba(var(--rgb-gold-dark),0.10);
-      border: 1px solid rgba(var(--rgb-gold-dark),0.40);
-      color: var(--gold-light);
-      font-family: var(--fb);
-      font-size: 10px; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
-      cursor: pointer; text-decoration: none;
-      transition: background .15s;
-    }
-    .nav-btn:hover { background: rgba(var(--rgb-gold-dark),0.18); }
 
     /* ── HERO ── */
     .hero {
@@ -418,10 +368,6 @@ export default function Campfyer() {
     }
 
     @media (max-width: 1024px) {
-      nav { padding: 12px 20px; flex-direction: column; align-items: flex-start; }
-      .mobile-menu-btn { display: block !important; }
-      .nav-links { display: none !important; width: 100%; flex-direction: column; gap: 16px; margin-top: 16px; }
-      .nav-links.open { display: flex !important; }
       .hero { padding: 0 20px 60px; }
       .section { padding: 56px 20px; }
       .deliverable-grid { grid-template-columns: 1fr; }
@@ -429,11 +375,7 @@ export default function Campfyer() {
       .pricing-grid { grid-template-columns: 1fr; }
       .proof-bar { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 900px) {
-      /* Removed .nav-links { display: none !important; } */
-    }
     @media (max-width: 680px) {
-      .nav-price { display: none; }
       footer { flex-direction: column; gap: 12px; padding: 28px 20px; text-align: center; }
     }
   `.replace(/body/g, `.page-campfyer`) }
@@ -640,25 +582,25 @@ export default function Campfyer() {
 
 <div className="strategy-cta" style={{background: "var(--ink)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
   <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
+    <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "24px"}}>// Seen before scale.</div>
     <h2 className="sc-title" style={{color: "var(--cream)", fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", marginBottom: "32px"}}>Get<br /><em>Campfyer.</em></h2>
-    <div style={{display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center"}}>
+    
+    <div style={{display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center", marginBottom: "64px"}}>
       <a href="https://paystack.com/buy/campfyer-campaign-system" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)"}}>The Campaign System →</a>
       <a href="https://paystack.com/buy/campfyer-content-os" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)"}}>The Full Room →</a>
     </div>
-  </div>
-</div>
 
-<div className="strategy-cta" style={{background: "var(--ink)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
-  <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
-    <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "24px"}}>// Seen before scale.</div>
-    <h2 className="sc-title" style={{fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", color: "var(--cream)", marginBottom: "32px"}}>Start with<br /><em>Build.</em></h2>
-    <p className="sc-body" style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "rgba(var(--rgb-cream),0.7)", marginBottom: "40px"}}>
-      <strong style={{color: "var(--cream)", fontWeight: 400}}>Build - $1,200</strong><br/><br/>
-      Turn your vision into public presence.<br/>
-      We create creator-led brands as systems that move with precision - where strategy, design, and AI work in sync to make your brand visible, felt, and followed.<br/><br/>
-      <em style={{color: "var(--gold-light)", fontStyle: "italic"}}>INCLUDES:</em> Content creation, Campaign execution, Storytelling systems
-    </p>
-    <a href="https://paystack.com/buy/02--build-1200-fpccve" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)"}}>Turn vision into visibility →</a>
+    <div style={{ borderTop: "1px solid rgba(var(--rgb-cream), 0.1)", paddingTop: "48px", textAlign: "left" }}>
+      <div style={{fontFamily: "var(--fm)", fontSize: "10px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "16px"}}>Featured Start</div>
+      <h3 style={{fontFamily: "var(--fd)", fontSize: "32px", color: "var(--cream)", marginBottom: "8px"}}>Build</h3>
+      <div style={{fontFamily: "var(--fm)", fontSize: "16px", color: "rgba(var(--rgb-cream), 0.7)", marginBottom: "24px"}}>$1,200</div>
+      <p style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "rgba(var(--rgb-cream),0.7)", marginBottom: "32px"}}>
+        Turn your vision into public presence.<br/>
+        We create creator-led brands as systems that move with precision - where strategy, design, and AI work in sync to make your brand visible, felt, and followed.<br/><br/>
+        <em style={{color: "var(--gold-light)", fontStyle: "italic"}}>INCLUDES:</em> Content creation, Campaign execution, Storytelling systems
+      </p>
+      <a href="https://paystack.com/buy/02--build-1200-fpccve" target="_blank" className="btn-primary" style={{borderColor: "var(--gold-light)", color: "var(--gold-light)", display: "inline-block"}}>Turn vision into visibility →</a>
+    </div>
   </div>
 </div>
 
