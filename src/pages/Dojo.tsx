@@ -58,7 +58,7 @@ export default function Dojo() {
           <h1>The Dojo</h1>
           <p className="hero-sub">The Dojo is a 12 week programme where founders work directly with a strategist and team to build their business step by step. This is not a course and it is not theory. Every part of the process is applied to your actual venture in real time.</p>
           <p className="hero-sub">You are not watching or learning passively. You are making decisions, building assets, and putting structure into place with guidance. By the end of the programme, your business is defined, visible, and operational.</p>
-          <p className="hero-meta">Hybrid format. Online and Nairobi studio. Maximum 8 founders per cohort.</p>
+          <p className="hero-meta">Hybrid format. Online and Nairobi studio.</p>
           <div className="hero-ctas">
             <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
           </div>

@@ -94,15 +94,16 @@ export default function Home() {
 
     /* TRACKS */
     .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(var(--rgb-warm-grey2),0.10); border: 1px solid rgba(var(--rgb-warm-grey2),0.10); margin-top: 48px; }
-    .track { padding: 48px 40px; background: var(--cream); position: relative; overflow: hidden; }
+    .track { padding: 48px 40px; background: var(--cream); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .track:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); z-index: 2; }
     .track::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; }
-    .track.AI Frameworks::before { background: linear-gradient(90deg, var(--gold), transparent); }
+    .track.ai-frameworks::before { background: linear-gradient(90deg, var(--gold), transparent); }
     .track.strategy::before { background: linear-gradient(90deg, var(--warm-grey2), transparent); }
     .track-label { font-family: var(--fm); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 20px; }
-    .track.AI Frameworks .track-label { color: var(--gold); }
+    .track.ai-frameworks .track-label { color: var(--gold); }
     .track.strategy .track-label { color: var(--warm-grey); }
     .track-price { font-family: var(--fd); font-size: 48px; font-weight: 300; letter-spacing: -.03em; line-height: 1; margin-bottom: 8px; }
-    .track.AI Frameworks .track-price { color: var(--gold); }
+    .track.ai-frameworks .track-price { color: var(--gold); }
     .track.strategy .track-price { color: var(--ink); }
     .track-range { font-family: var(--fm); font-size: 10px; font-weight: 300; color: var(--warm-grey); letter-spacing: .06em; margin-bottom: 24px; }
     h3 { font-family: var(--fd); font-size: 26px; font-weight: 300; color: var(--ink); line-height: 1.15; margin-bottom: 10px; }
@@ -115,8 +116,8 @@ export default function Home() {
       display: inline-block; padding: 12px 24px; font-size: 10px; font-weight: 500;
       letter-spacing: .12em; text-transform: uppercase; text-decoration: none; transition: all .15s;
     }
-    .track.AI Frameworks .track-cta { background: var(--gold-thin); border: 1px solid rgba(var(--rgb-gold),0.40); color: var(--gold); }
-    .track.AI Frameworks .track-cta:hover { background: var(--gold); color: var(--cream); }
+    .track.ai-frameworks .track-cta { background: var(--gold-thin); border: 1px solid rgba(var(--rgb-gold),0.40); color: var(--gold); }
+    .track.ai-frameworks .track-cta:hover { background: var(--gold); color: var(--cream); }
     .track.strategy .track-cta { background: transparent; border: 1px solid rgba(var(--rgb-warm-grey2),0.30); color: var(--warm-grey2); }
     .track.strategy .track-cta:hover { border-color: var(--ink); color: var(--ink); }
 
@@ -264,7 +265,7 @@ export default function Home() {
   <div className="hero-scrim"></div>
   <FadeIn className="hero-content">
     <div className="eyebrow">Strategy Studio</div>
-    <h1>Story. Strategy. <em>Systems.</em></h1>
+    <h1>Culture By <em>Design.</em></h1>
     <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6', marginBottom: '32px' }}>
       We build systems for creator-led brands where design, AI, and strategy stay in sync, from ideas to venture-ready.
     </p>
@@ -288,7 +289,7 @@ export default function Home() {
     <h2>Pick your<br /><em>entry point.</em></h2>
     <p className="s-intro">One track for founders who want to build themselves. One for those ready to build with us.</p>
     <div className="tracks">
-      <div className="track AI Frameworks">
+      <div className="track ai-frameworks">
         <div className="track-label">AI Frameworks track · self-serve</div>
         <h3>Build your brand,<br />content, and growth<br /><em>yourself.</em></h3>
         <p className="track-body">Run structured AI frameworks in a single session. Buy one room or access the full system. Every output is yours. No subscription, no agency, no waiting.</p>

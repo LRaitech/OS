@@ -67,8 +67,8 @@ export default function Footer() {
           color: var(--gold);
         }
         .footer-bottom {
-          display: flex;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
           align-items: center;
           width: 100%;
           font-family: var(--fm);
@@ -76,9 +76,6 @@ export default function Footer() {
           color: var(--warm-grey);
           letter-spacing: .06em;
           text-transform: uppercase;
-        }
-        .footer-bottom p {
-          flex: 1;
         }
         .footer-bottom p:nth-child(1) { text-align: left; }
         .footer-bottom p:nth-child(2) { text-align: center; }
@@ -88,6 +85,7 @@ export default function Footer() {
             padding: 48px 20px 24px;
           }
           .footer-bottom {
+            display: flex;
             flex-direction: column;
             gap: 16px;
           }

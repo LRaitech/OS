@@ -803,14 +803,7 @@ export default function ArtOfBrand() {
   </div>
 </div>
 
-<footer>
-  <div className="footer-left">Lotus Room · Art of Brand · Room 01</div>
-  <div style={{display: "flex", gap: "24px", alignItems: "center"}}>
-    <Link to="/campfyer" style={{fontSize: "13px", fontWeight: "300", color: "var(--warm-grey)", textDecoration: "none", transition: "color .15s"}} onMouseOver={(e) => e.currentTarget.style.color='var(--ink)'} onMouseOut={(e) => e.currentTarget.style.color='var(--warm-grey)'}>Campfyer →</Link>
-    <Link to="/" style={{fontSize: "13px", fontWeight: "300", color: "var(--warm-grey)", textDecoration: "none", transition: "color .15s"}} onMouseOver={(e) => e.currentTarget.style.color='var(--ink)'} onMouseOut={(e) => e.currentTarget.style.color='var(--warm-grey)'}>Lotus Room →</Link>
-  </div>
-  <div className="footer-right">@lotusroom.studio · Nairobi · 2026</div>
-</footer>
+
 
 
     </div>

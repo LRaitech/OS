@@ -115,25 +115,6 @@ export default function Contact() {
               <input type="email" name="email" className="form-input" placeholder="your@email.com" required />
             </div>
             <div className="form-group">
-              <label className="form-label">Discovery calendar booking</label>
-              <select name="selection" className="form-select" defaultValue="" required>
-                <option value="" disabled>Select</option>
-                <optgroup label="The Dojo (High-Touch)">
-                  <option value="Dojo: Foundation">Level 01: Foundation</option>
-                  <option value="Dojo: Build">Level 02: Build</option>
-                  <option value="Dojo: Develop">Level 03: Develop</option>
-                  <option value="Dojo: Capital">Level 04: Capital</option>
-                </optgroup>
-                <optgroup label="AI Rooms (Self-Serve)">
-                  <option value="Room 01: Art of Brand">Room 01: Art of Brand</option>
-                  <option value="Room 02: Campfyer">Room 02: Campfyer</option>
-                  <option value="Room 03: EVO">Room 03: EVO</option>
-                  <option value="Room 04: Beat Therapy">Room 04: Beat Therapy</option>
-                  <option value="Room 05: Deeper">Room 05: Deeper</option>
-                </optgroup>
-              </select>
-            </div>
-            <div className="form-group">
               <label className="form-label">Message</label>
               <textarea name="message" className="form-textarea" placeholder="Tell us what you're building..." required></textarea>
             </div>

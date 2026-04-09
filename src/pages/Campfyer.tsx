@@ -608,10 +608,7 @@ export default function Campfyer() {
 
 
 
-<footer>
-  <div className="footer-left">Lotus Room · Campfyer · Room 02</div>
-  <div className="footer-right">@lotusroom.studio · Nairobi · 2026</div>
-</footer>
+
 
 
     </div>
