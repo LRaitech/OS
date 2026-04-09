@@ -132,7 +132,7 @@ export default function WorkWithUs() {
     <div>
       <div className="sprint-card">
         
-        <div className="sc-note">Foundation: Clarity - $500</div>
+        <div className="sc-note">Foundation: Clarity</div>
         <ul className="sc-includes">
           <li>Early-stage clarity</li>
           <li>Narrative foundations</li>
@@ -154,7 +154,7 @@ export default function WorkWithUs() {
     <div className="eg-grid">
       <div className="eg-card">
         
-        <div className="eg-range">Foundation: Clarity - $500</div>
+        <div className="eg-range">Foundation: Clarity</div>
         <div className="eg-name">Foundation</div>
         <div className="eg-desc">Define your idea, audience, and cultural position. Build your narrative, structure, and strategic base.</div>
         <ul className="eg-list">

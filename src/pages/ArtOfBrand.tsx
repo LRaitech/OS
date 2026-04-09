@@ -782,7 +782,7 @@ export default function ArtOfBrand() {
     <div className="sc-pre">// Clarity before scale.</div>
     <h2 className="sc-title">Start with<br /><em>Foundation.</em></h2>
     <p className="sc-body">
-      <strong>Foundation: Clarity - $500</strong><br/><br/>
+      <strong>Foundation: Clarity</strong><br/><br/>
       Define your idea, audience, and cultural position.<br/>
       Build your narrative, structure, and strategic base.<br/><br/>
       <em>INCLUDES:</em> Early-stage clarity, Narrative foundations, Brand structure

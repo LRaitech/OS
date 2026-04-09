@@ -21,7 +21,7 @@ export default function Insights() {
       .then(res => res.json())
       .then(data => {
         if (data.status === 'ok') {
-          setArticles(data.items.slice(0, 5));
+          setArticles(data.items.slice(0, 10));
         }
         setLoading(false);
       })
@@ -30,33 +30,6 @@ export default function Insights() {
         setLoading(false);
       });
   }, []);
-
-  const products = [
-    {
-      name: "Fashion Pack",
-      desc: "Cinematic AI Prompts",
-      price: "$100",
-      link: "https://paystack.com/buy/fashion-pack-cinematic-ai-prompts"
-    },
-    {
-      name: "Spa & Serenity Pack",
-      desc: "Radiance & Ritual",
-      price: "$100",
-      link: "https://paystack.com/buy/spa-and-serenity-pack-rituals-for-radiance"
-    },
-    {
-      name: "Paddle Ball Pack",
-      desc: "Motion & Texture 2",
-      price: "$100",
-      link: "https://paystack.com/buy/paddleball-pack"
-    },
-    {
-      name: "Yoga Pack",
-      desc: "Motion and Texture",
-      price: "$100",
-      link: "https://paystack.com/buy/yoga-pack--motion-and-texture"
-    }
-  ];
 
   return (
     <div className="page-insights">
@@ -134,10 +107,10 @@ export default function Insights() {
         
         .insights-grid {
           display: grid;
-          grid-template-columns: 1fr 380px;
+          grid-template-columns: 1fr;
           gap: 64px;
           padding: 80px 48px;
-          max-width: 1200px;
+          max-width: 800px;
           margin: 0 auto;
         }
         
@@ -337,7 +310,7 @@ export default function Insights() {
       <div className="insights-hero">
         <div className="ih-inner">
           <div className="eyebrow">Insights & Systems</div>
-          <h1>Read the<br /><em>Dojo Notes.</em></h1>
+          <h1><em>Culture by Design</em></h1>
           <p className="hero-sub">Essays on brand strategy, AI frameworks, and building ventures that scale. Join the newsletter to get our latest systems directly in your inbox.</p>
         </div>
       </div>
@@ -382,20 +355,6 @@ export default function Insights() {
           ) : (
             <div style={{ padding: '40px 0', color: 'var(--warm-grey)', fontFamily: 'var(--fm)', fontSize: '12px' }}>No articles found.</div>
           )}
-        </div>
-
-        <div className="products-col">
-          <h2 className="section-title">Frameworks & Rooms</h2>
-          <div className="products-list">
-            {products.map((product, index) => (
-              <div key={index} className="product-card">
-                <h3 className="product-name">{product.name}</h3>
-                <p className="product-desc">{product.desc}</p>
-                <div className="product-price">{product.price}</div>
-                <a href={product.link} target="_blank" rel="noopener noreferrer" className="product-link">Get Access →</a>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

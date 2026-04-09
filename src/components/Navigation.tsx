@@ -59,11 +59,11 @@ export default function Navigation() {
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`} style={{ display: isMenuOpen ? 'flex' : 'none', alignItems: 'center', gap: '28px', listStyle: 'none', margin: 0, padding: 0 }}>
-            <li><Link to="/" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Home</Link></li>
-            <li><Link to="/rooms" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Rooms</Link></li>
-            <li><Link to="/dojo" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Dojo</Link></li>
-            <li><Link to="/insights" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Insights</Link></li>
-            <li><Link to="/contact" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Contact</Link></li>
+            <li><Link to="/" onClick={() => setIsMenuOpen(false)} className="glow-hover" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Home</Link></li>
+            <li><Link to="/rooms" onClick={() => setIsMenuOpen(false)} className="glow-hover" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Rooms</Link></li>
+            <li><Link to="/dojo" onClick={() => setIsMenuOpen(false)} className="glow-hover" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Dojo</Link></li>
+            <li><Link to="/insights" onClick={() => setIsMenuOpen(false)} className="glow-hover" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Insights</Link></li>
+            <li><Link to="/contact" onClick={() => setIsMenuOpen(false)} className="glow-hover" style={{ fontSize: '11px', fontWeight: 400, color: 'var(--warm-grey)', textDecoration: 'none', letterSpacing: '.08em', textTransform: 'uppercase' }}>Contact</Link></li>
           </ul>
 
           <button 
@@ -78,7 +78,7 @@ export default function Navigation() {
             className="mobile-menu-btn" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
-            style={{ background: 'none', border: 'none', color: 'var(--ink)', cursor: 'pointer', display: 'none' }}
+            style={{ background: 'none', border: 'none', color: isMenuOpen ? 'var(--cream)' : 'var(--ink)', cursor: 'pointer', display: 'none', zIndex: 1001 }}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -90,9 +90,38 @@ export default function Navigation() {
           .mobile-menu-btn { display: none !important; }
         }
         @media(max-width: 1024px) {
-          nav { padding: 14px 20px !important; flex-direction: column; align-items: flex-start; }
-          .mobile-menu-btn { display: block !important; }
-          .nav-links { width: 100%; flex-direction: column; gap: 16px; margin-top: 16px !important; }
+          nav { padding: 14px 20px !important; flex-direction: row; align-items: center; }
+          .mobile-menu-btn { display: block !important; z-index: 1001; }
+          .nav-links { 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(var(--rgb-ink), 0.98);
+            flex-direction: column; 
+            justify-content: center;
+            gap: 32px !important; 
+            margin-top: 0 !important;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+          }
+          .nav-links.open {
+            opacity: 1;
+            pointer-events: auto;
+          }
+          .nav-links a {
+            font-size: 24px !important;
+            color: var(--cream) !important;
+            font-family: var(--fd) !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+          }
+          .nav-links a:hover {
+            color: var(--gold) !important;
+          }
         }
         .nav-links a:hover { color: var(--ink) !important; }
       `}</style>

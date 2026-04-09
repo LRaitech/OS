@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import FadeIn from '../components/FadeIn';
 
 export default function TheRooms() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -121,16 +122,16 @@ export default function TheRooms() {
       <circle cx="60" cy="120" r="2.5"/><circle cx="140" cy="80" r="2"/><circle cx="200" cy="130" r="3"/>
     </g>
   </svg>
-  <div className="ph-inner">
+  <FadeIn className="ph-inner">
     <div className="eyebrow">Five Rooms</div>
-    <h1>One operating system<br /><em>for ventures.</em></h1>
+    <h1>Systems for <em>Founders.</em></h1>
     <p className="hero-sub">One OS. Five rooms. Build, run, and scale your venture with structured packs. All tools are included in each room. Each stage gives you frameworks, checklists, templates, and workflows so founders don’t just learn - they build.</p>
-  </div>
+  </FadeIn>
 </div>
 
 
 <section className="room-section" id="art-of-brand">
-  <div className="rs-inner">
+  <FadeIn className="rs-inner">
     <div>
       <div className="rs-num">Room 01</div>
       <h2>Art of<br /><em>Brand</em></h2>
@@ -161,17 +162,16 @@ export default function TheRooms() {
     <div>
       <div className="price-card pc-featured">
         <div className="pc-label">Art of Brand</div>
-        <div className="pc-price">$50</div>
         <div className="pc-note">Complete brand identity ready to deploy.</div>
-        <a href="https://paystack.com/pay/artofbrand-50" target="_blank" className="pc-btn gold">Buy Room: $50 →</a>
+        <a href="https://paystack.com/buy/art-of-brand-brand-os" target="_blank" className="pc-btn gold">Brand OS →</a>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
 <section className="room-section alt" id="campfyer">
-  <div className="rs-inner rev">
+  <FadeIn className="rs-inner rev">
     <div>
       <div className="rs-num">Room 02</div>
       <h2>Camp<em>fyer</em></h2>
@@ -202,17 +202,16 @@ export default function TheRooms() {
     <div>
       <div className="price-card pc-featured">
         <div className="pc-label">Campfyer</div>
-        <div className="pc-price">$50</div>
         <div className="pc-note">Complete 30-day content campaign ready to publish.</div>
-        <a href="https://paystack.com/pay/campfyer-50" target="_blank" className="pc-btn gold">Buy Room: $50 →</a>
+        <a href="https://paystack.com/buy/campfyer-content-os" target="_blank" className="pc-btn gold">Content OS →</a>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
 <section className="room-section coming-soon" id="evo">
-  <div className="rs-inner">
+  <FadeIn className="rs-inner">
     <div>
       <div className="rs-num">Room 03</div>
       <div className="cs-badge">Coming soon</div>
@@ -235,12 +234,12 @@ export default function TheRooms() {
         <Link to="/apply" className="pc-btn">Join the waitlist →</Link>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
 <section className="room-section alt coming-soon" id="beat-therapy">
-  <div className="rs-inner rev">
+  <FadeIn className="rs-inner rev">
     <div>
       <div className="rs-num">Room 04</div>
       <div className="cs-badge">Coming soon</div>
@@ -263,12 +262,12 @@ export default function TheRooms() {
         <Link to="/apply" className="pc-btn">Join the waitlist →</Link>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
 <section className="room-section coming-soon" id="deeper">
-  <div className="rs-inner">
+  <FadeIn className="rs-inner">
     <div>
       <div className="rs-num">Room 05</div>
       <div className="cs-badge">Coming soon</div>
@@ -291,12 +290,12 @@ export default function TheRooms() {
         <Link to="/apply" className="pc-btn">Join the waitlist →</Link>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
 <section style={{background: "var(--parchment)", padding: "72px 48px", borderBottom: "1px solid rgba(var(--rgb-warm-grey2),0.08)"}}>
-  <div className="full-dojo-grid">
+  <FadeIn className="full-dojo-grid">
     <div>
       <div style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--warm-grey)", marginBottom: "16px"}}>// The complete system</div>
       <h2>The Full Dojo<br /><em>System</em></h2>
@@ -305,8 +304,7 @@ export default function TheRooms() {
     </div>
     <div className="price-card" style={{borderColor: "rgba(var(--rgb-gold),0.35)", background: "rgba(var(--rgb-gold),0.03)"}}>
       <div style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".16em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "16px"}}>Full Dojo System</div>
-      <div className="pc-price">$250</div>
-      <div style={{fontSize: "11px", fontWeight: "300", color: "var(--warm-grey)", marginBottom: "24px", fontFamily: "var(--fm)"}}>one-time · all 5 rooms · first access to new rooms</div>
+      <div style={{fontSize: "11px", fontWeight: "300", color: "var(--warm-grey)", marginBottom: "24px", fontFamily: "var(--fm)"}}>all 5 rooms · first access to new rooms</div>
       <div className="pc-includes">
         <div className="pc-row">Art of Brand</div>
         <div className="pc-row">Campfyer</div>
@@ -316,7 +314,7 @@ export default function TheRooms() {
         <div className="pc-row">Community access</div>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
     </div>

@@ -1,77 +1,92 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+:root {
+  --cream: #F0EBE1;
+  --cream-deep: #E8E0D4;
+  --parchment: #F7F4EF;
+  --ink: #1A1714;
+  --ink-soft: #2A2218;
+  --gold: #B8860B;
+  --gold-light: #D4A84B;
+  --gold-pale: #E8C97A;
+  --gold-dim: rgba(184,134,11,0.18);
+  --gold-thin: rgba(184,134,11,0.10);
+  --warm-grey: #8B7355;
+  --warm-grey2: #5A4A35;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --rgb-cream: 240, 235, 225;
+  --rgb-ink: 26, 23, 20;
+  --rgb-gold: 184, 134, 11;
+  --rgb-gold-dark: 212, 168, 75;
+  --rgb-warm-grey: 139, 115, 85;
+  --rgb-warm-grey2: 90, 74, 53;
+  
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --fm: 'Inter', monospace;
 }
 
-@layer base {
-  :root {
-    --cream: #F0EBE1; --cream-deep: #E8E0D4; --parchment: #F7F4EF;
-    --ink: #1A1714; --ink-soft: #2A2218;
-    --gold: #B8860B; --gold-light: #D4A84B; --gold-pale: #E8C97A;
-    --gold-dim: rgba(184,134,11,0.18); --gold-thin: rgba(184,134,11,0.10);
-    --warm-grey: #8B7355; --warm-grey2: #5A4A35;
-    --fd: 'Cormorant Garamond', Georgia, serif;
-    --fb: 'DM Sans', system-ui, sans-serif;
-    --fm: 'DM Mono', monospace;
+.dark {
+  --cream: #1A1714;
+  --cream-deep: #2A2218;
+  --parchment: #14120F;
+  --ink: #F0EBE1;
+  --ink-soft: #E8E0D4;
+  --gold: #D4A84B;
+  --gold-light: #E8C97A;
+  --gold-pale: #F2E2B8;
+  --gold-dim: rgba(212,168,75,0.18);
+  --gold-thin: rgba(212,168,75,0.10);
+  --warm-grey: #A89B8C;
+  --warm-grey2: #C4B8A8;
 
-    --rgb-cream: 240, 235, 225;
-    --rgb-ink: 26, 23, 20;
-    --rgb-gold: 184, 134, 11;
-    --rgb-gold-dark: 212, 168, 75;
-    --rgb-warm-grey: 139, 115, 85;
-    --rgb-warm-grey2: 90, 74, 53;
-  }
+  --rgb-cream: 26, 23, 20;
+  --rgb-ink: 240, 235, 225;
+  --rgb-gold: 212, 168, 75;
+  --rgb-gold-dark: 184, 134, 11;
+  --rgb-warm-grey: 168, 155, 140;
+  --rgb-warm-grey2: 196, 184, 168;
+}
 
-  .dark {
-    --cream: #1A1714; --cream-deep: #2A2218; --parchment: #14120F;
-    --ink: #F0EBE1; --ink-soft: #E8E0D4;
-    --gold: #D4A84B; --gold-light: #E8C97A; --gold-pale: #F2E2B8;
-    --gold-dim: rgba(212,168,75,0.18); --gold-thin: rgba(212,168,75,0.10);
-    --warm-grey: #A89B8C; --warm-grey2: #C4B8A8;
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    --rgb-cream: 26, 23, 20;
-    --rgb-ink: 240, 235, 225;
-    --rgb-gold: 212, 168, 75;
-    --rgb-gold-dark: 184, 134, 11;
-    --rgb-warm-grey: 168, 155, 140;
-    --rgb-warm-grey2: 196, 184, 168;
-  }
+h1,h2,h3,h4,h5,h6, .font-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: normal;
+}
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  body {
-    background-color: var(--cream);
-    color: var(--ink);
-    font-family: var(--fb);
-    font-weight: 300;
-    letter-spacing: 0.05em; /* Wide tracking */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+/* Gold glow and hover intelligence */
+.glow-hover {
+  transition: all 0.3s ease;
+}
+.glow-hover:hover {
+  color: var(--gold);
+  text-shadow: 0 0 6px var(--gold), 0 0 12px var(--gold-light);
+}
 
-  h1, h2, h3, h4, h5, h6, .font-serif {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: normal;
-  }
-
-  /* Global Stroke: Strictly 1px */
-  .border, .border-t, .border-b, .border-l, .border-r {
-    border-width: 1px !important;
-  }
-  
-  .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+/* Glass cards for micro-interactions */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

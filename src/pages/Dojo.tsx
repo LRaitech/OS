@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import FadeIn from '../components/FadeIn';
 
 export default function Dojo() {
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Dojo() {
         .stage-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
         .cta-section { text-align: center; padding: 80px 48px 120px; }
-        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto; }
+        .cta-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 400px; margin: 0 auto; }
         .cta-card { padding: 48px 32px; background: var(--parchment); border: 1px solid rgba(var(--rgb-ink), 0.05); text-align: center; }
         .cta-card p { font-size: 14px; color: var(--warm-grey); line-height: 1.6; margin-bottom: 24px; }
 
@@ -53,22 +54,21 @@ export default function Dojo() {
 
       {/* HERO */}
       <header className="hero">
-        <div className="hero-content">
+        <FadeIn className="hero-content">
           <h1>The Dojo</h1>
           <p className="hero-sub">The Dojo is a 12 week programme where founders work directly with a strategist and team to build their business step by step. This is not a course and it is not theory. Every part of the process is applied to your actual venture in real time.</p>
           <p className="hero-sub">You are not watching or learning passively. You are making decisions, building assets, and putting structure into place with guidance. By the end of the programme, your business is defined, visible, and operational.</p>
           <p className="hero-meta">Hybrid format. Online and Nairobi studio. Maximum 8 founders per cohort.</p>
           <div className="hero-ctas">
             <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
-            <a href="https://paystack.com/buy/the-dojo-lqrmjw" target="_blank" rel="noreferrer" className="btn-secondary">Start now</a>
           </div>
-        </div>
+        </FadeIn>
       </header>
 
       {/* STAGES */}
       <section id="stages" className="dojo-section">
         
-        <div className="stage-row">
+        <FadeIn className="stage-row">
           <div className="stage-meta">
             <h3>Foundation</h3>
             <div className="stage-subtitle">Clarity</div>
@@ -85,9 +85,9 @@ export default function Dojo() {
               <li>Brand structure</li>
             </ul>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="stage-row">
+        <FadeIn className="stage-row">
           <div className="stage-meta">
             <h3>Build</h3>
             <div className="stage-subtitle">Presence</div>
@@ -104,9 +104,9 @@ export default function Dojo() {
               <li>Storytelling systems</li>
             </ul>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="stage-row">
+        <FadeIn className="stage-row">
           <div className="stage-meta">
             <h3>Develop</h3>
             <div className="stage-subtitle">Structure</div>
@@ -123,9 +123,9 @@ export default function Dojo() {
               <li>Refine internal systems</li>
             </ul>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="stage-row">
+        <FadeIn className="stage-row">
           <div className="stage-meta">
             <h3>Capital</h3>
             <div className="stage-subtitle">Expansion</div>
@@ -142,23 +142,18 @@ export default function Dojo() {
               <li>Growth acceleration</li>
             </ul>
           </div>
-        </div>
+        </FadeIn>
 
       </section>
 
       <div className="cta-section">
-        <div className="cta-grid">
+        <FadeIn className="cta-grid">
           <div className="cta-card">
             <h3 style={{fontFamily: 'var(--fd)', fontSize: '24px', fontWeight: 300, color: 'var(--ink)', marginBottom: '12px'}}>Apply to the Dojo</h3>
             <p>Join the cohort and build your business with direct support over 12 weeks.</p>
             <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
           </div>
-          <div className="cta-card">
-            <h3 style={{fontFamily: 'var(--fd)', fontSize: '24px', fontWeight: 300, color: 'var(--ink)', marginBottom: '12px'}}>Start now</h3>
-            <p>Enter the system and begin building immediately with structured guidance.</p>
-            <a href="https://paystack.com/buy/the-dojo-lqrmjw" target="_blank" rel="noreferrer" className="btn-secondary">Start now</a>
-          </div>
-        </div>
+        </FadeIn>
       </div>
     </div>
   );

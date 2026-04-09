@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import FadeIn from '../components/FadeIn';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -179,15 +180,23 @@ export default function Home() {
 
     @media(max-width:1024px){
       .hero{padding:100px 20px 64px; flex-direction: column; justify-content: center; text-align: center;}
+      .hero-content { display: flex; flex-direction: column; align-items: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-image { justify-content: center; margin-top: 48px; }
       .hero-build-card { margin: 0 auto; text-align: center; }
       section{padding:64px 20px;}
+      .s-intro { margin-left: auto; margin-right: auto; text-align: center; }
+      .s-kicker { text-align: center; }
+      h2 { text-align: center; }
+      .rule { margin-left: auto; margin-right: auto; }
       footer{padding:40px 20px;}
       .tracks,.rooms-grid{grid-template-columns:1fr;}
       .proof-bar{grid-template-columns:1fr 1fr;}
-      .sprint-grid{grid-template-columns:1fr;gap:40px;}
-      .rung{grid-template-columns:1fr; display: flex; flex-direction: column; align-items: flex-start;}
-      .rung-price { border-right: none; border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.08); width: 100%; }
+      .sprint-grid{grid-template-columns:1fr;gap:40px; text-align: center;}
+      .sprint-grid .rule { margin: 18px auto; }
+      .sprint-grid p { margin-left: auto; margin-right: auto; }
+      .rung{grid-template-columns:1fr; display: flex; flex-direction: column; align-items: center; text-align: center;}
+      .rung-price { border-right: none; border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.08); width: 100%; text-align: center; }
       .rung-track{display:none;}
     }
     @media(max-width:900px){
@@ -253,30 +262,28 @@ export default function Home() {
     <path d="M0,750 C300,720 600,780 900,750 C1100,728 1300,760 1440,745 L1440,900 L0,900Z" fill="var(--gold-light)" opacity="0.06"/>
   </svg>
   <div className="hero-scrim"></div>
-  <div className="hero-content">
-    <div className="eyebrow">Build. Grow. Scale.</div>
-    <h1>Systems for brands<br /><em>that scale.</em></h1>
+  <FadeIn className="hero-content">
+    <div className="eyebrow">Strategy Studio</div>
+    <h1>Story. Strategy. <em>Systems.</em></h1>
     <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6', marginBottom: '32px' }}>
-      We build systems for creator-led brands where design, AI, and strategy stay in sync.
+      We build systems for creator-led brands where design, AI, and strategy stay in sync, from ideas to venture-ready.
     </p>
     
-  </div>
-  <div className="hero-image">
-    <img src="https://drive.google.com/uc?export=view&id=1wDvSSAXix5LNVwTXepSq-nWlkn4aG6zw" alt="Lotus Room Hero" referrerPolicy="no-referrer" />
-  </div>
+  </FadeIn>
+
 </header>
 
 
 <div className="proof-bar">
-  <div className="proof-item"><div className="proof-num">5</div><div className="proof-label">Rooms in the Dojo System</div></div>
-  <div className="proof-item"><div className="proof-num">$15</div><div className="proof-label">Entry point. No gatekeeping.</div></div>
-  <div className="proof-item"><div className="proof-num">2</div><div className="proof-label">Tracks: AI Frameworks and Strategy</div></div>
-  <div className="proof-item"><div className="proof-num">∞</div><div className="proof-label">Run the workflows every month</div></div>
+  <FadeIn delay={0.1} className="proof-item"><div className="proof-num">5</div><div className="proof-label">Rooms in the Dojo System</div></FadeIn>
+  <FadeIn delay={0.2} className="proof-item"><div className="proof-num">$15</div><div className="proof-label">Entry point. No gatekeeping.</div></FadeIn>
+  <FadeIn delay={0.3} className="proof-item"><div className="proof-num">2</div><div className="proof-label">Tracks: AI Frameworks and Strategy</div></FadeIn>
+  <FadeIn delay={0.4} className="proof-item"><div className="proof-num">∞</div><div className="proof-label">Run the workflows every month</div></FadeIn>
 </div>
 
 
 <section id="tracks">
-  <div className="inner">
+  <FadeIn className="inner">
     <div className="s-kicker">// Two ways in</div>
     <h2>Pick your<br /><em>entry point.</em></h2>
     <p className="s-intro">One track for founders who want to build themselves. One for those ready to build with us.</p>
@@ -306,14 +313,14 @@ export default function Home() {
         <Link to="/apply" className="track-cta">[ Book a discovery call → ]</Link>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
 <section id="rooms" style={{background: "var(--parchment)"}}>
-  <div className="inner">
+  <FadeIn className="inner">
     <div className="s-kicker">// Five Rooms</div>
-    <h2>One operating system<br /><em>for ventures.</em></h2>
+    <h2>Systems for <em>Founders.</em></h2>
     <p className="s-intro">Five rooms. Four levels. A methodology that takes any founder from brand clarity to ecosystem mastery.</p>
     <div className="rooms-grid">
       <Link to="/art-of-brand" className="room-card">
@@ -342,7 +349,7 @@ export default function Home() {
         <div className="room-desc">Investor narrative, unit economics, defensibility and positioning.</div>
       </Link>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 
@@ -350,29 +357,18 @@ export default function Home() {
 
 
 <section id="sprint" className="sprint-section">
-  <div className="inner">
-    <div className="sprint-grid">
+  <FadeIn className="inner">
+    <div className="sprint-grid" style={{ gridTemplateColumns: '1fr' }}>
       <div>
         <div className="s-kicker">// Book a discovery call</div>
-        <h2>Start with<br /><em>Foundation</em></h2>
+        <h2>Start with<br /><em>conversation</em></h2>
         <div className="rule"></div>
-        <p className="s-intro" style={{marginBottom: "24px"}}>Clarity before scale.</p>
-        <p style={{fontSize: "14px", fontWeight: "300", color: "var(--warm-grey)", lineHeight: "1.7", marginBottom: "32px"}}>Define your idea, audience, and cultural position. Build your narrative, structure, and strategic base.</p>
-        <Link to="/apply" className="btn-primary">Book a discovery call →</Link>
-        <p style={{marginTop: "14px", fontSize: "12px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch · just a real conversation</p>
-      </div>
-      <div className="sprint-price-block">
-        <div className="sprint-amount" style={{fontSize: "40px"}}>Foundation: Clarity</div>
-        <div className="sprint-note">$500</div>
-        <ul className="sprint-what">
-          <li>Early-stage clarity</li>
-          <li>Narrative foundations</li>
-          <li>Brand structure</li>
-        </ul>
-        <Link to="/apply" className="sprint-btn">Apply for Foundation →</Link>
+        <p style={{fontSize: "14px", fontWeight: "300", color: "var(--warm-grey)", lineHeight: "1.7", marginBottom: "32px"}}>Define your idea, audience, and cultural position.</p>
+        <Link to="/contact" className="btn-primary">Book a Call →</Link>
+        <p style={{marginTop: "14px", fontSize: "12px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch</p>
       </div>
     </div>
-  </div>
+  </FadeIn>
 </section>
 
 

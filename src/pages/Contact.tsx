@@ -77,21 +77,9 @@ export default function Contact() {
           </div>
           
           <div className="contact-info">
-            <div className="contact-kicker" style={{ marginBottom: '0' }}>Direct lines</div>
-            
-            <div className="info-block">
-              <div className="info-label">Email</div>
-              <div className="info-value">lotusroom.os@gmail.com</div>
-            </div>
-            
             <div className="info-block">
               <div className="info-label">Location</div>
               <div className="info-value">Nairobi, Kenya</div>
-            </div>
-            
-            <div className="info-block">
-              <div className="info-label">Website</div>
-              <div className="info-value">lotusroom.studio</div>
             </div>
             
             <div className="info-block">
@@ -127,7 +115,7 @@ export default function Contact() {
               <input type="email" name="email" className="form-input" placeholder="your@email.com" required />
             </div>
             <div className="form-group">
-              <label className="form-label">I want to</label>
+              <label className="form-label">Discovery calendar booking</label>
               <select name="selection" className="form-select" defaultValue="" required>
                 <option value="" disabled>Select</option>
                 <optgroup label="The Dojo (High-Touch)">

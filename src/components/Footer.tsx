@@ -17,13 +17,11 @@ export default function Footer() {
           margin-bottom: 48px;
         }
         .footer-content {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          display: flex;
+          justify-content: space-between;
           gap: 48px;
           margin-bottom: 64px;
-          max-width: 1200px;
-          margin-left: auto;
-          margin-right: auto;
+          width: 100%;
         }
         .footer-brand h4 {
           font-family: var(--fd);
@@ -69,56 +67,39 @@ export default function Footer() {
           color: var(--gold);
         }
         .footer-bottom {
-          text-align: center;
-          padding-top: 32px;
-          border-top: 1px solid rgba(var(--rgb-warm-grey2), 0.1);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
           font-family: var(--fm);
           font-size: 10px;
           color: var(--warm-grey);
           letter-spacing: .06em;
           text-transform: uppercase;
         }
+        .footer-bottom p {
+          flex: 1;
+        }
+        .footer-bottom p:nth-child(1) { text-align: left; }
+        .footer-bottom p:nth-child(2) { text-align: center; }
+        .footer-bottom p:nth-child(3) { text-align: right; }
         @media (max-width: 768px) {
           .dojo-footer {
             padding: 48px 20px 24px;
           }
-          .footer-content {
-            grid-template-columns: 1fr;
-            gap: 32px;
+          .footer-bottom {
+            flex-direction: column;
+            gap: 16px;
+          }
+          .footer-bottom p {
+            text-align: center !important;
           }
         }
       `}</style>
       <footer className="dojo-footer">
-        <hr />
-        <div className="footer-content">
-          <div className="footer-brand">
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <span style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--gold)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
-            </Link>
-            <p style={{ fontFamily: 'var(--fd)', fontSize: '16px', fontWeight: 300, fontStyle: 'italic', color: 'var(--warm-grey)', lineHeight: '1.5', marginTop: '10px', textTransform: 'none', letterSpacing: 'normal' }}>Where ventures<br />take root.</p>
-          </div>
-
-          <div className="footer-links">
-            <div style={{ fontFamily: 'var(--fm)', fontSize: '9px', letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(var(--rgb-warm-grey),0.55)', marginBottom: '14px' }}>AI Frameworks</div>
-            <Link to="/art-of-brand">Art of Brand</Link>
-            <Link to="/campfyer">Campfyer</Link>
-          </div>
-
-          <div className="footer-links">
-            <div style={{ fontFamily: 'var(--fm)', fontSize: '9px', letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(var(--rgb-warm-grey),0.55)', marginBottom: '14px' }}>Apply Now</div>
-            <p style={{ fontSize: '13px', fontWeight: 300, color: 'var(--warm-grey)', lineHeight: '1.6' }}>
-              kaizen /kī′zĕn″/ - Continuous Improvement
-            </p>
-          </div>
-
-          <div className="footer-cta" style={{ textAlign: 'right' }}>
-            <div style={{ fontFamily: 'var(--fd)', fontSize: '22px', fontWeight: 300, color: 'var(--warm-grey)', marginBottom: '14px', lineHeight: '1.2' }}>Enter the<br /><em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Dojo.</em></div>
-            <Link to="/apply" style={{ padding: '8px 22px', background: 'transparent', border: '1px solid var(--gold)', color: 'var(--gold)', fontFamily: 'var(--fb)', fontSize: '10px', fontWeight: 500, letterSpacing: '.14em', textTransform: 'uppercase', textDecoration: 'none', transition: 'all .2s', display: 'inline-block' }}>Enter Dojo →</Link>
-          </div>
-        </div>
-        
-        <div className="footer-bottom" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p>© 2026 Lotus Room Studio · Nairobi · @lotusroom.studio</p>
+        <div className="footer-bottom">
+          <p>© 2026 Lotus Room Studio · Nairobi ·</p>
+          <p style={{ textTransform: 'none' }}>kaizen /kī′zĕn″/ - Continuous Improvement</p>
           <p>Culture by Design</p>
         </div>
       </footer>
