@@ -61,10 +61,10 @@ export default function Dojo() {
         .stage-list li { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 12px; }
         .stage-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-        .cta-section { text-align: center; padding: 120px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
-        .cta-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 400px; margin: 0 auto; }
-        .cta-card { padding: 48px 32px; background: var(--parchment); border: 1px solid rgba(var(--rgb-ink), 0.05); text-align: center; }
-        .cta-card p { font-size: 14px; color: var(--warm-grey); line-height: 1.6; margin-bottom: 24px; }
+        .cta-section { position: relative; text-align: center; padding: 160px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; overflow: hidden; }
+        .cta-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 600px; margin: 0 auto; position: relative; zIndex: 1; }
+        .cta-card { padding: 80px 48px; background: transparent; text-align: center; }
+        .cta-card p { font-size: 18px; color: var(--warm-grey); line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
 
         @media(max-width:1024px){
           .hero{padding:100px 20px 64px;}
@@ -215,11 +215,20 @@ export default function Dojo() {
       </section>
 
       <div className="cta-section">
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+            <defs>
+              <radialGradient id="dojoG2" cx="50%" cy="100%" r="70%"><stop offset="0%" stopColor="var(--gold-light)" stopOpacity="0.15"/><stop offset="100%" stopColor="transparent"/></radialGradient>
+            </defs>
+            <rect width="1440" height="900" fill="var(--cream)"/>
+            <rect width="1440" height="900" fill="url(#dojoG2)"/>
+          </svg>
+        </div>
         <FadeIn className="cta-grid">
           <div className="cta-card">
-            <h3 style={{fontFamily: 'var(--fd)', fontSize: '24px', fontWeight: 300, color: 'var(--ink)', marginBottom: '12px'}}>Apply to the Dojo</h3>
+            <h3 style={{fontFamily: 'var(--fd)', fontSize: '48px', fontWeight: 300, color: 'var(--ink)', marginBottom: '24px'}}>Apply to the <em>Dojo.</em></h3>
             <p>Join the cohort and build your business with direct support over 12 weeks.</p>
-            <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
+            <Link to="/apply" className="btn-primary" style={{ fontSize: '14px', padding: '16px 40px' }}>Apply to the Dojo</Link>
           </div>
         </FadeIn>
       </div>

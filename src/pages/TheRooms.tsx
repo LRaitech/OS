@@ -256,7 +256,7 @@ export default function TheRooms() {
             <div className="room-subtitle">AI-driven identity systems for founders.</div>
             <div className="rule"></div>
             <p className="room-desc">Build a complete visual and verbal identity in 60 minutes. This system extracts your founder narrative and converts it into a professional brand kit through three structured AI frameworks.</p>
-            <Link to="/art-of-brand" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Explore the frameworks →</Link>
+            <Link to="/contact" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Book Now →</Link>
           </div>
           <div>
             <div className="price-card">
@@ -278,7 +278,7 @@ export default function TheRooms() {
             <div className="room-subtitle">The 30-day content engine.</div>
             <div className="rule"></div>
             <p className="room-desc">Stop the hashtag guesswork. Campfyer converts a single core insight into a high-converting, 4-week content arc in under 60 minutes. No agency, no revisions, no waiting.</p>
-            <Link to="/campfyer" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Explore the frameworks →</Link>
+            <Link to="/contact" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Book Now →</Link>
           </div>
           <div>
             <div className="price-card">
