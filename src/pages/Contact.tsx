@@ -72,7 +72,7 @@ export default function Contact() {
         <div>
           <div className="contact-header">
             <div className="contact-kicker">Connect</div>
-            <h1>Let's talk.</h1>
+            <h1>Let's <em>talk.</em></h1>
             <p>Whether you're applying to the Dojo, exploring a Room, or ready to book a strategy engagement - reach us directly.</p>
           </div>
           

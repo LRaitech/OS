@@ -49,9 +49,6 @@ export default function Navigation() {
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         <div style={{ display: "flex", alignItems: "center" }}>
-          {!isHome && (
-            <Link to="/" style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', border: '1px solid rgba(var(--rgb-ink), 0.25)', padding: '4px 8px', color: 'var(--ink)', textDecoration: 'none', marginRight: '16px', letterSpacing: '0.05em' }}>[ ← Back ]</Link>
-          )}
           <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
             <span className="nav-wordmark" style={{ fontFamily: '"Cormorant Garamond", serif', textTransform: 'uppercase', color: 'var(--ink)', fontSize: '20px', fontWeight: 600, letterSpacing: '0.08em' }}>LOTUS ROOM</span>
           </Link>

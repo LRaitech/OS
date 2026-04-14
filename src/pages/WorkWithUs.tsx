@@ -42,8 +42,6 @@ export default function WorkWithUs() {
     .sc-includes{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px;}
     .sc-includes li{font-size:13px;font-weight:300;color:var(--warm-grey2);display:flex;align-items:center;gap:8px;}
     .sc-includes li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--gold);flex-shrink:0;}
-    .btn-primary{display:block;padding:15px 24px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:var(--fb);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;text-align:center;transition:all .2s;margin-bottom:10px;}
-    .btn-primary:hover{background:var(--gold);color:var(--cream);}
 
     /* Engagements */
     .engagements{padding:72px 48px;border-bottom:1px solid rgba(var(--rgb-warm-grey2),0.08);}
@@ -121,7 +119,7 @@ export default function WorkWithUs() {
       <p className="hero-sub">We apply the Dojo System with our judgment in the room. Not a template: a partnership. For founders building ventures worth noticing.</p>
       <div className="rule"></div>
       <p style={{fontSize: "14px", fontWeight: "300", color: "var(--warm-grey)", lineHeight: "1.7", marginBottom: "28px"}}>Foundation is where most clients begin. Clarity before scale. Define your idea, audience, and cultural position. Build your narrative, structure, and strategic base.</p>
-      <Link to="/apply" className="btn-primary" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Start the conversation →</Link>
+      <Link to="/apply" className="btn-primary">Start a Conversation →</Link>
       <div className="flow-list" style={{marginTop: "32px"}}>
         <div className="flow-step"><div className="flow-n">01</div><div className="flow-text">Email us or book a 30-min call: no pitch, just conversation</div></div>
         <div className="flow-step"><div className="flow-n">02</div><div className="flow-text">Brief assessment: we understand your stage, goals, constraints</div></div>
@@ -139,7 +137,7 @@ export default function WorkWithUs() {
           <li>Brand structure</li>
         </ul>
         <Link to="/apply" className="btn-primary">Apply for Foundation →</Link>
-        <Link to="/apply" className="btn-primary" style={{borderColor: "rgba(var(--rgb-warm-grey2),0.25)", color: "var(--warm-grey2)"}}>Just say hello →</Link>
+        <Link to="/apply" className="btn-secondary">Just say hello →</Link>
         <div style={{marginTop: "12px", textAlign: "center", fontSize: "11px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>lotusroom.os@gmail.com</div>
       </div>
     </div>
@@ -177,7 +175,7 @@ export default function WorkWithUs() {
           <li>3 rooms applied in depth</li>
           <li>Full delivery - brand, campaign, growth</li>
         </ul>
-        <Link to="/apply" className="eg-cta">Start a conversation →</Link>
+        <Link to="/apply" className="eg-cta">Start a Conversation →</Link>
       </div>
       <div className="eg-card">
         
@@ -190,7 +188,7 @@ export default function WorkWithUs() {
           <li>Optimized customer testing systems & content flows</li>
           <li>Optional strategy consultation</li>
         </ul>
-        <Link to="/apply" className="eg-cta">Start a conversation →</Link>
+        <Link to="/apply" className="eg-cta">Start a Conversation →</Link>
       </div>
       <div className="eg-card">
         
@@ -204,7 +202,7 @@ export default function WorkWithUs() {
           <li>Revenue systems + automation</li>
           <li>3-month partnership</li>
         </ul>
-        <Link to="/apply" className="eg-cta">Start a conversation →</Link>
+        <Link to="/apply" className="eg-cta">Start a Conversation →</Link>
       </div>
     </div>
   </div>

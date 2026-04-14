@@ -2,13 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
+import { IconDwennimmen, IconNkyinkyim, IconSun } from '../components/HeritageIcons';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.documentElement.style.scrollSnapType = 'y mandatory';
+    document.body.style.overflowY = 'scroll';
+    
+    return () => {
+      document.documentElement.style.scrollSnapType = '';
+      document.body.style.overflowY = '';
+    };
   }, []);
 
   return (
@@ -32,9 +41,10 @@ export default function Home() {
 
     /* HERO */
     .hero {
-      position: relative; min-height: 95vh;
+      position: relative; min-height: 100vh;
       display: flex; flex-direction: row; align-items: center; justify-content: space-between;
       padding: 0 48px; overflow: hidden; gap: 48px;
+      scroll-snap-align: start;
     }
     .hero-art {
       position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
@@ -56,17 +66,6 @@ export default function Home() {
     h1 em { font-style: italic; color: var(--gold); }
     .hero-sub { font-size: 18px; font-weight: 300; line-height: 1.65; color: var(--warm-grey); max-width: 560px; margin-bottom: 40px; }
     .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-    .btn-primary {
-      padding: 16px 40px; background: transparent; border: 1px solid var(--gold);
-      color: var(--gold); font-family: var(--fb); font-size: 11px; font-weight: 500;
-      letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: all .2s; display: inline-block;
-    }
-    .btn-primary:hover { background: var(--gold); color: var(--cream); }
-    .btn-ghost {
-      font-size: 13px; font-weight: 300; color: var(--warm-grey); text-decoration: none;
-      border-bottom: 1px solid rgba(var(--rgb-warm-grey),0.30); padding-bottom: 2px; transition: all .15s;
-    }
-    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
     .hero-build-card {
       background: var(--parchment); border: 1px solid rgba(var(--rgb-gold), 0.2); padding: 24px; max-width: 400px; text-align: left;
     }
@@ -84,8 +83,19 @@ export default function Home() {
     .proof-label { font-size: 12px; font-weight: 300; color: var(--warm-grey); line-height: 1.45; }
 
     /* SECTIONS */
-    section { position: relative; z-index: 1; padding: 96px 48px; border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.08); }
-    .inner { max-width: 1100px; margin: 0 auto; }
+    section { 
+      position: relative; 
+      z-index: 1; 
+      padding: 96px 48px; 
+      border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.08);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      scroll-snap-align: start;
+    }
+    .alt-section { background: var(--parchment); }
+    .inner { max-width: 1100px; margin: 0 auto; width: 100%; }
     .s-kicker { font-family: var(--fm); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 16px; }
     h2 { font-family: var(--fd); font-size: clamp(36px,5vw,56px); font-weight: 300; line-height: 1.0; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
     h2 em { font-style: italic; color: var(--gold); }
@@ -151,7 +161,7 @@ export default function Home() {
     .rung.strategy-r .rung-track { color: var(--warm-grey2); }
 
     /* SPRINT */
-    .sprint-section { background: var(--parchment); }
+    .sprint-section { background: var(--cream); }
     .sprint-grid { display: grid; grid-template-columns: 1fr 360px; gap: 80px; align-items: center; }
     .sprint-price-block { padding: 40px; border: 1px solid rgba(var(--rgb-gold),0.25); background: var(--cream); text-align: center; }
     .sprint-amount { font-family: var(--fd); font-size: 72px; font-weight: 300; color: var(--gold); letter-spacing: -.04em; line-height: 1; margin-bottom: 6px; }
@@ -159,15 +169,9 @@ export default function Home() {
     .sprint-what { list-style: none; display: flex; flex-direction: column; gap: 8px; text-align: left; margin-bottom: 28px; }
     .sprint-what li { font-size: 13px; font-weight: 300; color: var(--warm-grey2); display: flex; align-items: center; gap: 8px; }
     .sprint-what li::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .sprint-btn {
-      display: block; padding: 14px 24px; background: transparent; border: 1px solid var(--gold);
-      color: var(--gold); font-family: var(--fb); font-size: 10px; font-weight: 500;
-      letter-spacing: .14em; text-transform: uppercase; text-decoration: none; text-align: center; transition: all .15s;
-    }
-    .sprint-btn:hover { background: var(--gold); color: var(--cream); }
 
     /* FOOTER */
-    footer { position: relative; z-index: 1; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 48px; align-items: start; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10); }
+    footer { position: relative; z-index: 1; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 48px; align-items: start; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10); scroll-snap-align: start; }
     .footer-tagline { font-family: var(--fd); font-size: 16px; font-weight: 300; font-style: italic; color: var(--warm-grey); line-height: 1.5; margin-top: 10px; }
     .footer-col-label { font-family: var(--fm); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(var(--rgb-warm-grey),0.55); margin-bottom: 14px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
@@ -265,9 +269,22 @@ export default function Home() {
   <div className="hero-scrim"></div>
   <FadeIn className="hero-content">
     <div className="eyebrow">Strategy Studio</div>
-    <h1>Culture By <em>Design.</em></h1>
+    <h1>
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        style={{ display: 'inline-block' }}
+      >Culture by</motion.span>{' '}
+      <motion.em
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        style={{ display: 'inline-block' }}
+      >Design.</motion.em>
+    </h1>
     <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6', marginBottom: '32px' }}>
-      We build systems for creator-led brands where design, AI, and strategy stay in sync, from ideas to venture-ready.
+      We build systems for brands where design, AI, and strategy stay in sync, from ideas to workflows.
     </p>
     
   </FadeIn>
@@ -282,45 +299,67 @@ export default function Home() {
   <FadeIn delay={0.4} className="proof-item"><div className="proof-num">∞</div><div className="proof-label">Run the workflows every month</div></FadeIn>
 </div>
 
-
-<section id="tracks">
-  <FadeIn className="inner">
-    <div className="s-kicker">// Two ways in</div>
-    <h2>Pick your<br /><em>entry point.</em></h2>
-    <p className="s-intro">One track for founders who want to build themselves. One for those ready to build with us.</p>
-    <div className="tracks">
-      <div className="track ai-frameworks">
-        <div className="track-label">AI Frameworks track · self-serve</div>
-        <h3>Build your brand,<br />content, and growth<br /><em>yourself.</em></h3>
-        <p className="track-body">Run structured AI frameworks in a single session. Buy one room or access the full system. Every output is yours. No subscription, no agency, no waiting.</p>
-        <ul className="track-list">
-          <li>Art of Brand: complete brand identity system</li>
-          <li>Campfyer: full 30-day campaign in one session</li>
-          <li>EVO, Beat Therapy, Deeper: coming soon</li>
-          <li>Full system access available</li>
-        </ul>
-        <Link to="/rooms" className="track-cta">[ See all rooms → ]</Link>
-      </div>
-      <div className="track strategy">
-        <div className="track-label">Strategy track · high-touch</div>
-        <h3>Build with a strategist<br />who understands your<br /><em>full system.</em></h3>
-        <p className="track-body">We apply the Dojo methodology directly to your venture. Every stage is executed with you, in real time.</p>
-        <ul className="track-list">
-          <li>Foundation: clarity before scale</li>
-          <li>Build: turn the idea into presence</li>
-          <li>Develop: refine and systematize operations</li>
-          <li>Capital: position for growth and investment</li>
-        </ul>
-        <Link to="/apply" className="track-cta">[ Book a discovery call → ]</Link>
-      </div>
-    </div>
-  </FadeIn>
+<section id="our-studio" className="alt-section" style={{ padding: '96px 48px', borderBottom: '1px solid rgba(var(--rgb-warm-grey2),0.08)' }}>
+  <div className="inner">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.15 }
+        }
+      }}
+    >
+      <motion.div 
+        className="s-kicker"
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', color: 'var(--gold)' }}>
+          <IconSun size={20} />
+          <span>OUR STUDIO</span>
+        </div>
+      </motion.div>
+      <motion.h2 
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+      >
+        Story. Strategy. Systems.
+      </motion.h2>
+      <motion.div 
+        className="rule"
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+      ></motion.div>
+      <motion.p 
+        className="s-intro" 
+        style={{ fontSize: '20px', maxWidth: '800px', lineHeight: '1.6', color: 'var(--ink)' }}
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+        }}
+      >
+        We design brand architecture, operational systems, and growth strategy for emerging ventures - combining culture, technology, and narrative to build companies that scale with clarity and relevance.
+      </motion.p>
+    </motion.div>
+  </div>
 </section>
 
-
-<section id="rooms" style={{background: "var(--parchment)"}}>
+<section id="rooms">
   <FadeIn className="inner">
-    <div className="s-kicker">// Five Rooms</div>
+    <div className="s-kicker" style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--gold)' }}>
+      <IconDwennimmen size={20} />
+      <span>// Five Rooms</span>
+    </div>
     <h2>Systems for <em>Founders.</em></h2>
     <p className="s-intro">Five rooms. Four levels. A methodology that takes any founder from brand clarity to ecosystem mastery.</p>
     <div className="rooms-grid">
@@ -353,6 +392,43 @@ export default function Home() {
   </FadeIn>
 </section>
 
+<section id="tracks" className="alt-section">
+  <FadeIn className="inner">
+    <div className="s-kicker" style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--gold)' }}>
+      <IconNkyinkyim size={20} />
+      <span>// Two ways in</span>
+    </div>
+    <h2>Pick your<br /><em>entry point.</em></h2>
+    <p className="s-intro">One track for founders who want to build themselves. One for those ready to build with us.</p>
+    <div className="tracks">
+      <div className="track ai-frameworks">
+        <div className="track-label">AI Frameworks track · self-serve</div>
+        <h3>Build your brand,<br />content, and growth<br /><em>yourself.</em></h3>
+        <p className="track-body">Run structured AI frameworks in a single session. Buy one room or access the full system. Every output is yours. No subscription, no agency, no waiting.</p>
+        <ul className="track-list">
+          <li>Art of Brand: complete brand identity system</li>
+          <li>Campfyer: full 30-day campaign in one session</li>
+          <li>EVO, Beat Therapy, Deeper: coming soon</li>
+          <li>Full system access available</li>
+        </ul>
+        <Link to="/rooms" className="track-cta">[ See all rooms → ]</Link>
+      </div>
+      <div className="track strategy">
+        <div className="track-label">Strategy track · high-touch</div>
+        <h3>Build with a strategist<br />who understands your<br /><em>full system.</em></h3>
+        <p className="track-body">We apply the Dojo methodology directly to your venture. Every stage is executed with you, in real time.</p>
+        <ul className="track-list">
+          <li>Foundation: clarity before scale</li>
+          <li>Build: turn the idea into presence</li>
+          <li>Develop: refine and systematize operations</li>
+          <li>Capital: position for growth and investment</li>
+        </ul>
+        <Link to="/apply" className="track-cta">[ Book a discovery call → ]</Link>
+      </div>
+    </div>
+  </FadeIn>
+</section>
+
 
 
 
@@ -362,10 +438,10 @@ export default function Home() {
     <div className="sprint-grid" style={{ gridTemplateColumns: '1fr' }}>
       <div>
         <div className="s-kicker">// Book a discovery call</div>
-        <h2>Start with<br /><em>conversation</em></h2>
+        <h2>Start a<br /><em>Conversation.</em></h2>
         <div className="rule"></div>
         <p style={{fontSize: "14px", fontWeight: "300", color: "var(--warm-grey)", lineHeight: "1.7", marginBottom: "32px"}}>Define your idea, audience, and cultural position.</p>
-        <Link to="/contact" className="btn-primary">Book a Call →</Link>
+        <Link to="/contact" className="btn-primary">Start a Conversation →</Link>
         <p style={{marginTop: "14px", fontSize: "12px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch</p>
       </div>
     </div>

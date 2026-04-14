@@ -47,7 +47,7 @@ export default function Apply() {
 
       <div className="apply-container">
         <div className="apply-header">
-          <h1>Application</h1>
+          <h1>The <em>Application.</em></h1>
           <p>Tell us about your venture. We'll review your details and get back to you to schedule a conversation.</p>
         </div>
 
@@ -57,7 +57,7 @@ export default function Apply() {
           <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
           
           <div className="form-section">
-            <h2 className="form-section-title">Essential Info</h2>
+            <h2 className="form-section-title">Essential <em>Info.</em></h2>
             <div className="form-group">
               <label className="form-label">Full Name</label>
               <input type="text" name="name" className="form-input" placeholder="Your Name" required />
@@ -90,7 +90,7 @@ export default function Apply() {
           </div>
 
           <div className="form-section">
-            <h2 className="form-section-title">Company / Project Context</h2>
+            <h2 className="form-section-title">Company / <em>Project Context.</em></h2>
             <div className="form-group">
               <label className="form-label">Company / Project Name</label>
               <input type="text" name="Project Name" className="form-input" placeholder="Project Title" required />
@@ -121,7 +121,7 @@ export default function Apply() {
           </div>
 
           <div className="form-section">
-            <h2 className="form-section-title">Presence & Links</h2>
+            <h2 className="form-section-title">Presence & <em>Links.</em></h2>
             <div className="form-group">
               <label className="form-label">Website & Social Links</label>
               <textarea name="Links" className="form-textarea" placeholder="Paste links here (Website, LinkedIn, Instagram, TikTok)..."></textarea>
@@ -134,7 +134,7 @@ export default function Apply() {
           </div>
 
           <div className="form-section">
-            <h2 className="form-section-title">Goals & Challenges</h2>
+            <h2 className="form-section-title">Goals & <em>Challenges.</em></h2>
             <div className="form-group">
               <label className="form-label">Main Goal</label>
               <textarea name="Main Goal" className="form-textarea" placeholder="What are you aiming to achieve?" required></textarea>
@@ -156,7 +156,7 @@ export default function Apply() {
           </div>
 
           <div className="form-section">
-            <h2 className="form-section-title">Meeting Preferences</h2>
+            <h2 className="form-section-title">Meeting <em>Preferences.</em></h2>
             <div className="form-group">
               <label className="form-label">Preferred Meeting Type</label>
               <div className="radio-group">
@@ -172,7 +172,7 @@ export default function Apply() {
           </div>
 
           <div className="form-section">
-            <h2 className="form-section-title">Additional Notes</h2>
+            <h2 className="form-section-title">Additional <em>Notes.</em></h2>
             <div className="form-group">
               <textarea name="Additional Notes" className="form-textarea" placeholder="Any other context..."></textarea>
             </div>

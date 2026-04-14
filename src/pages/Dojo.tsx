@@ -1,11 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '../components/FadeIn';
 
 export default function Dojo() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.documentElement.style.scrollSnapType = 'y mandatory';
+    document.body.style.overflowY = 'scroll';
+    
+    return () => {
+      document.documentElement.style.scrollSnapType = '';
+      document.body.style.overflowY = '';
+    };
   }, []);
+
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div className="page-dojo">
@@ -13,33 +31,37 @@ export default function Dojo() {
         .page-dojo { min-height: 100vh; background: var(--cream); color: var(--ink); font-family: var(--fb); }
         
         /* HERO */
-        .hero { position: relative; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; overflow: hidden; background: var(--cream); color: var(--ink); text-align: center; }
-        .hero h1 { font-family: var(--fd); font-size: clamp(48px,8vw,80px); font-weight: 300; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 24px; }
-        .hero-sub { font-size: 18px; font-weight: 300; line-height: 1.65; color: var(--warm-grey); max-width: 720px; margin: 0 auto 24px; }
-        .hero-meta { font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 40px; font-weight: 500; }
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 160px 48px 120px; overflow: hidden; background: var(--cream); color: var(--ink); text-align: center; scroll-snap-align: start; perspective: 1000px; }
+        .hero h1 { font-family: var(--fd); font-size: clamp(64px,10vw,120px); font-weight: 300; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 32px; }
+        .hero-sub { font-size: 20px; font-weight: 300; line-height: 1.65; color: var(--warm-grey); max-width: 800px; margin: 0 auto 32px; }
+        .hero-meta { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 48px; font-weight: 500; }
         .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         
-        .btn-primary { padding: 16px 40px; background: var(--gold); border: 1px solid var(--gold); color: var(--cream); font-family: var(--fb); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: all .2s; display: inline-block; }
-        .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
-        .btn-secondary { padding: 16px 40px; background: transparent; border: 1px solid rgba(var(--rgb-ink),0.3); color: var(--ink); font-family: var(--fb); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: all .2s; display: inline-block; }
-        .btn-secondary:hover { border-color: var(--ink); }
-
         /* CONTENT */
-        .dojo-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+        .dojo-section { padding: 0; width: 100%; }
         
-        .stage-row { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; padding: 64px 0; border-top: 1px solid rgba(var(--rgb-ink), 0.1); }
-        .stage-meta h3 { font-family: var(--fd); font-size: 32px; font-weight: 300; color: var(--ink); margin-bottom: 4px; }
-        .stage-subtitle { font-family: var(--fm); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 24px; }
-        .stage-tagline { font-size: 14px; color: var(--ink); font-style: italic; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(var(--rgb-ink), 0.05); }
+        .stage-row { 
+          display: grid; grid-template-columns: 1fr 2fr; gap: 80px; 
+          padding: 120px 48px; 
+          min-height: 100vh;
+          align-items: center;
+          scroll-snap-align: start;
+          max-width: 1600px;
+          margin: 0 auto;
+          perspective: 1000px;
+        }
+        .stage-meta h3 { font-family: var(--fd); font-size: 40px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+        .stage-subtitle { font-family: var(--fm); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 24px; }
+        .stage-tagline { font-size: 16px; color: var(--ink); font-style: italic; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(var(--rgb-ink), 0.05); }
         
-        .stage-content p { font-size: 16px; font-weight: 300; color: var(--warm-grey2); line-height: 1.7; margin-bottom: 24px; }
+        .stage-content p { font-size: 18px; font-weight: 300; color: var(--warm-grey2); line-height: 1.7; margin-bottom: 24px; max-width: 800px; }
         .stage-content p:last-child { margin-bottom: 0; }
         
         .stage-list { list-style: none; padding: 0; margin: 32px 0 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
         .stage-list li { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 12px; }
         .stage-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-        .cta-section { text-align: center; padding: 80px 48px 120px; }
+        .cta-section { text-align: center; padding: 120px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
         .cta-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 400px; margin: 0 auto; }
         .cta-card { padding: 48px 32px; background: var(--parchment); border: 1px solid rgba(var(--rgb-ink), 0.05); text-align: center; }
         .cta-card p { font-size: 14px; color: var(--warm-grey); line-height: 1.6; margin-bottom: 24px; }
@@ -53,24 +75,70 @@ export default function Dojo() {
       `}</style>
 
       {/* HERO */}
-      <header className="hero">
-        <FadeIn className="hero-content">
-          <h1>The Dojo</h1>
-          <p className="hero-sub">The Dojo is a 12 week programme where founders work directly with a strategist and team to build their business step by step. This is not a course and it is not theory. Every part of the process is applied to your actual venture in real time.</p>
-          <p className="hero-sub">You are not watching or learning passively. You are making decisions, building assets, and putting structure into place with guidance. By the end of the programme, your business is defined, visible, and operational.</p>
-          <p className="hero-meta">Hybrid format. Online and Nairobi studio.</p>
-          <div className="hero-ctas">
-            <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
-          </div>
-        </FadeIn>
+      <header className="hero" ref={containerRef} style={{ position: 'relative', overflow: 'hidden' }}>
+        <motion.div 
+          style={{ position: 'absolute', inset: 0, y: y1, scale, opacity, zIndex: 0 }}
+        >
+          <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+            <defs>
+              <radialGradient id="dojoG1" cx="50%" cy="0%" r="70%"><stop offset="0%" stopColor="var(--gold-light)" stopOpacity="0.15"/><stop offset="100%" stopColor="transparent"/></radialGradient>
+            </defs>
+            <rect width="1440" height="900" fill="var(--cream)"/>
+            <rect width="1440" height="900" fill="url(#dojoG1)"/>
+            <g opacity="0.05" stroke="var(--ink)" fill="none">
+              <circle cx="720" cy="450" r="300" strokeWidth="1"/>
+              <circle cx="720" cy="450" r="450" strokeWidth="0.5"/>
+              <circle cx="720" cy="450" r="600" strokeWidth="0.25"/>
+            </g>
+          </svg>
+        </motion.div>
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px', margin: '0 auto' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h1>The <em>Dojo.</em></h1>
+          </motion.div>
+          
+          <motion.p 
+            className="hero-sub"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            The Dojo is a 12 week programme where founders work directly with a strategist and team to build their business step by step. This is not a course and it is not theory. Every part of the process is applied to your actual venture in real time.
+          </motion.p>
+          
+          <motion.p 
+            className="hero-sub"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          >
+            You are not watching or learning passively. You are making decisions, building assets, and putting structure into place with guidance. By the end of the programme, your business is defined, visible, and operational.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="hero-meta">Hybrid format. Online and Nairobi studio.</p>
+            <div className="hero-ctas">
+              <Link to="/apply" className="btn-primary">Apply to the Dojo</Link>
+            </div>
+          </motion.div>
+        </div>
       </header>
 
       {/* STAGES */}
       <section id="stages" className="dojo-section">
         
-        <FadeIn className="stage-row">
+        <FadeIn className="stage-row" style={{ borderTop: 'none' }}>
           <div className="stage-meta">
-            <h3>Foundation</h3>
+            <h3>The <em>Foundation.</em></h3>
             <div className="stage-subtitle">Clarity</div>
             <div className="stage-tagline">Define idea, audience, cultural position</div>
           </div>
@@ -89,7 +157,7 @@ export default function Dojo() {
 
         <FadeIn className="stage-row">
           <div className="stage-meta">
-            <h3>Build</h3>
+            <h3>The <em>Build.</em></h3>
             <div className="stage-subtitle">Presence</div>
             <div className="stage-tagline">Turn vision into public presence</div>
           </div>
@@ -108,7 +176,7 @@ export default function Dojo() {
 
         <FadeIn className="stage-row">
           <div className="stage-meta">
-            <h3>Develop</h3>
+            <h3>The <em>Develop.</em></h3>
             <div className="stage-subtitle">Structure</div>
             <div className="stage-tagline">Workflows for growth</div>
           </div>
@@ -127,7 +195,7 @@ export default function Dojo() {
 
         <FadeIn className="stage-row">
           <div className="stage-meta">
-            <h3>Capital</h3>
+            <h3>The <em>Capital.</em></h3>
             <div className="stage-subtitle">Expansion</div>
             <div className="stage-tagline">Investor positioning</div>
           </div>

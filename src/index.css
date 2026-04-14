@@ -1,35 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:wght@300;400;500&display=swap');
 @import "tailwindcss";
 
 :root {
-  --cream: #F0EBE1;
-  --cream-deep: #E8E0D4;
-  --parchment: #F7F4EF;
-  --ink: #1A1714;
-  --ink-soft: #2A2218;
-  --gold: #B8860B;
-  --gold-light: #D4A84B;
-  --gold-pale: #E8C97A;
-  --gold-dim: rgba(184,134,11,0.18);
-  --gold-thin: rgba(184,134,11,0.10);
-  --warm-grey: #8B7355;
-  --warm-grey2: #5A4A35;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-
-  --rgb-cream: 240, 235, 225;
-  --rgb-ink: 26, 23, 20;
-  --rgb-gold: 184, 134, 11;
-  --rgb-gold-dark: 212, 168, 75;
-  --rgb-warm-grey: 139, 115, 85;
-  --rgb-warm-grey2: 90, 74, 53;
-  
-  --fd: 'Cormorant Garamond', Georgia, serif;
-  --fb: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --fm: 'Inter', monospace;
-}
-
-.dark {
   --cream: #1A1714;
   --cream-deep: #2A2218;
   --parchment: #14120F;
@@ -49,16 +21,34 @@
   --rgb-gold-dark: 184, 134, 11;
   --rgb-warm-grey: 168, 155, 140;
   --rgb-warm-grey2: 196, 184, 168;
+  
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Raleway', ui-sans-serif, system-ui, sans-serif;
+  
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Raleway', ui-sans-serif, system-ui, sans-serif;
+  --fm: 'Raleway', monospace;
+
+  /* Global Motion System */
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --t-micro: 0.2s;
+  --t-ui: 0.3s;
+  --t-section: 0.6s;
+  --t-room: 0.8s;
+  --t-page: 1s;
 }
 
 body {
-  background-color: var(--cream);
+  background: linear-gradient(to bottom, #2A2A2A, #000000);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
   font-weight: 300;
   letter-spacing: 0.05em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 h1,h2,h3,h4,h5,h6, .font-serif {
@@ -89,4 +79,67 @@ h1,h2,h3,h4,h5,h6, .font-serif {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Global Image Hover */
+img {
+  transition: opacity 0.2s var(--ease-enter);
+}
+a:hover img, button:hover img, .room-card:hover img, .article-card:hover img {
+  opacity: 0.85;
+}
+
+/* Smooth Buttons from the Future */
+.btn-primary, .btn-secondary, .btn-ghost, .track-cta, .eg-cta, .product-link, .article-link {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px !important;
+  border: 1px solid rgba(var(--rgb-gold), 0.3) !important;
+  background: rgba(var(--rgb-cream), 0.02) !important;
+  color: var(--gold) !important;
+  transition: all 0.2s var(--ease-enter) !important;
+  backdrop-filter: blur(4px);
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+}
+
+/* Animated Background Gradient */
+@keyframes animatedGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-bg {
+  background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2a2a2a, #111111);
+  background-size: 400% 400%;
+  animation: animatedGradient 10s ease infinite;
+}
+
+.btn-primary::after, .btn-secondary::after, .track-cta::after, .eg-cta::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(var(--rgb-gold), 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.btn-primary:hover::after, .btn-secondary:hover::after, .track-cta:hover::after, .eg-cta:hover::after {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.btn-primary:hover, .btn-secondary:hover, .track-cta:hover, .eg-cta:hover, .product-link:hover, .article-link:hover {
+  border-color: rgba(var(--rgb-gold), 0.8) !important;
+  box-shadow: 0 0 20px rgba(var(--rgb-gold), 0.15);
+  color: var(--ink) !important;
+  background: rgba(var(--rgb-gold), 0.1) !important;
 }

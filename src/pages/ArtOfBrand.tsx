@@ -795,7 +795,7 @@ export default function ArtOfBrand() {
 <div className="strategy-cta" style={{background: "var(--parchment)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
   <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
     <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "24px"}}>// The Full Bundle</div>
-    <h2 className="sc-title" style={{fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", color: "var(--ink)", marginBottom: "32px"}}>Brand<br /><em>OS.</em></h2>
+    <h2 className="sc-title" style={{fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", color: "var(--ink)", marginBottom: "32px"}}>Brand <em>OS.</em></h2>
     <p className="sc-body" style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "var(--warm-grey)", marginBottom: "40px"}}>
       One system. All three frameworks combined to build your complete brand identity.
     </p>

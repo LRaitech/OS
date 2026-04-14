@@ -89,7 +89,7 @@ export default function About() {
 
       <header className="hero">
         <div className="hero-content">
-          <h1>Lotus Room</h1>
+          <h1>Lotus <em>Room.</em></h1>
         </div>
       </header>
 
@@ -100,7 +100,7 @@ export default function About() {
           </p>
           
           <div className="pillars">
-            <h2 style={{width: '100%', marginBottom: '32px'}}>Our Pillars</h2>
+            <h2 style={{width: '100%', marginBottom: '32px'}}>Our <em>Pillars.</em></h2>
             <div className="pillar">
               <div className="pillar-title">✦ Brand Realism</div>
               <div className="pillar-desc">Narratives and visual systems that feel like film, not marketing.</div>

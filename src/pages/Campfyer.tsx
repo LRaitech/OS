@@ -583,7 +583,7 @@ export default function Campfyer() {
 <div className="strategy-cta" style={{background: "var(--parchment)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>
   <div className="sc-inner" style={{maxWidth: "600px", margin: "0 auto"}}>
     <div className="sc-pre" style={{fontFamily: "var(--fm)", fontSize: "9px", letterSpacing: ".18em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "24px"}}>// Seen before scale.</div>
-    <h2 className="sc-title" style={{color: "var(--ink)", fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", marginBottom: "32px"}}>Get<br /><em>Campfyer.</em></h2>
+    <h2 className="sc-title" style={{color: "var(--ink)", fontFamily: "var(--fd)", fontSize: "clamp(40px, 6vw, 64px)", fontWeight: 300, lineHeight: 1.0, letterSpacing: "-.02em", marginBottom: "32px"}}>Get <em>Campfyer.</em></h2>
     
     <div style={{display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center", marginBottom: "64px"}}>
       <a href="https://paystack.com/buy/campfyer-campaign-system" target="_blank" className="btn-primary" style={{borderColor: "var(--gold)", color: "var(--gold)"}}>The Campaign System →</a>
@@ -592,7 +592,7 @@ export default function Campfyer() {
 
     <div style={{ borderTop: "1px solid rgba(var(--rgb-ink), 0.1)", paddingTop: "48px", textAlign: "left" }}>
       <div style={{fontFamily: "var(--fm)", fontSize: "10px", letterSpacing: ".1em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "16px"}}>Featured Start</div>
-      <h3 style={{fontFamily: "var(--fd)", fontSize: "32px", color: "var(--ink)", marginBottom: "8px"}}>Build</h3>
+      <h3 style={{fontFamily: "var(--fd)", fontSize: "32px", color: "var(--ink)", marginBottom: "8px"}}>The <em>Build.</em></h3>
       
       <p style={{fontSize: "15px", fontWeight: 300, lineHeight: 1.70, color: "rgba(var(--rgb-ink),0.7)", marginBottom: "32px"}}>
         Turn your vision into public presence.<br/>
