@@ -198,7 +198,7 @@ a:hover img, button:hover img, .room-card:hover img, .article-card:hover img {
 }
 
 /* Smooth Buttons from the Future */
-button:not(.switch-btn):not(.theme-toggle):not(.mobile-menu-btn), .btn-primary, .btn-secondary, .btn-ghost, .track-cta, .eg-cta, .product-link, .article-link, .pc-btn, .wl-btn {
+button:not(.switch-btn):not(.theme-toggle):not(.mobile-menu-btn):not(.action-btn), .btn-primary, .btn-secondary, .btn-ghost, .track-cta, .eg-cta, .product-link, .article-link, .pc-btn, .wl-btn {
     background: transparent !important;
     border: 0.5px solid currentColor !important;
     padding: 12px 24px !important;

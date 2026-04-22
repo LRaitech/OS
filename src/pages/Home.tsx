@@ -370,7 +370,7 @@ export default function Home() {
             visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
           }}
         >
-          We design brand architecture, operational systems, and growth strategy for emerging ventures - combining culture, technology, and narrative to build companies that scale with clarity and relevance.
+          We design your business to grow as big as your vision. We align your brand’s story with the systems needed to run it, creating a venture that scales with ease and stays culturally relevant.
         </motion.p>
       </motion.div>
     </div>
@@ -477,8 +477,8 @@ export default function Home() {
         <div className="s-kicker">// Book a discovery call</div>
         <h2 style={{ fontWeight: 500 }}>Start a<br /><em>Conversation.</em></h2>
         <div className="rule"></div>
-        <p style={{fontSize: "15px", fontWeight: "400", color: "var(--ink)", lineHeight: "1.7", marginBottom: "24px"}}>Define your idea, audience, and cultural position.</p>
-        <Link to="/contact" className="btn-primary" style={{ fontWeight: 500 }}>Start a Conversation →</Link>
+        <p style={{fontSize: "15px", fontWeight: "400", color: "var(--ink)", lineHeight: "1.7", marginBottom: "24px"}}>Let's connect and discover what really is your true north.</p>
+        <Link to="/contact" className="btn-primary" style={{ fontWeight: 500 }}>Book a Call →</Link>
         <p style={{marginTop: "14px", fontSize: "11px", fontWeight: "500", color: "var(--gold)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch</p>
       </div>
     </div>

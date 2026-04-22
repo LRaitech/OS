@@ -8,6 +8,11 @@ interface Article {
   pubDate: string;
   thumbnail: string;
   description: string;
+  content?: string;
+  enclosure?: {
+    link: string;
+    type: string;
+  };
 }
 
 export default function Insights() {
@@ -28,7 +33,9 @@ export default function Insights() {
     window.scrollTo(0, 0);
     
     // Fetch RSS feed using rss2json API
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Flotusroomos.substack.com%2Ffeed')
+    // Using rss2json which handles Substack quite well. 
+    // We add order_by and order_dir to ensure latest first.
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Flotusroomos.substack.com%2Ffeed&api_key=')
       .then(res => res.json())
       .then(data => {
         if (data.status === 'ok') {
@@ -91,30 +98,6 @@ export default function Insights() {
           color: var(--warm-grey);
           margin-bottom: 32px;
         }
-        .newsletter-form {
-          display: flex;
-          gap: 12px;
-          justify-content: center;
-          max-width: 400px;
-          margin: 0 auto;
-        }
-        .newsletter-btn {
-          padding: 14px 32px;
-          background: var(--ink);
-          color: var(--cream);
-          border: 1px solid var(--ink);
-          font-family: var(--fb);
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: .14em;
-          text-transform: uppercase;
-          text-decoration: none;
-          transition: all .2s;
-        }
-        .newsletter-btn:hover {
-          background: transparent;
-          color: var(--ink);
-        }
         
         .insights-grid {
           display: grid;
@@ -131,14 +114,25 @@ export default function Insights() {
           font-size: 32px;
           font-weight: 300;
           color: var(--ink);
-          margin-bottom: 24px;
+          margin-bottom: 48px;
           padding-bottom: 16px;
           border-bottom: 1px solid rgba(var(--rgb-ink), 0.08);
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+        }
+        .section-title span {
+          font-family: var(--fm);
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: .1em;
+          color: var(--warm-grey);
         }
         
         .article-card {
           display: flex;
           flex-direction: column;
+          position: relative;
         }
         
         .article-card.featured {
@@ -146,28 +140,36 @@ export default function Insights() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 64px;
-          align-items: center;
-          margin-bottom: 40px;
+          align-items: start;
+          margin-bottom: 64px;
           padding-bottom: 80px;
           border-bottom: 1px solid rgba(var(--rgb-ink), 0.08);
         }
         
         .article-card.standard {
           grid-column: span 4;
-          margin-bottom: 40px;
+          margin-bottom: 64px;
         }
         
         .image-container {
           width: 100%;
-          height: 300px;
-          margin-bottom: 24px;
+          height: 280px;
+          margin-bottom: 32px;
           background: rgba(var(--rgb-ink), 0.04);
+          overflow: hidden;
+          position: relative;
+          border: 1px solid rgba(var(--rgb-ink), 0.05);
         }
         
         .article-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .article-card:hover .article-img {
+          transform: scale(1.05);
         }
         
         .article-card.featured .image-container {
@@ -175,13 +177,23 @@ export default function Insights() {
           margin-bottom: 0;
         }
         
+        .fallback-bg {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(var(--rgb-gold), 0.05), rgba(var(--rgb-ink), 0.05));
+        }
+        
         .article-date {
           font-family: var(--fm);
           font-size: 10px;
           letter-spacing: .12em;
           text-transform: uppercase;
-          color: var(--warm-grey);
+          color: var(--gold);
           margin-bottom: 16px;
+          opacity: 0.8;
         }
         
         .article-title {
@@ -189,159 +201,56 @@ export default function Insights() {
           font-size: 28px;
           font-weight: 400;
           color: var(--ink);
-          margin-bottom: 16px;
+          margin-bottom: 20px;
           line-height: 1.2;
         }
         
         .article-card.featured .article-title {
-          font-size: clamp(40px, 5vw, 64px);
-          line-height: 1.05;
+          font-size: clamp(32px, 4vw, 56px);
+          line-height: 1.1;
           margin-bottom: 24px;
         }
         
         .article-desc {
-          font-size: 15px;
+          font-size: 16px;
           font-weight: 300;
-          color: var(--warm-grey2);
-          line-height: 1.6;
-          margin-bottom: 24px;
+          color: var(--warm-grey);
+          line-height: 1.7;
+          margin-bottom: 32px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
         
         .article-card.featured .article-desc {
           font-size: 18px;
-          line-height: 1.7;
-          margin-bottom: 32px;
+          line-height: 1.8;
+          -webkit-line-clamp: 5;
         }
+        
         .article-link {
           font-family: var(--fb);
           font-size: 11px;
           font-weight: 500;
           letter-spacing: .12em;
           text-transform: uppercase;
-          color: var(--gold);
-          text-decoration: none;
-          border-bottom: 1px solid rgba(var(--rgb-gold), 0.3);
-          padding-bottom: 2px;
-        }
-        
-        .product-card {
-          padding: 32px;
-          border: 1px solid rgba(var(--rgb-ink), 0.08);
-          background: var(--parchment);
-          margin-bottom: 24px;
-          transition: border-color .2s;
-        }
-        .product-card:hover {
-          border-color: rgba(var(--rgb-gold), 0.4);
-        }
-        .product-name {
-          font-family: var(--fd);
-          font-size: 22px;
-          font-weight: 400;
           color: var(--ink);
-          margin-bottom: 8px;
-        }
-        .product-desc {
-          font-size: 13px;
-          font-weight: 300;
-          color: var(--warm-grey);
-          margin-bottom: 16px;
-          line-height: 1.5;
-        }
-        .product-price {
-          font-family: var(--fm);
-          font-size: 12px;
-          color: var(--gold);
-          margin-bottom: 20px;
-        }
-        .product-link {
-          display: inline-block;
-          padding: 10px 20px;
-          border: 1px solid rgba(var(--rgb-ink), 0.2);
-          color: var(--ink);
-          font-family: var(--fb);
-          font-size: 10px;
-          font-weight: 500;
-          letter-spacing: .12em;
-          text-transform: uppercase;
           text-decoration: none;
-          transition: all .2s;
-        }
-        .product-link:hover {
-          background: var(--ink);
-          color: var(--cream);
-          border-color: var(--ink);
-        }
-        
-        .old-footer {
-          padding: 56px 48px;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr auto;
-          gap: 48px;
-          align-items: start;
-          border-top: 1px solid rgba(var(--rgb-warm-grey2), 0.10);
-        }
-        .footer-tagline {
-          font-family: var(--fd);
-          font-size: 16px;
-          font-weight: 300;
-          font-style: italic;
-          color: var(--warm-grey);
-          line-height: 1.5;
-          margin-top: 10px;
-        }
-        .footer-col-label {
-          font-family: var(--fm);
-          font-size: 9px;
-          letter-spacing: .16em;
-          text-transform: uppercase;
-          color: rgba(var(--rgb-warm-grey), 0.55);
-          margin-bottom: 14px;
-        }
-        .footer-links {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 9px;
-        }
-        .footer-links a {
-          font-size: 13px;
-          font-weight: 300;
-          color: var(--warm-grey);
-          text-decoration: none;
-          transition: color .15s;
-        }
-        .footer-links a:hover {
-          color: var(--ink);
-        }
-        .footer-cta {
-          text-align: right;
-        }
-        .footer-cta-text {
-          font-family: var(--fd);
-          font-size: 22px;
-          font-weight: 300;
-          color: var(--warm-grey);
-          margin-bottom: 14px;
-          line-height: 1.2;
-        }
-        .footer-cta-text em {
-          color: var(--gold);
-          font-style: italic;
-        }
-        .footer-copy {
-          grid-column: 1 / -1;
-          padding-top: 28px;
-          border-top: 1px solid rgba(var(--rgb-warm-grey2), 0.07);
-          display: flex;
-          justify-content: space-between;
+          display: inline-flex;
           align-items: center;
+          gap: 8px;
+          transition: gap 0.3s ease;
         }
-        .footer-copy-text {
-          font-family: var(--fm);
-          font-size: 10px;
-          color: var(--warm-grey);
-          letter-spacing: .06em;
+        .article-link:hover {
+          gap: 12px;
+        }
+        .article-link::after {
+          content: "";
+          display: block;
+          width: 24px;
+          height: 1px;
+          background: var(--gold);
         }
         
         @media(max-width: 1024px) {
@@ -366,14 +275,7 @@ export default function Insights() {
             grid-column: span 1;
           }
           .insights-hero {
-            padding: 56px 20px;
-          }
-          .old-footer {
-            padding: 40px 20px;
-            grid-template-columns: 1fr 1fr;
-          }
-          .footer-cta {
-            text-align: left;
+            padding: 80px 20px 48px;
           }
         }
       `}</style>
@@ -383,41 +285,22 @@ export default function Insights() {
           style={{ position: 'absolute', inset: 0, y: y1, scale, opacity, zIndex: 0 }}
         >
           <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-            <defs>
-              <radialGradient id="insightsG1" cx="20%" cy="20%" r="60%"><stop offset="0%" stopColor="var(--gold-light)" stopOpacity="0.12"/><stop offset="100%" stopColor="transparent"/></radialGradient>
-              <radialGradient id="insightsG2" cx="80%" cy="80%" r="60%"><stop offset="0%" stopColor="var(--warm-grey)" stopOpacity="0.08"/><stop offset="100%" stopColor="transparent"/></radialGradient>
-            </defs>
             <rect width="1440" height="900" fill="var(--cream)"/>
-            <rect width="1440" height="900" fill="url(#insightsG1)"/>
-            <rect width="1440" height="900" fill="url(#insightsG2)"/>
-            <g opacity="0.03" stroke="var(--ink)" fill="none">
-              <line x1="0" y1="300" x2="1440" y2="300" strokeWidth="0.5"/>
-              <line x1="0" y1="600" x2="1440" y2="600" strokeWidth="0.5"/>
-              <line x1="480" y1="0" x2="480" y2="900" strokeWidth="0.5"/>
-              <line x1="960" y1="0" x2="960" y2="900" strokeWidth="0.5"/>
+            <g opacity="0.04" stroke="var(--ink)" fill="none">
+              <path d="M0 450 L1440 450" strokeWidth="0.5"/>
+              <path d="M720 0 L720 900" strokeWidth="0.5"/>
             </g>
           </svg>
         </motion.div>
 
         <div className="ih-inner" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="artifact-svg" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '900px', opacity: 0.07, zIndex: -1 }}>
-            <svg viewBox="0 0 200 60" fill="none" stroke="currentColor" strokeWidth="0.2">
-              <path d="M0 55 Q20 50 40 55 T80 52 T120 55 T160 50 T200 55" strokeDasharray="1 1"/>
-              <path d="M30 55 L35 40 L40 55 M32 48 L38 48" opacity="0.8"/>
-              <path d="M110 52 L118 30 L126 52 M114 42 L122 42" opacity="0.8"/>
-              <path d="M160 50 L163 43 L166 50" opacity="0.8"/>
-              <circle cx="85" cy="50" r="0.5" fill="currentColor"/>
-              <circle cx="88" cy="51" r="0.5" fill="currentColor"/>
-              <circle cx="91" cy="50" r="0.5" fill="currentColor"/>
-            </svg>
-          </div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="eyebrow">Insights & Systems</div>
-            <h1>Cultural <em>Insights.</em></h1>
+            <div className="eyebrow">Insights & Intelligence</div>
+            <h1>Cultural <em>Systems.</em></h1>
           </motion.div>
           
           <motion.p 
@@ -426,20 +309,30 @@ export default function Insights() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            Essays on brand strategy, AI frameworks, and building ventures that scale. Join the newsletter to get our latest systems directly in your inbox.
+            A repository of strategic observations, operating models, and venture perspectives distilled for the modern builder.
           </motion.p>
         </div>
       </header>
 
       <div className="insights-grid">
-        <h2 className="section-title">Latest <em>Articles.</em></h2>
+        <h2 className="section-title">
+          Latest <em>Releases.</em>
+          <span>Vol. 01 — 2024</span>
+        </h2>
         
         {loading ? (
-          <div style={{ gridColumn: 'span 12', padding: '40px 0', color: 'var(--warm-grey)', fontFamily: 'var(--fm)', fontSize: '12px' }}>Loading articles...</div>
+          <div style={{ gridColumn: 'span 12', padding: '100px 0', textAlign: 'center', color: 'var(--warm-grey)', fontFamily: 'var(--fm)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+            <motion.div
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              Retrieving Substack Feed...
+            </motion.div>
+          </div>
         ) : articles.length > 0 ? (
           articles.map((article, index) => {
             // Extract a clean description (removing HTML tags)
-            const cleanDesc = article.description.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...';
+            const cleanDesc = article.description.replace(/<[^>]*>?/gm, '').substring(0, 200);
             
             // Format date
             const date = new Date(article.pubDate).toLocaleDateString('en-US', {
@@ -448,11 +341,33 @@ export default function Insights() {
               day: 'numeric'
             });
 
-            // Extract image from description if thumbnail is empty
-            let imageUrl = article.thumbnail;
-            if (!imageUrl) {
-              const imgMatch = article.description.match(/<img[^>]+src="([^">]+)"/);
-              if (imgMatch) imageUrl = imgMatch[1];
+            // Improved image extraction
+            let imageUrl = '';
+            
+            // 1. Check enclosure (rss2json standard for high res images)
+            if (article.enclosure && article.enclosure.link && (article.enclosure.type?.includes('image') || !article.enclosure.type)) {
+              imageUrl = article.enclosure.link;
+            } 
+            // 2. Check thumbnail property (rss2json often pulls the social share image here)
+            else if (article.thumbnail && !article.thumbnail.includes('substack-post-placeholder') && !article.thumbnail.includes('icon')) {
+              imageUrl = article.thumbnail;
+            }
+            // 3. Extract from content/description HTML with a more robust regex
+            else {
+              const fullContent = article.content || article.description || '';
+              // Look for the first img tag src, specifically looking for Substack's CDN pattern if possible
+              const imgMatch = fullContent.match(/<img[^>]+src="([^">?]+)/);
+              if (imgMatch) {
+                imageUrl = imgMatch[1];
+              }
+            }
+
+            // Clean up imageUrl (sometimes they come with query params that Substack uses for resizing)
+            if (imageUrl && imageUrl.includes('substack-post-assets')) {
+              // Ensure we aren't getting a tiny version
+              if (imageUrl.includes('w_')) {
+                imageUrl = imageUrl.replace(/w_\d+/, 'w_1200'); 
+              }
             }
 
             const isFeatured = index === 0;
@@ -466,30 +381,63 @@ export default function Insights() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                {imageUrl && (
-                  <div className="image-container" style={{ overflow: 'hidden' }}>
-                    <img src={imageUrl} alt={article.title} className="article-img cinematic-image" referrerPolicy="no-referrer" />
-                  </div>
-                )}
+                <div className="image-container">
+                  {imageUrl ? (
+                    <img 
+                      src={imageUrl} 
+                      alt={article.title} 
+                      className="article-img" 
+                      referrerPolicy="no-referrer"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="fallback-bg">
+                      <div style={{ opacity: 0.1 }}>
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor">
+                          <circle cx="20" cy="20" r="18" strokeWidth="0.5"/>
+                          <path d="M20 2 L20 38 M2 20 L38 20" strokeWidth="0.5"/>
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
                 <div className="article-content">
                   <div className="article-date">{date}</div>
                   <h3 className="article-title">{article.title}</h3>
-                  <p className="article-desc" dangerouslySetInnerHTML={{ __html: cleanDesc }}></p>
-                  <a href={article.link} target="_blank" rel="noopener noreferrer" className="article-link">Read full article →</a>
+                  <p className="article-desc">{cleanDesc}...</p>
+                  <a href={article.link} target="_blank" rel="noopener noreferrer" className="article-link">
+                    Read Article
+                  </a>
                 </div>
               </motion.article>
             );
           })
         ) : (
-          <div style={{ gridColumn: 'span 12', padding: '40px 0', color: 'var(--warm-grey)', fontFamily: 'var(--fm)', fontSize: '12px' }}>No articles found.</div>
+          <div style={{ gridColumn: 'span 12', padding: '100px 0', textAlign: 'center', color: 'var(--warm-grey)', fontFamily: 'var(--fm)', fontSize: '11px' }}>
+            No insights available at this time.
+          </div>
         )}
       </div>
 
-      <div className="newsletter-bottom" style={{ padding: '80px 48px', textAlign: 'center', borderTop: '1px solid rgba(var(--rgb-ink), 0.08)' }}>
-        <h2 style={{ fontFamily: 'var(--fd)', fontSize: '32px', marginBottom: '16px' }}>Join the <em>Newsletter.</em></h2>
-        <p style={{ color: 'var(--warm-grey)', marginBottom: '32px' }}>Get our latest systems directly in your inbox.</p>
+      <div className="newsletter-bottom" style={{ padding: '100px 48px', textAlign: 'center', background: 'var(--parchment)', borderTop: '1px solid rgba(var(--rgb-ink), 0.05)' }}>
+        <p className="eyebrow" style={{ marginBottom: '24px' }}>The Dojo Dispatch</p>
+        <h2 style={{ fontFamily: 'var(--fd)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: '300', marginBottom: '16px', color: 'var(--ink)' }}>Distilled <em>Intelligence.</em></h2>
+        <p style={{ color: 'var(--warm-grey)', marginBottom: '48px', maxWidth: '500px', margin: '0 auto 48px', fontSize: '15px' }}>Join our community of over 5,000 founders and creative leaders receiving weekly systems for strategic growth.</p>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <iframe src="https://lotusroomos.substack.com/embed" width="480" height="150" style={{ border: '1px solid rgba(var(--rgb-ink), 0.1)', background: 'transparent', borderRadius: '4px' }} frameBorder="0" scrolling="no"></iframe>
+          <iframe 
+            src="https://lotusroomos.substack.com/embed" 
+            width="480" 
+            height="150" 
+            style={{ 
+              maxWidth: '100%',
+              border: 'none', 
+              background: 'transparent',
+              borderRadius: '12px'
+            }} 
+            frameBorder="0" 
+            scrolling="no"
+          ></iframe>
         </div>
       </div>
     </div>

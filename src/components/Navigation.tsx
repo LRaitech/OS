@@ -5,6 +5,7 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') === 'dark';
@@ -29,14 +30,20 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
-      setScrollProgress(Number(scroll));
+      const progress = `${currentScroll / windowHeight}`;
+      
+      setScrollProgress(Number(progress));
+      setIsScrolled(currentScroll > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchstart', () => {}, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -53,10 +60,11 @@ export default function Navigation() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 48px',
-        background: 'rgba(var(--rgb-cream), 0.85)',
-        backdropFilter: 'blur(14px)',
-        borderBottom: '1px solid rgba(var(--rgb-ink), 0.05)',
-        transition: 'background 0.3s ease, border-color 0.3s ease'
+        background: isScrolled ? 'rgba(var(--rgb-cream), 0.92)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(var(--rgb-ink), 0.08)' : '1px solid transparent',
+        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+        transform: isScrolled ? 'translateY(0)' : 'translateY(0)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
           <div style={{ display: "flex", alignItems: "center" }}>
