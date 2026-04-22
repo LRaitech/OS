@@ -40,6 +40,59 @@ export default function ArtOfBrand() {
       mix-blend-mode: multiply;
     }
 
+    /* ── IN-PAGE NAV ── */
+    .in-page-nav {
+      position: sticky;
+      top: 60px; /* Below main nav */
+      margin-top: 60px; /* Push down so it's not hidden under fixed nav initially */
+      z-index: 90;
+      background: rgba(var(--rgb-cream), 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(var(--rgb-cream), 0.1);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ipn-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .ipn-title {
+      font-family: var(--fd);
+      font-size: 18px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .ipn-meta {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--warm-grey);
+    }
+    .ipn-btn {
+      padding: 8px 16px;
+      background: var(--gold);
+      color: var(--cream);
+      font-family: var(--fb);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background .2s;
+    }
+    .ipn-btn:hover {
+      background: var(--gold-light);
+    }
+    @media (max-width: 768px) {
+      .in-page-nav { padding: 12px 20px; top: 56px; margin-top: 56px; }
+      .ipn-meta { display: none; }
+    }
+
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -133,7 +186,7 @@ export default function ArtOfBrand() {
     /* ── SECTIONS ── */
     .section {
       position: relative; z-index: 1;
-      padding: 80px 40px;
+      padding: 0 40px;
       border-bottom: 1px solid rgba(var(--rgb-cream),0.07);
     }
     .section-inner { max-width: 920px; margin: 0 auto; }
@@ -413,7 +466,7 @@ export default function ArtOfBrand() {
     }
 
     /* ── FOOTER ── */
-    footer {
+    .old-footer {
       position: relative; z-index: 1; padding: 48px 40px;
       display: flex; align-items: center; justify-content: space-between;
       border-top: 1px solid rgba(var(--rgb-cream),0.08);
@@ -436,7 +489,7 @@ export default function ArtOfBrand() {
     }
 
     @media (max-width: 1024px) {
-      .hero { padding: 0 20px 60px; }
+      .hero { padding: 120px 20px 60px; min-height: 100svh; }
       .section, .pricing-section { padding: 56px 20px; }
       .tools-grid { grid-template-columns: 1fr; }
       .deliverable-grid { grid-template-columns: 1fr; }
@@ -448,18 +501,14 @@ export default function ArtOfBrand() {
       .room-setup-grid > div:last-child { text-align: center !important; }
       .strategy-cta { padding: 56px 20px; }
       .proof-bar { grid-template-columns: 1fr 1fr; }
+      .in-page-nav { display: none; }
     }
     @media (max-width: 680px) {
-      footer { flex-direction: column; gap: 12px; padding: 28px 20px; text-align: center; }
+      .old-footer { flex-direction: column; gap: 12px; padding: 28px 20px; text-align: center; }
     }
   `.replace(/body/g, `.page-artofbrand`) }
       `}</style>
       
-
-
-
-
-
 <section className="hero">
   <svg className="hero-art" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -511,7 +560,7 @@ export default function ArtOfBrand() {
     <h1 className="hero-title" style={{color: "var(--ink)"}}>Brand Identity<br /><em>Frameworks.</em></h1>
     <p className="hero-desc" style={{color: "var(--ink-soft)"}}>AI-driven systems to build your complete brand identity. Minimal, structured, and ready to scale.</p>
     <div className="hero-actions">
-      <a href="#pricing" className="btn-primary">Get instant access →</a>
+      <a href="https://paystack.com/buy/art-of-brand-brand-os" target="_blank" className="btn-primary">Get instant access →</a>
       <div className="hero-price-label">From <strong>$20</strong></div>
     </div>
   </div>
@@ -777,19 +826,7 @@ export default function ArtOfBrand() {
 </section>
 
 
-<div className="strategy-cta">
-  <div className="sc-inner">
-    <div className="sc-pre">// Clarity before scale.</div>
-    <h2 className="sc-title">Start with<br /><em>Foundation.</em></h2>
-    <p className="sc-body">
-      <strong>Foundation: Clarity</strong><br/><br/>
-      Define your idea, audience, and cultural position.<br/>
-      Build your narrative, structure, and strategic base.<br/><br/>
-      <em>INCLUDES:</em> Early-stage clarity, Narrative foundations, Brand structure
-    </p>
-    <Link to="/apply" style={{display: "inline-block", padding: "15px 40px", background: "transparent", border: "1px solid var(--gold)", color: "var(--gold)", fontFamily: "var(--fb)", fontSize: "11px", fontWeight: "500", letterSpacing: ".14em", textTransform: "uppercase", textDecoration: "none", transition: "all .2s"}}>Apply for Foundation →</Link>
-  </div>
-</div>
+
 
 
 <div className="strategy-cta" style={{background: "var(--parchment)", padding: "80px 48px", borderTop: "1px solid rgba(var(--rgb-cream),0.07)", textAlign: "center"}}>

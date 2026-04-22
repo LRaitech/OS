@@ -52,7 +52,7 @@ export default function Insights() {
           font-family: var(--fb);
         }
         .insights-hero {
-          padding: 80px 48px;
+          padding: 120px 48px 80px;
           border-bottom: 1px solid rgba(var(--rgb-ink), 0.08);
           text-align: center;
         }
@@ -73,7 +73,7 @@ export default function Insights() {
         }
         h1 {
           font-family: var(--fd);
-          font-size: clamp(44px, 6vw, 72px);
+          font-size: clamp(36px, 5vw, 64px);
           font-weight: 300;
           line-height: .95;
           letter-spacing: -.02em;
@@ -85,7 +85,7 @@ export default function Insights() {
           color: var(--gold);
         }
         .hero-sub {
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 300;
           line-height: 1.7;
           color: var(--warm-grey);
@@ -157,15 +157,20 @@ export default function Insights() {
           margin-bottom: 40px;
         }
         
-        .article-img {
+        .image-container {
           width: 100%;
           height: 300px;
-          object-fit: cover;
           margin-bottom: 24px;
           background: rgba(var(--rgb-ink), 0.04);
         }
         
-        .article-card.featured .article-img {
+        .article-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .article-card.featured .image-container {
           height: 600px;
           margin-bottom: 0;
         }
@@ -268,7 +273,7 @@ export default function Insights() {
           border-color: var(--ink);
         }
         
-        footer {
+        .old-footer {
           padding: 56px 48px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr auto;
@@ -351,7 +356,7 @@ export default function Insights() {
             gap: 32px;
             padding-bottom: 40px;
           }
-          .article-card.featured .article-img {
+          .article-card.featured .image-container {
             height: 400px;
           }
           .article-card.standard {
@@ -363,7 +368,7 @@ export default function Insights() {
           .insights-hero {
             padding: 56px 20px;
           }
-          footer {
+          .old-footer {
             padding: 40px 20px;
             grid-template-columns: 1fr 1fr;
           }
@@ -395,13 +400,24 @@ export default function Insights() {
         </motion.div>
 
         <div className="ih-inner" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="artifact-svg" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '900px', opacity: 0.07, zIndex: -1 }}>
+            <svg viewBox="0 0 200 60" fill="none" stroke="currentColor" strokeWidth="0.2">
+              <path d="M0 55 Q20 50 40 55 T80 52 T120 55 T160 50 T200 55" strokeDasharray="1 1"/>
+              <path d="M30 55 L35 40 L40 55 M32 48 L38 48" opacity="0.8"/>
+              <path d="M110 52 L118 30 L126 52 M114 42 L122 42" opacity="0.8"/>
+              <path d="M160 50 L163 43 L166 50" opacity="0.8"/>
+              <circle cx="85" cy="50" r="0.5" fill="currentColor"/>
+              <circle cx="88" cy="51" r="0.5" fill="currentColor"/>
+              <circle cx="91" cy="50" r="0.5" fill="currentColor"/>
+            </svg>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="eyebrow">Insights & Systems</div>
-            <h1>Culture by <em>Design.</em></h1>
+            <h1>Cultural <em>Insights.</em></h1>
           </motion.div>
           
           <motion.p 
@@ -451,7 +467,9 @@ export default function Insights() {
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 {imageUrl && (
-                  <img src={imageUrl} alt={article.title} className="article-img" referrerPolicy="no-referrer" />
+                  <div className="image-container" style={{ overflow: 'hidden' }}>
+                    <img src={imageUrl} alt={article.title} className="article-img cinematic-image" referrerPolicy="no-referrer" />
+                  </div>
                 )}
                 <div className="article-content">
                   <div className="article-date">{date}</div>

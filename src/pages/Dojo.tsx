@@ -6,13 +6,6 @@ import FadeIn from '../components/FadeIn';
 export default function Dojo() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.documentElement.style.scrollSnapType = 'y mandatory';
-    document.body.style.overflowY = 'scroll';
-    
-    return () => {
-      document.documentElement.style.scrollSnapType = '';
-      document.body.style.overflowY = '';
-    };
   }, []);
 
   const containerRef = useRef(null);
@@ -31,10 +24,10 @@ export default function Dojo() {
         .page-dojo { min-height: 100vh; background: var(--cream); color: var(--ink); font-family: var(--fb); }
         
         /* HERO */
-        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 160px 48px 120px; overflow: hidden; background: var(--cream); color: var(--ink); text-align: center; scroll-snap-align: start; perspective: 1000px; }
-        .hero h1 { font-family: var(--fd); font-size: clamp(64px,10vw,120px); font-weight: 300; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 32px; }
-        .hero-sub { font-size: 20px; font-weight: 300; line-height: 1.65; color: var(--warm-grey); max-width: 800px; margin: 0 auto 32px; }
-        .hero-meta { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 48px; font-weight: 500; }
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 160px 48px 120px; overflow: hidden; background: var(--cream); color: var(--ink); text-align: center; perspective: 1000px; }
+        .hero h1 { font-family: var(--fd); font-size: clamp(64px,10vw,120px); font-weight: 500; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 32px; }
+        .hero-sub { font-size: 20px; font-weight: 400; line-height: 1.65; color: var(--ink-soft); max-width: 800px; margin: 0 auto 32px; }
+        .hero-meta { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 48px; font-weight: 600; }
         .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         
         /* CONTENT */
@@ -45,32 +38,35 @@ export default function Dojo() {
           padding: 120px 48px; 
           min-height: 100vh;
           align-items: center;
-          scroll-snap-align: start;
           max-width: 1600px;
           margin: 0 auto;
           perspective: 1000px;
         }
-        .stage-meta h3 { font-family: var(--fd); font-size: 40px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
-        .stage-subtitle { font-family: var(--fm); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 24px; }
-        .stage-tagline { font-size: 16px; color: var(--ink); font-style: italic; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(var(--rgb-ink), 0.05); }
+        .stage-meta h3 { font-family: var(--fd); font-size: 40px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+        .stage-subtitle { font-family: var(--fm); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 24px; font-weight: 600; }
+        .stage-tagline { font-size: 16px; color: var(--ink); font-style: italic; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(var(--rgb-ink), 0.05); font-weight: 400; }
         
-        .stage-content p { font-size: 18px; font-weight: 300; color: var(--warm-grey2); line-height: 1.7; margin-bottom: 24px; max-width: 800px; }
+        .stage-content p { font-size: 18px; font-weight: 400; color: var(--ink-soft); line-height: 1.7; margin-bottom: 24px; max-width: 800px; }
         .stage-content p:last-child { margin-bottom: 0; }
         
         .stage-list { list-style: none; padding: 0; margin: 32px 0 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
         .stage-list li { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 12px; }
         .stage-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
 
-        .cta-section { position: relative; text-align: center; padding: 160px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; overflow: hidden; }
+        .cta-section { position: relative; text-align: center; padding: 160px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
         .cta-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 600px; margin: 0 auto; position: relative; zIndex: 1; }
         .cta-card { padding: 80px 48px; background: transparent; text-align: center; }
-        .cta-card p { font-size: 18px; color: var(--warm-grey); line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
+        .cta-card p { font-size: 18px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 40px; font-weight: 400; }
+        .cta-card h3 { font-weight: 500 !important; }
 
         @media(max-width:1024px){
-          .hero{padding:100px 20px 64px;}
+          .hero{padding:120px 20px 64px; min-height: auto;}
+          .hero h1 { font-size: clamp(48px, 12vw, 80px); }
           .dojo-section { padding: 60px 20px; }
-          .stage-row { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
+          .stage-row { grid-template-columns: 1fr; gap: 48px; padding: 64px 20px; min-height: auto; }
+          .cta-section { padding: 100px 20px; min-height: auto; }
           .cta-grid { grid-template-columns: 1fr; }
+          .cta-card { padding: 48px 24px; }
         }
       `}</style>
 

@@ -2,25 +2,25 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #1A1714;
-  --cream-deep: #2A2218;
-  --parchment: #14120F;
-  --ink: #F0EBE1;
-  --ink-soft: #E8E0D4;
-  --gold: #D4A84B;
+  --cream: #FFFFFF;
+  --cream-deep: #F5F5F5;
+  --parchment: #FAFAFA;
+  --ink: #000000;
+  --ink-soft: #1A1A1A;
+  --gold: #D4AF37;
   --gold-light: #E8C97A;
   --gold-pale: #F2E2B8;
-  --gold-dim: rgba(212,168,75,0.18);
-  --gold-thin: rgba(212,168,75,0.10);
-  --warm-grey: #A89B8C;
-  --warm-grey2: #C4B8A8;
+  --gold-dim: rgba(212,175,55,0.18);
+  --gold-thin: rgba(212,175,55,0.10);
+  --warm-grey: #222222;
+  --warm-grey2: #444444;
 
-  --rgb-cream: 26, 23, 20;
-  --rgb-ink: 240, 235, 225;
-  --rgb-gold: 212, 168, 75;
+  --rgb-cream: 255, 255, 255;
+  --rgb-ink: 0, 0, 0;
+  --rgb-gold: 212, 175, 55;
   --rgb-gold-dark: 184, 134, 11;
-  --rgb-warm-grey: 168, 155, 140;
-  --rgb-warm-grey2: 196, 184, 168;
+  --rgb-warm-grey: 85, 85, 85;
+  --rgb-warm-grey2: 119, 119, 119;
   
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Raleway', ui-sans-serif, system-ui, sans-serif;
@@ -39,22 +39,84 @@
   --t-page: 1s;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scroll-snap-type: y proximity;
+}
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
-  background: linear-gradient(to bottom, #2A2A2A, #000000);
+  background: var(--cream);
+  background-size: 400% 400%;
+  animation: shimmer 15s ease infinite;
   background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
-  font-weight: 300;
-  letter-spacing: 0.05em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding-bottom: 0; 
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+  body {
+    padding-bottom: 0; 
+  }
+  section {
+    height: auto !important;
+    min-height: 80svh !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* 2. Lock the Sections */
+section {
+    min-height: 80vh; 
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Keeps content centered during snap */
+    position: relative;
+    padding: 100px 48px;
+    box-sizing: border-box;
+}
+
+/* 4. Smooth Entry for Snap Points */
+section > * {
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 h1,h2,h3,h4,h5,h6, .font-serif {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: normal;
 }
 
@@ -73,6 +135,52 @@ h1,h2,h3,h4,h5,h6, .font-serif {
   text-shadow: 0 0 6px var(--gold), 0 0 12px var(--gold-light);
 }
 
+/* 2. Neon Elements (Progress & Toggle) */
+#scroll-progress {
+    position: fixed; top: 0; left: 0; height: 1.5px;
+    background: #D4AF37;
+    box-shadow: 0 0 12px #D4AF37, 0 0 20px rgba(212, 175, 55, 0.4);
+    z-index: 10000;
+}
+
+.theme-toggle-active {
+    color: #D4AF37;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8));
+}
+
+/* 3. Typography DNA */
+.gold-italic-systems {
+    color: #D4AF37 !important;
+    font-style: italic !important;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* 4. Artifact & Image Treatment */
+.artifact-svg {
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: luminosity;
+    opacity: 0.05;
+    z-index: -1;
+    filter: grayscale(100%);
+}
+
+.cinematic-image {
+    filter: grayscale(20%) contrast(95%) brightness(95%);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-container:hover .cinematic-image {
+    transform: scale(1.03);
+}
+
+/* 5. Globe Motion */
+@keyframes slowRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.globe-artifact { animation: slowRotate 60s linear infinite; }
+
 /* Glass cards for micro-interactions */
 .glass-card {
   background: rgba(255, 255, 255, 0.03);
@@ -90,20 +198,81 @@ a:hover img, button:hover img, .room-card:hover img, .article-card:hover img {
 }
 
 /* Smooth Buttons from the Future */
-.btn-primary, .btn-secondary, .btn-ghost, .track-cta, .eg-cta, .product-link, .article-link {
-  position: relative;
-  overflow: hidden;
-  border-radius: 30px !important;
-  border: 1px solid rgba(var(--rgb-gold), 0.3) !important;
-  background: rgba(var(--rgb-cream), 0.02) !important;
-  color: var(--gold) !important;
-  transition: all 0.2s var(--ease-enter) !important;
-  backdrop-filter: blur(4px);
-  text-align: center;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 32px;
+button:not(.switch-btn):not(.theme-toggle):not(.mobile-menu-btn), .btn-primary, .btn-secondary, .btn-ghost, .track-cta, .eg-cta, .product-link, .article-link, .pc-btn, .wl-btn {
+    background: transparent !important;
+    border: 0.5px solid currentColor !important;
+    padding: 12px 24px !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    border-radius: 0 !important; /* Sharp square */
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+button:not(.switch-btn):not(.theme-toggle):not(.mobile-menu-btn):hover, .btn-primary:hover, .btn-secondary:hover, .btn-ghost:hover, .track-cta:hover, .eg-cta:hover, .product-link:hover, .article-link:hover, .pc-btn:hover, .wl-btn:hover {
+    color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 1. Global Light/Dark Toggle Sync */
+body.light-mode { 
+  background: linear-gradient(135deg, #FFFFFF, #F8F8F8, #F0F0F0, #FAFAFA);
+  color: #0A0A0A; 
+}
+body.dark-mode { 
+  background: linear-gradient(135deg, #0a0a0a, #111111, #0f0f0f, #1a1a1a);
+  color: #FFFFFF; 
+  --cream: #0A0A0A;
+  --cream-deep: #111111;
+  --parchment: #14120F;
+  --ink: #FFFFFF;
+  --ink-soft: #E8E0D4;
+  --warm-grey: #A89B8C;
+  --warm-grey2: #C4B8A8;
+  --rgb-cream: 10, 10, 10;
+  --rgb-ink: 255, 255, 255;
+  --rgb-warm-grey: 168, 155, 140;
+  --rgb-warm-grey2: 196, 184, 168;
+}
+
+body.light-mode .artifact-svg { mix-blend-mode: multiply; }
+body.dark-mode .artifact-svg { mix-blend-mode: screen; }
+
+body.light-mode .theme-toggle-active { filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4)); }
+body.dark-mode .theme-toggle-active { filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.8)); }
+
+/* 2. Chat Pop-up Styling */
+.chat-onboarding-tip {
+    position: fixed;
+    bottom: 85px;
+    right: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    padding-left: 15px;
+    border-left: 1px solid #D4AF37;
+    animation: fadeIn 1s ease 1.5s both;
+    z-index: 9999;
+}
+
+body.light-mode .chat-onboarding-tip { color: #1A1A1A; }
+body.dark-mode .chat-onboarding-tip { color: #FFFFFF; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Remove Mini-Navs */
+.inner-page-nav, .sub-navigation, .in-page-nav {
+    display: none !important;
 }
 
 /* Animated Background Gradient */
@@ -114,7 +283,7 @@ a:hover img, button:hover img, .room-card:hover img, .article-card:hover img {
 }
 
 .animated-bg {
-  background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2a2a2a, #111111);
+  background: linear-gradient(-45deg, #FFFFFF, #F8F8F8, #F0F0F0, #FAFAFA);
   background-size: 400% 400%;
   animation: animatedGradient 10s ease infinite;
 }

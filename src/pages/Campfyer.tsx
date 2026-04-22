@@ -35,6 +35,59 @@ export default function Campfyer() {
       opacity: 0.45;
     }
 
+    /* ── IN-PAGE NAV ── */
+    .in-page-nav {
+      position: sticky;
+      top: 60px; /* Below main nav */
+      margin-top: 60px; /* Push down so it's not hidden under fixed nav initially */
+      z-index: 90;
+      background: rgba(var(--rgb-cream), 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(var(--rgb-cream), 0.1);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ipn-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .ipn-title {
+      font-family: var(--fd);
+      font-size: 18px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .ipn-meta {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--warm-grey);
+    }
+    .ipn-btn {
+      padding: 8px 16px;
+      background: var(--gold);
+      color: var(--cream);
+      font-family: var(--fb);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background .2s;
+    }
+    .ipn-btn:hover {
+      background: var(--gold-light);
+    }
+    @media (max-width: 768px) {
+      .in-page-nav { padding: 12px 20px; top: 56px; margin-top: 56px; }
+      .ipn-meta { display: none; }
+    }
+
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -350,7 +403,7 @@ export default function Campfyer() {
     .price-btn.featured-btn:hover { background: rgba(var(--rgb-gold-dark),0.20); }
 
     /* ── FOOTER ── */
-    footer {
+    .old-footer {
       position: relative; z-index: 1;
       padding: 40px 40px;
       display: flex; align-items: center; justify-content: space-between;
@@ -368,23 +421,19 @@ export default function Campfyer() {
     }
 
     @media (max-width: 1024px) {
-      .hero { padding: 0 20px 60px; }
+      .hero { padding: 120px 20px 60px; min-height: 100svh; }
       .section { padding: 56px 20px; }
       .deliverable-grid { grid-template-columns: 1fr; }
       .pricing-section { padding: 56px 20px; }
       .pricing-grid { grid-template-columns: 1fr; }
       .proof-bar { grid-template-columns: 1fr 1fr; }
+      .in-page-nav { display: none; }
     }
     @media (max-width: 680px) {
-      footer { flex-direction: column; gap: 12px; padding: 28px 20px; text-align: center; }
+      .old-footer { flex-direction: column; gap: 12px; padding: 28px 20px; text-align: center; }
     }
   `.replace(/body/g, `.page-campfyer`) }
       `}</style>
-
-
-
-
-
 
 <section className="hero">
   <svg className="hero-art" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -422,7 +471,7 @@ export default function Campfyer() {
     <h1 className="hero-title">Full campaign.<br /><em>One session.</em></h1>
     <p className="hero-desc">Run it every month, forever.</p>
     <div className="hero-actions">
-      <a href="#pricing" className="btn-primary">Get instant access →</a>
+      <a href="https://paystack.com/buy/art-of-brand-brand-os" target="_blank" className="btn-primary">Get instant access →</a>
       <div className="hero-price-label">From <strong>$15</strong></div>
     </div>
   </div>

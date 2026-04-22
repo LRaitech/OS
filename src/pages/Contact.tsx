@@ -46,7 +46,7 @@ export default function Contact() {
         .submit-btn:hover { background: var(--gold-light); }
 
         /* FOOTER */
-        footer { position: relative; z-index: 1; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 48px; align-items: start; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10); margin-top: 64px; }
+        .old-footer { position: relative; z-index: 1; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 48px; align-items: start; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10); margin-top: 64px; }
         .footer-tagline { font-family: var(--fd); font-size: 16px; font-weight: 300; font-style: italic; color: var(--warm-grey); line-height: 1.5; margin-top: 10px; }
         .footer-col-label { font-family: var(--fm); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(var(--rgb-warm-grey),0.55); margin-bottom: 14px; }
         .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; margin: 0; }
@@ -61,6 +61,8 @@ export default function Contact() {
         @media (max-width: 1024px) {
           .contact-container { padding: 120px 20px; gap: 64px; }
           .contact-info { flex-direction: column; gap: 48px; }
+          .old-footer { padding: 40px 20px; grid-template-columns: 1fr 1fr; }
+          .footer-cta { text-align: left; }
         }
       `}</style>
       

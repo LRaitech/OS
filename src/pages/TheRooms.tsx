@@ -6,13 +6,6 @@ import FadeIn from '../components/FadeIn';
 export default function TheRooms() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.documentElement.style.scrollSnapType = 'y mandatory';
-    document.body.style.overflowY = 'scroll';
-    
-    return () => {
-      document.documentElement.style.scrollSnapType = '';
-      document.body.style.overflowY = '';
-    };
   }, []);
 
   return (
@@ -23,12 +16,11 @@ export default function TheRooms() {
         }
         
         .snap-section {
-          height: 100vh;
-          scroll-snap-align: start;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 80px 48px 48px;
+          padding: 0 48px;
           position: relative;
           border-bottom: 1px solid rgba(var(--rgb-warm-grey2), 0.08);
           overflow: hidden;
@@ -57,19 +49,20 @@ export default function TheRooms() {
           font-family: var(--fm);
           font-size: 10px;
           letter-spacing: .18em;
-          color: var(--warm-grey);
+          color: var(--ink);
           margin-bottom: 16px;
           text-transform: uppercase;
+          font-weight: 600;
         }
         
         .snap-section h2 {
           font-family: var(--fd);
-          font-size: clamp(48px, 6vw, 72px);
-          font-weight: 300;
+          font-size: clamp(40px, 5vw, 64px);
+          font-weight: 500;
           line-height: 1.0;
           letter-spacing: -.02em;
           color: var(--ink);
-          margin-bottom: 16px;
+          margin-bottom: 20px;
         }
         
         .snap-section h2 em {
@@ -82,15 +75,16 @@ export default function TheRooms() {
           font-size: 11px;
           letter-spacing: .12em;
           text-transform: uppercase;
-          color: var(--warm-grey);
+          color: var(--ink);
           margin-bottom: 24px;
+          font-weight: 600;
         }
         
         .room-desc {
-          font-size: 16px;
-          font-weight: 300;
-          line-height: 1.7;
-          color: var(--warm-grey2);
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: var(--ink);
           margin-bottom: 32px;
           max-width: 540px;
         }
@@ -132,15 +126,15 @@ export default function TheRooms() {
         .pc-title {
           font-family: var(--fd);
           font-size: 32px;
-          font-weight: 300;
+          font-weight: 500;
           color: var(--ink);
           margin-bottom: 12px;
         }
         
         .pc-note {
-          font-size: 13px;
-          font-weight: 300;
-          color: var(--warm-grey);
+          font-size: 14px;
+          font-weight: 400;
+          color: var(--ink-soft);
           margin-bottom: 32px;
           line-height: 1.5;
         }
@@ -230,7 +224,7 @@ export default function TheRooms() {
         @media(max-width: 1024px) {
           .snap-section {
             height: auto;
-            min-height: 100vh;
+            min-height: auto;
             padding: 100px 24px 64px;
           }
           .section-inner, .section-inner.rev {
@@ -248,15 +242,26 @@ export default function TheRooms() {
       `}</style>
 
       {/* SECTION 01: ART OF BRAND */}
-      <section className="snap-section" id="art-of-brand">
-        <FadeIn className="section-inner">
+      <section className="snap-section" id="art-of-brand" style={{ position: 'relative' }}>
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+          <div style={{ position: 'absolute', top: '10%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(var(--rgb-gold), 0.08) 0%, transparent 70%)', filter: 'blur(40px)' }}></div>
+          <div style={{ position: 'absolute', bottom: '10%', left: '10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(var(--rgb-gold), 0.05) 0%, transparent 70%)', filter: 'blur(30px)' }}></div>
+        </div>
+        <svg className="globe-artifact artifact-svg" viewBox="0 0 500 500" style={{ width: '500px', height: '500px', left: '-100px', top: '50%' }}>
+          <circle cx="250" cy="250" r="240" fill="none" stroke="var(--ink)" strokeWidth="0.5" />
+          <ellipse cx="250" cy="250" rx="240" ry="80" fill="none" stroke="var(--ink)" strokeWidth="0.5" />
+          <ellipse cx="250" cy="250" rx="80" ry="240" fill="none" stroke="var(--ink)" strokeWidth="0.5" />
+          <line x1="10" y1="250" x2="490" y2="250" stroke="var(--ink)" strokeWidth="0.5" />
+          <line x1="250" y1="10" x2="250" y2="490" stroke="var(--ink)" strokeWidth="0.5" />
+        </svg>
+        <FadeIn className="section-inner" style={{ position: 'relative', zIndex: 2 }}>
           <div>
             <div className="rs-num">Section 01</div>
             <h2>Art of<br /><em>Brand</em></h2>
             <div className="room-subtitle">AI-driven identity systems for founders.</div>
             <div className="rule"></div>
             <p className="room-desc">Build a complete visual and verbal identity in 60 minutes. This system extracts your founder narrative and converts it into a professional brand kit through three structured AI frameworks.</p>
-            <Link to="/contact" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Book Now →</Link>
+            <Link to="/art-of-brand" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px", textTransform: "uppercase", letterSpacing: "0.1em"}}>Read More →</Link>
           </div>
           <div>
             <div className="price-card">
@@ -270,15 +275,18 @@ export default function TheRooms() {
       </section>
 
       {/* SECTION 02: CAMPFYER */}
-      <section className="snap-section alt" id="campfyer">
-        <FadeIn className="section-inner rev">
+      <section className="snap-section alt" id="campfyer" style={{ position: 'relative' }}>
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+          <div style={{ position: 'absolute', top: '50%', right: '-100px', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(var(--rgb-gold), 0.06) 0%, transparent 70%)', filter: 'blur(50px)' }}></div>
+        </div>
+        <FadeIn className="section-inner rev" style={{ position: 'relative', zIndex: 2 }}>
           <div>
             <div className="rs-num">Section 02</div>
             <h2>Camp<em>fyer</em></h2>
             <div className="room-subtitle">The 30-day content engine.</div>
             <div className="rule"></div>
             <p className="room-desc">Stop the hashtag guesswork. Campfyer converts a single core insight into a high-converting, 4-week content arc in under 60 minutes. No agency, no revisions, no waiting.</p>
-            <Link to="/contact" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px"}}>Book Now →</Link>
+            <Link to="/campfyer" style={{fontSize: "13px", color: "var(--gold)", textDecoration: "none", borderBottom: "1px solid rgba(var(--rgb-gold),0.35)", paddingBottom: "2px", textTransform: "uppercase", letterSpacing: "0.1em"}}>Read More →</Link>
           </div>
           <div>
             <div className="price-card">
@@ -308,7 +316,7 @@ export default function TheRooms() {
                 <h3>EV<em>O.</em></h3>
                 <p>Revenue architecture · Growth systems</p>
               </div>
-              <Link to="/apply" className="wl-btn">Join Waitlist →</Link>
+              <Link to="/evo" className="wl-btn">Explore Room →</Link>
             </div>
             
             <div className="waitlist-item">
@@ -316,7 +324,7 @@ export default function TheRooms() {
                 <h3>Beat <em>Therapy.</em></h3>
                 <p>Creative process · Cultural strategy</p>
               </div>
-              <Link to="/apply" className="wl-btn">Join Waitlist →</Link>
+              <Link to="/beat-therapy" className="wl-btn">Explore Room →</Link>
             </div>
             
             <div className="waitlist-item">
@@ -324,7 +332,7 @@ export default function TheRooms() {
                 <h3>Deep<em>er.</em></h3>
                 <p>Investor narrative · Unit economics</p>
               </div>
-              <Link to="/apply" className="wl-btn">Join Waitlist →</Link>
+              <Link to="/deeper" className="wl-btn">Explore Room →</Link>
             </div>
           </div>
         </FadeIn>

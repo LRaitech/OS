@@ -11,13 +11,6 @@ export default function Home() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.documentElement.style.scrollSnapType = 'y mandatory';
-    document.body.style.overflowY = 'scroll';
-    
-    return () => {
-      document.documentElement.style.scrollSnapType = '';
-      document.body.style.overflowY = '';
-    };
   }, []);
 
   return (
@@ -30,7 +23,7 @@ export default function Home() {
     
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--fb); font-weight: 300; -webkit-font-smoothing: antialiased; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--fb); font-weight: 400; -webkit-font-smoothing: antialiased; }
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9998;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -43,11 +36,19 @@ export default function Home() {
     .hero {
       position: relative; min-height: 100vh;
       display: flex; flex-direction: row; align-items: center; justify-content: space-between;
-      padding: 0 48px; overflow: hidden; gap: 48px;
-      scroll-snap-align: start;
+      padding: 0 48px 120px; overflow: hidden; gap: 48px;
     }
     .hero-art {
       position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
+      filter: blur(2px);
+    }
+    .hero-mesh {
+      position: absolute; inset: 0; z-index: 1;
+      background: 
+        radial-gradient(at 10% 20%, rgba(var(--rgb-gold), 0.1) 0%, transparent 40%),
+        radial-gradient(at 90% 80%, rgba(var(--rgb-gold), 0.1) 0%, transparent 40%),
+        radial-gradient(at 50% 50%, rgba(var(--rgb-cream), 0.5) 0%, transparent 70%);
+      pointer-events: none;
     }
     .hero-scrim {
       position: absolute; inset: 0; z-index: 1;
@@ -62,9 +63,9 @@ export default function Home() {
       border: 1px solid rgba(var(--rgb-gold),0.28); padding: 5px 12px;
       display: inline-block; margin-bottom: 28px;
     }
-    h1 { font-family: var(--fd); font-size: clamp(52px,7.5vw,96px); font-weight: 300; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 24px; }
+    h1 { font-family: var(--fd); font-size: clamp(44px,6vw,80px); font-weight: 500; line-height: .93; letter-spacing: -.02em; color: var(--ink); margin-bottom: 24px; }
     h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 18px; font-weight: 300; line-height: 1.65; color: var(--warm-grey); max-width: 560px; margin-bottom: 40px; }
+    .hero-sub { font-size: 17px; font-weight: 400; line-height: 1.65; color: var(--ink-soft); max-width: 560px; margin-bottom: 40px; }
     .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
     .hero-build-card {
       background: var(--parchment); border: 1px solid rgba(var(--rgb-gold), 0.2); padding: 24px; max-width: 400px; text-align: left;
@@ -74,32 +75,32 @@ export default function Home() {
     .proof-bar {
       display: grid; grid-template-columns: repeat(4,1fr);
       border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10);
-      border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.10);
-      position: relative; z-index: 1;
+      position: absolute; bottom: 0; left: 0; width: 100%; z-index: 10;
+      background: rgba(var(--rgb-cream), 0.4);
+      backdrop-filter: blur(8px);
     }
-    .proof-item { padding: 32px 40px; border-right: 1px solid rgba(var(--rgb-warm-grey2),0.08); }
+    .proof-item { padding: 20px 32px; border-right: 1px solid rgba(var(--rgb-warm-grey2),0.08); }
     .proof-item:last-child { border-right: none; }
-    .proof-num { font-family: var(--fd); font-size: 44px; font-weight: 300; color: var(--gold); line-height: 1; letter-spacing: -.03em; margin-bottom: 4px; }
-    .proof-label { font-size: 12px; font-weight: 300; color: var(--warm-grey); line-height: 1.45; }
+    .proof-num { font-family: var(--fd); font-size: 24px; font-weight: 300; color: var(--gold); line-height: 1; letter-spacing: -.03em; margin-bottom: 4px; }
+    .proof-label { font-size: 10px; font-weight: 300; color: var(--warm-grey); line-height: 1.45; text-transform: uppercase; letter-spacing: .06em; }
 
     /* SECTIONS */
     section { 
       position: relative; 
       z-index: 1; 
-      padding: 96px 48px; 
+      padding: 64px 48px; 
       border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.08);
-      min-height: 100vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      scroll-snap-align: start;
     }
     .alt-section { background: var(--parchment); }
-    .inner { max-width: 1100px; margin: 0 auto; width: 100%; }
-    .s-kicker { font-family: var(--fm); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 16px; }
-    h2 { font-family: var(--fd); font-size: clamp(36px,5vw,56px); font-weight: 300; line-height: 1.0; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+    .inner { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; }
+    .s-kicker { font-family: var(--fm); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+    h2 { font-family: var(--fd); font-size: clamp(32px,4vw,48px); font-weight: 500; line-height: 1.0; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
     h2 em { font-style: italic; color: var(--gold); }
-    .s-intro { font-size: 16px; font-weight: 300; line-height: 1.70; color: var(--warm-grey); max-width: 560px; margin-bottom: 56px; }
+    .s-intro { font-size: 15px; font-weight: 400; line-height: 1.70; color: var(--ink); max-width: 560px; margin-bottom: 40px; }
     .rule { width: 40px; height: 1px; background: var(--gold); opacity: 0.5; margin: 18px 0; }
 
     /* TRACKS */
@@ -112,15 +113,15 @@ export default function Home() {
     .track-label { font-family: var(--fm); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 20px; }
     .track.ai-frameworks .track-label { color: var(--gold); }
     .track.strategy .track-label { color: var(--warm-grey); }
-    .track-price { font-family: var(--fd); font-size: 48px; font-weight: 300; letter-spacing: -.03em; line-height: 1; margin-bottom: 8px; }
-    .track.ai-frameworks .track-price { color: var(--gold); }
+    .track-price { font-family: var(--fd); font-size: 48px; font-weight: 500; letter-spacing: -.03em; line-height: 1; margin-bottom: 8px; }
+    .track.ai-frameworks .track-price { color: var(--ink); }
     .track.strategy .track-price { color: var(--ink); }
-    .track-range { font-family: var(--fm); font-size: 10px; font-weight: 300; color: var(--warm-grey); letter-spacing: .06em; margin-bottom: 24px; }
-    h3 { font-family: var(--fd); font-size: 26px; font-weight: 300; color: var(--ink); line-height: 1.15; margin-bottom: 10px; }
+    .track-range { font-family: var(--fm); font-size: 10px; font-weight: 500; color: var(--gold); letter-spacing: .06em; margin-bottom: 24px; }
+    h3 { font-family: var(--fd); font-size: 26px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-bottom: 10px; }
     h3 em { font-style: italic; color: var(--gold); }
-    .track-body { font-size: 14px; font-weight: 300; line-height: 1.70; color: var(--warm-grey); margin-bottom: 28px; }
+    .track-body { font-size: 15px; font-weight: 400; line-height: 1.70; color: var(--ink-soft); margin-bottom: 28px; }
     .track-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
-    .track-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 300; color: var(--warm-grey2); line-height: 1.4; }
+    .track-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 400; color: var(--ink-soft); line-height: 1.4; }
     .track-list li::before { content: '·'; font-family: var(--fm); font-size: 10px; color: var(--warm-grey); flex-shrink: 0; padding-top: 1px; }
     .track-cta {
       display: inline-block; padding: 12px 24px; font-size: 10px; font-weight: 500;
@@ -171,7 +172,7 @@ export default function Home() {
     .sprint-what li::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
     /* FOOTER */
-    footer { position: relative; z-index: 1; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 48px; align-items: start; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10); scroll-snap-align: start; }
+    .old-footer { position: relative; z-index: 1; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 48px; align-items: start; border-top: 1px solid rgba(var(--rgb-warm-grey2),0.10); }
     .footer-tagline { font-family: var(--fd); font-size: 16px; font-weight: 300; font-style: italic; color: var(--warm-grey); line-height: 1.5; margin-top: 10px; }
     .footer-col-label { font-family: var(--fm); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: rgba(var(--rgb-warm-grey),0.55); margin-bottom: 14px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
@@ -184,28 +185,28 @@ export default function Home() {
     .footer-copy-text { font-family: var(--fm); font-size: 10px; color: var(--warm-grey); letter-spacing: .06em; }
 
     @media(max-width:1024px){
-      .hero{padding:100px 20px 64px; flex-direction: column; justify-content: center; text-align: center;}
+      .hero{padding:80px 20px 48px; flex-direction: column; justify-content: center; text-align: center; min-height: 100svh;}
       .hero-content { display: flex; flex-direction: column; align-items: center; }
       .hero-sub { margin-left: auto; margin-right: auto; }
-      .hero-image { justify-content: center; margin-top: 48px; }
+      .hero-image { justify-content: center; margin-top: 24px; }
       .hero-build-card { margin: 0 auto; text-align: center; }
-      section{padding:64px 20px;}
-      .s-intro { margin-left: auto; margin-right: auto; text-align: center; }
-      .s-kicker { text-align: center; }
+      section{padding:48px 20px; min-height: 70svh;}
+      .s-intro { margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 32px; }
+      .s-kicker { text-align: center; justify-content: center; }
       h2 { text-align: center; }
       .rule { margin-left: auto; margin-right: auto; }
-      footer{padding:40px 20px;}
+      .old-footer{padding:32px 20px;}
       .tracks,.rooms-grid{grid-template-columns:1fr;}
-      .proof-bar{grid-template-columns:1fr 1fr;}
-      .sprint-grid{grid-template-columns:1fr;gap:40px; text-align: center;}
-      .sprint-grid .rule { margin: 18px auto; }
-      .sprint-grid p { margin-left: auto; margin-right: auto; }
+      .proof-bar{grid-template-columns:1fr 1fr; position: relative; bottom: auto; margin-top: 40px;}
+      .sprint-grid{gap:24px; text-align: center;}
+      .sprint-grid .rule { margin: 12px auto; }
+      .sprint-grid p { margin-left: auto; margin-right: auto; margin-bottom: 24px !important; }
       .rung{grid-template-columns:1fr; display: flex; flex-direction: column; align-items: center; text-align: center;}
       .rung-price { border-right: none; border-bottom: 1px solid rgba(var(--rgb-warm-grey2),0.08); width: 100%; text-align: center; }
       .rung-track{display:none;}
     }
     @media(max-width:900px){
-      footer{grid-template-columns:1fr 1fr;}
+      .old-footer{grid-template-columns:1fr 1fr;}
       .footer-cta{text-align:left;}
     }
   `.replace(/body/g, `.page-home`) }
@@ -215,7 +216,17 @@ export default function Home() {
 
 
 
-<header className="hero">
+<section className="hero">
+  <div className="artifact-svg" style={{ position: 'absolute', top: '5%', right: '-5%', width: '350px', opacity: 0.06, zIndex: 0 }}>
+    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.2">
+      <circle cx="50" cy="50" r="48" strokeDasharray="0.5 2"/>
+      <circle cx="50" cy="50" r="35" opacity="0.5"/>
+      <path d="M50 5 L50 95 M5 50 L95 50" strokeWidth="0.1"/>
+      <path d="M50 10 L53 50 L50 90 L47 50 Z" fill="currentColor" opacity="0.8"/>
+      <path d="M10 50 L50 47 L90 50 L50 53 Z" fill="none" stroke="currentColor"/>
+      <text x="48" y="4" fontSize="3" fill="currentColor" fontFamily="monospace">N</text>
+    </svg>
+  </div>
   <svg className="hero-art" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <radialGradient id="g1" cx="75%" cy="20%" r="60%"><stop offset="0%" stopColor="var(--gold-light)" stopOpacity="0.18"/><stop offset="100%" stopColor="transparent"/></radialGradient>
@@ -225,10 +236,15 @@ export default function Home() {
     <rect width="1440" height="900" fill="url(#g1)"/>
     <rect width="1440" height="900" fill="url(#g2)"/>
     
-    <g opacity="0.05" stroke="var(--warm-grey2)" fill="none" transform="translate(1100,200)">
-      <circle cx="0" cy="0" r="120"/><circle cx="0" cy="0" r="180"/><circle cx="0" cy="0" r="240"/>
-      <line x1="-240" y1="0" x2="240" y2="0"/><line x1="0" y1="-240" x2="0" y2="240"/>
-      <line x1="-170" y1="-170" x2="170" y2="170"/><line x1="170" y1="-170" x2="-170" y2="170"/>
+    <g opacity="0.06" stroke="var(--ink)" fill="none" transform="translate(1100, 150)" className="artifact-svg">
+      <circle cx="0" cy="0" r="150" strokeWidth="0.5"/>
+      <circle cx="0" cy="0" r="140" strokeWidth="0.3"/>
+      <circle cx="0" cy="0" r="100" strokeWidth="0.2"/>
+      <line x1="-160" y1="0" x2="160" y2="0" strokeWidth="0.5"/>
+      <line x1="0" y1="-160" x2="0" y2="160" strokeWidth="0.5"/>
+      <line x1="-110" y1="-110" x2="110" y2="110" strokeWidth="0.2"/>
+      <line x1="110" y1="-110" x2="-110" y2="110" strokeWidth="0.2"/>
+      <polygon points="0,-140 15,-30 140,0 15,30 0,140 -15,30 -140,0 -15,-30" strokeWidth="0.4"/>
     </g>
     
     <g opacity="0.04" stroke="var(--warm-grey2)" fill="none" transform="translate(180,650)">
@@ -265,96 +281,112 @@ export default function Home() {
     </g>
     
     <path d="M0,750 C300,720 600,780 900,750 C1100,728 1300,760 1440,745 L1440,900 L0,900Z" fill="var(--gold-light)" opacity="0.06"/>
+    <circle cx="20%" cy="10%" r="150" fill="var(--gold)" opacity="0.03" filter="blur(80px)"/>
+    <circle cx="80%" cy="80%" r="200" fill="var(--gold)" opacity="0.04" filter="blur(100px)"/>
   </svg>
   <div className="hero-scrim"></div>
+  <div className="hero-mesh"></div>
   <FadeIn className="hero-content">
-    <div className="eyebrow">Strategy Studio</div>
+    <div className="eyebrow" style={{ color: 'var(--ink)', borderColor: 'var(--ink)' }}>Strategy Studio</div>
     <h1>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        style={{ display: 'inline-block' }}
-      >Culture by</motion.span>{' '}
+        style={{ display: 'block', fontFamily: 'var(--fd)', fontWeight: 500, fontStyle: 'normal' }}
+      >Culture by</motion.span>
       <motion.em
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        style={{ display: 'inline-block' }}
+        style={{ display: 'block', fontFamily: 'var(--fd)', fontWeight: 500, fontStyle: 'italic' }}
       >Design.</motion.em>
     </h1>
-    <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6', marginBottom: '32px' }}>
+    <p className="hero-sub" style={{ fontSize: '16px', maxWidth: '600px', lineHeight: '1.6', marginBottom: '32px', color: 'var(--ink-soft)' }}>
       We build systems for brands where design, AI, and strategy stay in sync, from ideas to workflows.
     </p>
     
   </FadeIn>
 
-</header>
-
-
-<div className="proof-bar">
-  <FadeIn delay={0.1} className="proof-item"><div className="proof-num">5</div><div className="proof-label">Rooms in the Dojo System</div></FadeIn>
-  <FadeIn delay={0.2} className="proof-item"><div className="proof-num">$15</div><div className="proof-label">Entry point. No gatekeeping.</div></FadeIn>
-  <FadeIn delay={0.3} className="proof-item"><div className="proof-num">2</div><div className="proof-label">Tracks: AI Frameworks and Strategy</div></FadeIn>
-  <FadeIn delay={0.4} className="proof-item"><div className="proof-num">∞</div><div className="proof-label">Run the workflows every month</div></FadeIn>
-</div>
-
-<section id="our-studio" className="alt-section" style={{ padding: '96px 48px', borderBottom: '1px solid rgba(var(--rgb-warm-grey2),0.08)' }}>
-  <div className="inner">
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: { staggerChildren: 0.15 }
-        }
-      }}
-    >
-      <motion.div 
-        className="s-kicker"
-        variants={{
-          hidden: { opacity: 0, y: 24 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', color: 'var(--gold)' }}>
-          <IconSun size={20} />
-          <span>OUR STUDIO</span>
-        </div>
-      </motion.div>
-      <motion.h2 
-        variants={{
-          hidden: { opacity: 0, y: 24 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-        }}
-      >
-        Story. Strategy. Systems.
-      </motion.h2>
-      <motion.div 
-        className="rule"
-        variants={{
-          hidden: { opacity: 0, y: 24 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-        }}
-      ></motion.div>
-      <motion.p 
-        className="s-intro" 
-        style={{ fontSize: '20px', maxWidth: '800px', lineHeight: '1.6', color: 'var(--ink)' }}
-        variants={{
-          hidden: { opacity: 0, y: 24 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-        }}
-      >
-        We design brand architecture, operational systems, and growth strategy for emerging ventures - combining culture, technology, and narrative to build companies that scale with clarity and relevance.
-      </motion.p>
-    </motion.div>
+  <div className="proof-bar">
+    <FadeIn delay={0.1} className="proof-item"><div className="proof-num">5</div><div className="proof-label">Rooms in the Dojo System</div></FadeIn>
+    <FadeIn delay={0.2} className="proof-item"><div className="proof-num">$15</div><div className="proof-label">Entry point. No gatekeeping.</div></FadeIn>
+    <FadeIn delay={0.3} className="proof-item"><div className="proof-num">2</div><div className="proof-label">Tracks: AI Frameworks and Strategy</div></FadeIn>
+    <FadeIn delay={0.4} className="proof-item"><div className="proof-num">∞</div><div className="proof-label">Run the workflows every month</div></FadeIn>
   </div>
 </section>
 
-<section id="rooms">
+<section id="our-studio" className="alt-section" style={{ borderBottom: '1px solid rgba(var(--rgb-warm-grey2),0.08)' }}>
+    <div className="inner">
+      <div className="artifact-svg" style={{ position: 'absolute', top: '-40px', right: '0', width: '200px', opacity: 0.1 }}>
+        <IconNkyinkyim size={200} />
+      </div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.15 }
+          }
+        }}
+      >
+        <motion.div 
+          className="s-kicker"
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+          }
+        }
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', color: 'var(--gold)' }}>
+            <IconSun size={20} />
+            <span>OUR STUDIO</span>
+          </div>
+        </motion.div>
+        <motion.h2 
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+          }}
+          style={{ fontWeight: 500 }}
+        >
+          Story. Strategy. <span className="gold-italic-systems" style={{ fontWeight: 500 }}>Systems.</span>
+        </motion.h2>
+        <motion.div 
+          className="rule"
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+          }}
+        ></motion.div>
+        <motion.p 
+          className="s-intro" 
+          style={{ fontSize: '18px', maxWidth: '800px', lineHeight: '1.6', color: 'var(--ink)' }}
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+          }}
+        >
+          We design brand architecture, operational systems, and growth strategy for emerging ventures - combining culture, technology, and narrative to build companies that scale with clarity and relevance.
+        </motion.p>
+      </motion.div>
+    </div>
+  </section>
+  
+  <section id="rooms" style={{ position: 'relative', overflow: 'hidden' }}>
+    <div className="artifact-svg globe-artifact" style={{ position: 'absolute', right: '-100px', top: '10%', width: '400px', opacity: 0.08 }}>
+      <svg viewBox="0 0 100 100" fill="none" stroke="var(--gold)" strokeWidth="0.1">
+        <circle cx="50" cy="50" r="45"/>
+        <path d="M5 50 L95 50 M50 5 L50 95" />
+        <path d="M15 15 L85 85 M15 85 L85 15" />
+      </svg>
+    </div>
+    <div className="artifact-svg" style={{ position: 'absolute', left: '-50px', bottom: '10%', width: '300px', opacity: 0.05 }}>
+      <IconDwennimmen size={300} />
+    </div>
   <FadeIn className="inner">
     <div className="s-kicker" style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--gold)' }}>
       <IconDwennimmen size={20} />
@@ -392,7 +424,10 @@ export default function Home() {
   </FadeIn>
 </section>
 
-<section id="tracks" className="alt-section">
+<section id="tracks" className="alt-section" style={{ position: 'relative', overflow: 'hidden' }}>
+  <div className="artifact-svg" style={{ position: 'absolute', right: '-10%', bottom: '5%', width: '400px', opacity: 0.04 }}>
+    <IconNkyinkyim size={400} />
+  </div>
   <FadeIn className="inner">
     <div className="s-kicker" style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--gold)' }}>
       <IconNkyinkyim size={20} />
@@ -403,25 +438,24 @@ export default function Home() {
     <div className="tracks">
       <div className="track ai-frameworks">
         <div className="track-label">AI Frameworks track · self-serve</div>
-        <h3>Build your brand,<br />content, and growth<br /><em>yourself.</em></h3>
-        <p className="track-body">Run structured AI frameworks in a single session. Buy one room or access the full system. Every output is yours. No subscription, no agency, no waiting.</p>
+        <h3>Build it<br /><em>yourself.</em></h3>
+        <p className="track-body">Run structured AI frameworks in a single session. No subscription, no agency, no waiting.</p>
         <ul className="track-list">
-          <li>Art of Brand: complete brand identity system</li>
-          <li>Campfyer: full 30-day campaign in one session</li>
-          <li>EVO, Beat Therapy, Deeper: coming soon</li>
-          <li>Full system access available</li>
+          <li>Art of Brand: identity system</li>
+          <li>Campfyer: 30-day campaign</li>
+          <li>EVO, Beat Therapy: coming soon</li>
         </ul>
         <Link to="/rooms" className="track-cta">[ See all rooms → ]</Link>
       </div>
       <div className="track strategy">
         <div className="track-label">Strategy track · high-touch</div>
-        <h3>Build with a strategist<br />who understands your<br /><em>full system.</em></h3>
-        <p className="track-body">We apply the Dojo methodology directly to your venture. Every stage is executed with you, in real time.</p>
+        <h3>Build with<br /><em>us.</em></h3>
+        <p className="track-body">We apply the Dojo methodology directly to your venture, executing every stage with you in real time.</p>
         <ul className="track-list">
           <li>Foundation: clarity before scale</li>
-          <li>Build: turn the idea into presence</li>
-          <li>Develop: refine and systematize operations</li>
-          <li>Capital: position for growth and investment</li>
+          <li>Build: idea to presence</li>
+          <li>Develop: systematize operations</li>
+          <li>Capital: position for growth</li>
         </ul>
         <Link to="/apply" className="track-cta">[ Book a discovery call → ]</Link>
       </div>
@@ -433,16 +467,19 @@ export default function Home() {
 
 
 
-<section id="sprint" className="sprint-section">
+<section id="sprint" className="sprint-section" style={{ position: 'relative', overflow: 'hidden' }}>
+  <div className="artifact-svg" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', width: '800px', opacity: 0.03 }}>
+    <IconSun size={800} />
+  </div>
   <FadeIn className="inner">
-    <div className="sprint-grid" style={{ gridTemplateColumns: '1fr' }}>
+    <div className="sprint-grid" style={{ gridTemplateColumns: '1fr', padding: '40px 0' }}>
       <div>
         <div className="s-kicker">// Book a discovery call</div>
-        <h2>Start a<br /><em>Conversation.</em></h2>
+        <h2 style={{ fontWeight: 500 }}>Start a<br /><em>Conversation.</em></h2>
         <div className="rule"></div>
-        <p style={{fontSize: "14px", fontWeight: "300", color: "var(--warm-grey)", lineHeight: "1.7", marginBottom: "32px"}}>Define your idea, audience, and cultural position.</p>
-        <Link to="/contact" className="btn-primary">Start a Conversation →</Link>
-        <p style={{marginTop: "14px", fontSize: "12px", fontWeight: "300", color: "var(--warm-grey)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch</p>
+        <p style={{fontSize: "15px", fontWeight: "400", color: "var(--ink)", lineHeight: "1.7", marginBottom: "24px"}}>Define your idea, audience, and cultural position.</p>
+        <Link to="/contact" className="btn-primary" style={{ fontWeight: 500 }}>Start a Conversation →</Link>
+        <p style={{marginTop: "14px", fontSize: "11px", fontWeight: "500", color: "var(--gold)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch</p>
       </div>
     </div>
   </FadeIn>

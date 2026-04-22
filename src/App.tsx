@@ -12,6 +12,9 @@ import Dojo from './pages/Dojo';
 import Contact from './pages/Contact';
 import ArtOfBrand from './pages/ArtOfBrand';
 import Campfyer from './pages/Campfyer';
+import Evo from './pages/Evo';
+import BeatTherapy from './pages/BeatTherapy';
+import Deeper from './pages/Deeper';
 import Apply from './pages/Apply';
 import WorkWithUs from './pages/WorkWithUs';
 import Insights from './pages/Insights';
@@ -26,6 +29,9 @@ export default function App() {
           <Route path="/rooms" element={<TheRooms />} />
           <Route path="/art-of-brand" element={<ArtOfBrand />} />
           <Route path="/campfyer" element={<Campfyer />} />
+          <Route path="/evo" element={<Evo />} />
+          <Route path="/beat-therapy" element={<BeatTherapy />} />
+          <Route path="/deeper" element={<Deeper />} />
           <Route path="/dojo" element={<Dojo />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/apply" element={<Apply />} />

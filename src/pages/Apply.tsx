@@ -33,7 +33,7 @@ export default function Apply() {
         .submit-btn:hover { background: var(--gold-light); }
 
         @media (max-width: 1024px) {
-          .apply-container { padding: 56px 20px; }
+          .apply-container { padding: 100px 20px 56px; }
         }
         @media (max-width: 900px) {
           /* Removed .nav-links { display: none !important; } */
