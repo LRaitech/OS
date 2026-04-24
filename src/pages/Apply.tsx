@@ -48,7 +48,8 @@ export default function Apply() {
       <div className="apply-container">
         <div className="apply-header">
           <h1>The <em>Application.</em></h1>
-          <p>Tell us about your venture. We'll review your details and get back to you to schedule a conversation.</p>
+          <p>Tell us about your venture. We'll review your details and get back to you to schedule a conversation. <br /><br />
+          <Link to="/contact#booking" style={{ color: 'var(--gold)', textDecoration: 'none', fontWeight: 500 }}>Prefer to book a strategy session directly? →</Link></p>
         </div>
 
         <form className="apply-form" action="https://api.web3forms.com/submit" method="POST" encType="multipart/form-data">

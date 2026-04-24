@@ -72,26 +72,41 @@ export default function Contact() {
         <div className="contact-header">
           <div className="contact-kicker">Connect</div>
           <h1>Let's <em>talk.</em></h1>
-          <p>Whether you're applying to the Dojo, exploring a Room, or ready to book a strategy engagement - reach us directly.</p>
+          <p>Book a strategy session directly via our calendar below, or send us a message for general enquiries.</p>
+        </div>
+
+        {/* Calendar Booking Section */}
+        <div id="booking" style={{ width: '100%', marginBottom: '60px', background: '#fff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid rgba(var(--rgb-gold), 0.1)' }}>
+          <div style={{ padding: '20px', borderBottom: '1px solid rgba(var(--rgb-gold), 0.1)', background: 'var(--parchment)' }}>
+            <div className="contact-kicker" style={{ margin: 0 }}>Schedule a Session</div>
+          </div>
+          <iframe 
+            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0eGbdyAzN3lYy5uU8S4mFv45Pt0CqOHlNW0phjnc3ZuNq_g658BNx8k123fH7RX-kvPLCL6c87?gv=true" 
+            style={{ border: 0, width: '100%', height: '700px' }} 
+            frameBorder="0"
+          ></iframe>
         </div>
         
-        <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="3a394c62-735c-4916-b733-211113cdbb57" />
-          <input type="hidden" name="subject" value="New Lotus Room Inquiry" />
-          <div className="form-group">
-            <label className="form-label">Name</label>
-            <input type="text" name="name" className="form-input" placeholder="Your name" required />
-          </div>
-          <div className="form-group">
-            <label className="form-label">Email</label>
-            <input type="email" name="email" className="form-input" placeholder="your@email.com" required />
-          </div>
-          <div className="form-group">
-            <label className="form-label">Message</label>
-            <textarea name="message" className="form-textarea" placeholder="Tell us what you're building..." required></textarea>
-          </div>
-          <button type="submit" className="submit-btn btn-primary">Send →</button>
-        </form>
+        <div style={{ width: '100%', maxWidth: '600px' }}>
+          <div className="contact-kicker" style={{ textAlign: 'center', marginBottom: '40px' }}>Or send a message</div>
+          <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="3a394c62-735c-4916-b733-211113cdbb57" />
+            <input type="hidden" name="subject" value="New Lotus Room Inquiry" />
+            <div className="form-group">
+              <label className="form-label">Name</label>
+              <input type="text" name="name" className="form-input" placeholder="Your name" required />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Email</label>
+              <input type="email" name="email" className="form-input" placeholder="your@email.com" required />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Message</label>
+              <textarea name="message" className="form-textarea" placeholder="Tell us what you're building..." required></textarea>
+            </div>
+            <button type="submit" className="submit-btn btn-primary">Send Message →</button>
+          </form>
+        </div>
 
         <div className="contact-info">
           <div className="info-block">

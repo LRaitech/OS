@@ -478,7 +478,7 @@ export default function Home() {
         <h2 style={{ fontWeight: 500 }}>Start a<br /><em>Conversation.</em></h2>
         <div className="rule"></div>
         <p style={{fontSize: "15px", fontWeight: "400", color: "var(--ink)", lineHeight: "1.7", marginBottom: "24px"}}>Let's connect and discover what really is your true north.</p>
-        <Link to="/contact" className="btn-primary" style={{ fontWeight: 500 }}>Book a Call →</Link>
+        <Link to="/contact#booking" className="btn-primary" style={{ fontWeight: 500 }}>Book a Call →</Link>
         <p style={{marginTop: "14px", fontSize: "11px", fontWeight: "500", color: "var(--gold)", fontFamily: "var(--fm)", letterSpacing: ".06em"}}>30 minutes · no pitch</p>
       </div>
     </div>
